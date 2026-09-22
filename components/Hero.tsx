@@ -14,6 +14,7 @@ import { ArrowRight, CheckCircle2, TrendingUp, ShieldCheck } from "lucide-react"
 import { Button } from "./ui/Button";
 import { heroCopy, positioning } from "@/content/copy";
 import { useReducedMotion } from "@/lib/reduced-motion";
+import { LiveSystemHeroMockup } from "./LiveSystemHeroMockup";
 
 // ── Easing Constants ──
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -307,251 +308,25 @@ export function Hero() {
             style={shouldReduceMotion ? {} : { y: smoothRightY, opacity: rightColumnOpacity }}
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            {/* Outer wrapper: slide in from right + slight rotation settle */}
             <motion.div
               initial={shouldReduceMotion ? {} : {
                 opacity: 0,
-                x: 40,
-                rotateY: -6,
-                rotateZ: 3,
-                scale: 0.92,
+                x: 35,
+                scale: 0.94,
               }}
               animate={{
                 opacity: 1,
                 x: 0,
-                rotateY: 0,
-                rotateZ: 0,
                 scale: 1,
               }}
               transition={{
-                duration: 0.7,
+                duration: 0.75,
                 delay: shouldReduceMotion ? 0 : STAGGER.demoCard,
                 ease: EASE_OUT_QUINT,
               }}
-              className="w-full max-w-lg"
-              style={{ perspective: 800 }}
+              className="w-full flex justify-center lg:justify-end"
             >
-              {/* Floating oscillation — slow, subtle, organic */}
-              <motion.div
-                animate={shouldReduceMotion ? {} : {
-                  y: [0, -7, 0, -4, 0],
-                  rotateZ: [1, 0.5, 1, 1.5, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  times: [0, 0.3, 0.5, 0.75, 1],
-                }}
-                className="w-full lg:rotate-1 hover:rotate-0 transition-transform duration-500 ease-out"
-              >
-                {/* Product Dashboard Card Frame */}
-                <div className="bg-white dark:bg-[rgba(20,20,24,0.7)] dark:backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-white/[0.12] shadow-[0_24px_50px_-12px_rgba(59,130,246,0.12),0_12px_24px_-8px_rgba(0,0,0,0.06)] dark:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.7)] p-5 sm:p-6 transition-all duration-300">
-
-                  {/* ── Browser Chrome Bar (delays from demoChrome) ── */}
-                  <motion.div
-                    {...makeEntrance(STAGGER.demoChrome, 10, 0.4)}
-                    className="-mx-5 -mt-5 sm:-mx-6 sm:-mt-6 px-5 sm:px-6 pt-4 pb-3.5 mb-4 rounded-t-2xl sm:rounded-t-3xl flex items-center justify-between border-b border-slate-200/80 dark:border-white/[0.08] bg-slate-50/70 dark:bg-black/40"
-                  >
-                    <div className="flex items-center gap-1.5">
-                      {[
-                        { bg: "#FF5F56", glow: "rgba(255,95,86,0.4)" },
-                        { bg: "#FFBD2E", glow: "rgba(255,189,46,0.4)" },
-                        { bg: "#27C93F", glow: "rgba(39,201,63,0.4)" },
-                      ].map((dot, i) => (
-                        <motion.div
-                          key={dot.bg}
-                          initial={shouldReduceMotion ? {} : { scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{
-                            delay: STAGGER.demoChrome + 0.1 + i * 0.06,
-                            type: "spring",
-                            stiffness: 500,
-                            damping: 22,
-                          }}
-                          className="w-2.5 h-2.5 rounded-full"
-                          style={{
-                            backgroundColor: dot.bg,
-                            boxShadow: `0 0 6px ${dot.glow}`,
-                          }}
-                        />
-                      ))}
-                    </div>
-                    <motion.div
-                      initial={shouldReduceMotion ? {} : { opacity: 0, scaleX: 0.7 }}
-                      animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{
-                        delay: STAGGER.demoChrome + 0.2,
-                        duration: 0.4,
-                        ease: EASE_OUT_EXPO,
-                      }}
-                      className="px-3.5 py-1 rounded-md bg-white dark:bg-[#121216]/90 border border-slate-200/80 dark:border-white/[0.08] text-[11px] font-mono flex items-center gap-1.5 shadow-2xs origin-center"
-                    >
-                      <span className="text-text-muted dark:text-zinc-500">https://</span>
-                      <span className="font-semibold text-text-primary dark:text-zinc-200">
-                        grovepms.vercel.app
-                      </span>
-                    </motion.div>
-                    <div className="w-4" />
-                  </motion.div>
-
-                  {/* ── Card Content: Mini UI Dashboard ── */}
-                  <div className="space-y-4">
-                    {/* Top Stats Row — staggered left-right with count-up */}
-                    <div className="grid grid-cols-2 gap-3">
-                      {/* Bookings — neutral card + accent dot label */}
-                      <motion.div
-                        {...makeEntrance(STAGGER.demoStats, 14, 0.45)}
-                        className="p-3.5 rounded-xl bg-slate-50/60 dark:bg-[#16161C]/80 border border-slate-200/80 dark:border-white/[0.08]"
-                      >
-                        <div className="text-[11px] font-medium text-text-muted dark:text-zinc-400 flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                          Monthly Direct Bookings
-                        </div>
-                        <div className="text-xl font-bold text-text-primary dark:text-white mt-1 tracking-tight font-mono">
-                          <AnimatedCountUp
-                            target={482000}
-                            prefix="₹"
-                            delay={STAGGER.demoStats + 0.3}
-                            duration={2.0}
-                          />
-                        </div>
-                        <div className="text-[11px] text-emerald-600 dark:text-emerald-300 font-semibold mt-1 flex items-center gap-0.5">
-                          <motion.span
-                            initial={shouldReduceMotion ? {} : { opacity: 0, x: -5 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: STAGGER.demoStats + 0.6, duration: 0.35, ease: EASE_OUT_EXPO }}
-                          >
-                            <TrendingUp size={12} />
-                          </motion.span>
-                          <motion.span
-                            initial={shouldReduceMotion ? {} : { opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: STAGGER.demoStats + 0.7, duration: 0.3 }}
-                          >
-                            +38% vs OTA average
-                          </motion.span>
-                        </div>
-                      </motion.div>
-
-                      {/* Occupancy — neutral card + accent dot label */}
-                      <motion.div
-                        {...makeEntrance(STAGGER.demoStats + STAGGER.demoStatsGap, 14, 0.45)}
-                        className="p-3.5 rounded-xl bg-slate-50/60 dark:bg-[#16161C]/80 border border-slate-200/80 dark:border-white/[0.08]"
-                      >
-                        <div className="text-[11px] font-medium text-text-muted dark:text-zinc-400 flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 shrink-0" />
-                          Occupancy Rate
-                        </div>
-                        <div className="text-xl font-bold text-text-primary dark:text-white mt-1 tracking-tight font-mono">
-                          <AnimatedCountUp
-                            target={92}
-                            suffix=".4%"
-                            delay={STAGGER.demoStats + STAGGER.demoStatsGap + 0.3}
-                            duration={1.6}
-                          />
-                        </div>
-                        <motion.div
-                          initial={shouldReduceMotion ? {} : { opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: STAGGER.demoStats + STAGGER.demoStatsGap + 0.7, duration: 0.3 }}
-                          className="text-[11px] text-accent dark:text-sky-300 font-semibold mt-1"
-                        >
-                          Live Room Sync
-                        </motion.div>
-                      </motion.div>
-                    </div>
-
-                    {/* Room Availability Matrix — row-by-row stagger */}
-                    <motion.div
-                      {...makeEntrance(STAGGER.demoMatrix, 12, 0.45)}
-                      className="p-3.5 rounded-xl bg-slate-50/60 dark:bg-[#16161C]/80 border border-slate-200/80 dark:border-white/[0.08] space-y-2"
-                    >
-                      <div className="flex items-center justify-between text-xs font-semibold">
-                        <span className="font-bold text-text-primary dark:text-zinc-100 tracking-wide">
-                          Room Availability Matrix
-                        </span>
-                        <span className="text-[10px] text-text-muted dark:text-zinc-500 font-mono font-normal">
-                          Real-time Postgres
-                        </span>
-                      </div>
-
-                      {/* Timeline Rows with staggered reveal */}
-                      <div className="space-y-1.5 pt-1">
-                        {[
-                          {
-                            room: "Deluxe 101",
-                            status: "Booked • Direct Inquiry",
-                            style: "bg-emerald-500/[0.12] dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-200 font-semibold",
-                          },
-                          {
-                            room: "Garden 204",
-                            status: "Check-in Today (WhatsApp)",
-                            style: "bg-blue-500/[0.12] dark:bg-blue-500/20 border border-blue-500/30 dark:border-blue-500/40 text-blue-800 dark:text-blue-200 font-semibold",
-                          },
-                          {
-                            room: "Suite 302",
-                            status: "Available • Instant Booking",
-                            style: "bg-slate-500/[0.06] dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.14] text-text-primary dark:text-zinc-100 font-medium",
-                          },
-                        ].map((row, i) => (
-                          <motion.div
-                            key={row.room}
-                            initial={shouldReduceMotion ? {} : { opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{
-                              delay: STAGGER.demoMatrix + 0.15 + i * 0.1,
-                              duration: 0.35,
-                              ease: EASE_OUT_EXPO,
-                            }}
-                            className="flex items-center gap-2 text-xs"
-                          >
-                            <span className="w-16 font-mono text-[11px] text-text-secondary dark:text-zinc-400">
-                              {row.room}
-                            </span>
-                            <div
-                              className={`flex-1 h-6 rounded ${row.style} text-[10px] flex items-center px-2.5`}
-                            >
-                              {row.status}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-
-                    {/* Bottom Action Footer */}
-                    <motion.div
-                      {...makeEntrance(STAGGER.demoFooter, 8, 0.35)}
-                      className="flex items-center justify-between pt-1 text-xs"
-                    >
-                      <div className="flex items-center gap-2">
-                        <motion.span
-                          initial={shouldReduceMotion ? {} : { scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{
-                            delay: STAGGER.demoFooter + 0.15,
-                            type: "spring",
-                            stiffness: 500,
-                            damping: 20,
-                          }}
-                          className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.6)]"
-                        />
-                        <span className="text-text-secondary dark:text-zinc-300 font-medium">
-                          Direct Booking Engine Active
-                        </span>
-                      </div>
-                      <motion.span
-                        initial={shouldReduceMotion ? {} : { opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: STAGGER.demoFooter + 0.25, duration: 0.35 }}
-                        className="text-accent dark:text-sky-300 font-semibold font-mono text-[11px]"
-                      >
-                        Production Live
-                      </motion.span>
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.div>
+              <LiveSystemHeroMockup />
             </motion.div>
           </motion.div>
 

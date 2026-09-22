@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -11,6 +11,8 @@ import {
   AlertCircle,
   Loader2,
   ChevronDown,
+  ShieldCheck,
+  RefreshCw,
 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { useReducedMotion } from "@/lib/reduced-motion";
@@ -53,6 +55,38 @@ export function ContactForm() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
+  // CAPTCHA State
+  const [captchaQuestion, setCaptchaQuestion] = useState<string>("");
+  const [captchaToken, setCaptchaToken] = useState<string>("");
+  const [captchaAnswer, setCaptchaAnswer] = useState<string>("");
+  const [captchaLoading, setCaptchaLoading] = useState<boolean>(false);
+  const [captchaFieldError, setCaptchaFieldError] = useState<string | null>(null);
+
+  // Honeypot field (hidden from humans to catch spam bots)
+  const [honeypot, setHoneypot] = useState<string>("");
+
+  const fetchCaptcha = useCallback(async () => {
+    try {
+      setCaptchaLoading(true);
+      const res = await fetch("/api/contact/captcha", { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        setCaptchaQuestion(data.question);
+        setCaptchaToken(data.token);
+        setCaptchaAnswer("");
+        setCaptchaFieldError(null);
+      }
+    } catch (err) {
+      console.error("Failed to load captcha challenge:", err);
+    } finally {
+      setCaptchaLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchCaptcha();
+  }, [fetchCaptcha]);
+
   const {
     register,
     handleSubmit,
@@ -68,14 +102,26 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
+    // Validate CAPTCHA before submitting
+    if (!captchaAnswer.trim()) {
+      setCaptchaFieldError("Please solve the security challenge to verify you're human");
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError(null);
+    setCaptchaFieldError(null);
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          captchaToken,
+          captchaAnswer: captchaAnswer.trim(),
+          hp_website_company: honeypot,
+        }),
       });
 
       const result = await response.json();
@@ -83,11 +129,16 @@ export function ContactForm() {
       if (response.ok && result.success) {
         setSubmitted(true);
         reset();
+        setCaptchaAnswer("");
+        fetchCaptcha();
       } else {
         setSubmitError(result.message || "Failed to send message. Please try again.");
+        // Refresh CAPTCHA if challenge failed or expired
+        fetchCaptcha();
       }
     } catch (err) {
       setSubmitError("Network error. Please try again or reach out on WhatsApp directly.");
+      fetchCaptcha();
     } finally {
       setIsSubmitting(false);
     }
@@ -133,7 +184,10 @@ export function ContactForm() {
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => setSubmitted(false)}
+            onClick={() => {
+              setSubmitted(false);
+              fetchCaptcha();
+            }}
           >
             Send Another Inquiry
           </Button>
@@ -153,6 +207,32 @@ export function ContactForm() {
     >
       {/* Top Subtle Ambient Highlight Accent Line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+
+      {/* Invisible Honeypot Field to trap spam bots */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          opacity: 0,
+          pointerEvents: "none",
+          zIndex: -1,
+          width: 0,
+          height: 0,
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <label htmlFor="hp_website_company">Leave this field blank</label>
+        <input
+          id="hp_website_company"
+          type="text"
+          name="hp_website_company"
+          tabIndex={-1}
+          autoComplete="new-password"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
 
       {/* Row 1: Name & Email */}
       <motion.div variants={fieldVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -304,6 +384,71 @@ export function ContactForm() {
           <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
             <AlertCircle size={12} />
             <span>{errors.message.message}</span>
+          </p>
+        )}
+      </motion.div>
+
+      {/* Interactive Anti-Bot CAPTCHA Challenge */}
+      <motion.div
+        variants={fieldVariants}
+        className="p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-200/90 dark:border-white/[0.08] space-y-2.5"
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-text-secondary text-xs font-medium">
+            <ShieldCheck size={15} className="text-accent dark:text-blue-400 shrink-0" />
+            <span>Human Verification</span>
+          </div>
+          <span className="text-[10px] font-mono text-text-muted">Anti-Spam Security</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 pt-0.5">
+          <div className="flex items-center gap-2">
+            <div className="h-10 px-3.5 rounded-lg bg-white dark:bg-[#121218] border border-accent/30 dark:border-blue-500/30 text-accent dark:text-blue-300 font-mono font-bold text-sm tracking-widest flex items-center shadow-xs select-none">
+              {captchaLoading ? (
+                <span className="flex items-center gap-1 text-xs text-text-muted font-normal">
+                  <Loader2 size={12} className="animate-spin" /> Generating...
+                </span>
+              ) : captchaQuestion ? (
+                `${captchaQuestion} = ?`
+              ) : (
+                "Loading..."
+              )}
+            </div>
+
+            <button
+              type="button"
+              onClick={fetchCaptcha}
+              disabled={captchaLoading}
+              title="Click to generate a new security challenge"
+              className="h-10 w-10 flex items-center justify-center rounded-lg border border-slate-200/90 dark:border-white/[0.08] bg-white dark:bg-[#121218] text-text-muted hover:text-text-primary hover:border-accent/40 transition-colors cursor-pointer disabled:opacity-50"
+            >
+              <RefreshCw size={14} className={captchaLoading ? "animate-spin" : ""} />
+            </button>
+          </div>
+
+          <div className="flex-1 min-w-[120px]">
+            <input
+              type="text"
+              inputMode="numeric"
+              placeholder="Your answer"
+              value={captchaAnswer}
+              onChange={(e) => {
+                setCaptchaAnswer(e.target.value);
+                if (captchaFieldError) setCaptchaFieldError(null);
+              }}
+              className={`w-full h-10 px-3 rounded-lg border text-sm text-text-primary bg-white dark:bg-[#121218] focus:border-accent dark:focus:border-blue-400 focus:ring-3 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 ${
+                captchaFieldError
+                  ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20"
+                  : "border-slate-200/90 dark:border-white/[0.08]"
+              }`}
+            />
+          </div>
+        </div>
+
+        {captchaFieldError && (
+          <p className="text-xs text-red-500 flex items-center gap-1 pt-0.5">
+            <AlertCircle size={12} />
+            <span>{captchaFieldError}</span>
           </p>
         )}
       </motion.div>
