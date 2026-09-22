@@ -37,6 +37,7 @@
     background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     transition: background-color 200ms ease, color 200ms ease;
   }
 
@@ -49,8 +50,29 @@
 
   h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.012em;
     font-weight: 600;
+  }
+
+  /* Prevent italic glyph overhangs and tittles from colliding */
+  i, em, .italic {
+    letter-spacing: 0.015em;
+    font-style: italic;
+  }
+
+  /* Ensure background-clipped gradient text never clips ascenders, descenders, or italic overhangs */
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-top: 0.08em;
+    padding-bottom: 0.14em;
+    margin-top: -0.08em;
+    margin-bottom: -0.14em;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+    overflow: visible;
   }
 
   p {

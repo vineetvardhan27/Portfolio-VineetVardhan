@@ -75,7 +75,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             )}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-tight max-w-4xl leading-[1.15]">
+          <h1 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.015em] max-w-4xl leading-[1.22] sm:leading-[1.18]">
             {project.name}
           </h1>
 

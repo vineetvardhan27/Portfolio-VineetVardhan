@@ -42,11 +42,13 @@ export function Pricing() {
             <div className="text-xs uppercase tracking-wider font-semibold text-accent mb-2">
               Transparent Pricing
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold text-text-primary tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.18]">
               Clear{" "}
-              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-sky-300">
-                investment
-                <span className="absolute left-0 -bottom-0.5 w-full h-[3px] rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 opacity-80" />
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-sky-300 pb-0.5 -mb-0.5 pr-1 -mr-1">
+                  investment
+                </span>
+                <span className="absolute left-0 -bottom-0.5 w-full h-[3px] rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 opacity-80 pointer-events-none" />
               </span>{" "}
               expectations. No hidden fees.
             </h2>

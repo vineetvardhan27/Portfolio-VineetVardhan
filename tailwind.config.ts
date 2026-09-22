@@ -27,6 +27,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
+        serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
       },
       borderRadius: {
         "2xl": "16px",

@@ -46,12 +46,11 @@ export function FinalCTA() {
               </div>
 
               {/* Headline with Focal Accent Treatment */}
-              <h2 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-tight leading-[1.15]">
+              <h2 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.18]">
                 Have a project in mind? Let&apos;s build{" "}
-                <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-400 to-accent">
-                  something exceptional
+                <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-400 to-accent pb-1 -mb-1 pr-1.5 -mr-1.5 tracking-[0.015em]">
+                  something exceptional.
                 </span>
-                .
               </h2>
 
               <p className="mt-4 text-base sm:text-lg text-text-secondary leading-relaxed font-normal">

@@ -146,7 +146,7 @@ export function Services() {
           <div className="text-xs uppercase tracking-wider font-semibold text-accent mb-2">
             Services & Expertise
           </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.2]">
             Specialized engineering for ambitious businesses.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-text-secondary">

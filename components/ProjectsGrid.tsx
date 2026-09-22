@@ -23,7 +23,7 @@ export function ProjectsGrid() {
           <div className="text-xs uppercase tracking-wider font-semibold text-accent mb-2">
             Selected Work
           </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.2]">
             Proven software engineered for real business outcomes.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-text-secondary">

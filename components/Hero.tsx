@@ -207,7 +207,7 @@ export function Hero() {
             </motion.div>
 
             {/* ── 2. Headline — 3 reveal lines (200ms, 350ms, 500ms) ── */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[58px] leading-[1.08] font-bold text-text-primary tracking-tight max-w-2xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-[58px] leading-[1.24] sm:leading-[1.2] lg:leading-[1.16] font-bold text-text-primary tracking-[-0.015em] max-w-2xl">
               <motion.span
                 {...makeEntrance(STAGGER.headlineLine1, 22, 0.55)}
                 className="inline-block"
@@ -217,7 +217,7 @@ export function Hero() {
               <br className="hidden sm:inline" />{" "}
               <motion.span
                 {...makeEntrance(STAGGER.headlineLine2, 22, 0.55)}
-                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-accent to-blue-500 dark:from-blue-300 dark:via-sky-200 dark:to-blue-400"
+                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-accent to-blue-500 dark:from-blue-300 dark:via-sky-200 dark:to-blue-400 pb-1.5 -mb-1.5 pr-1.5 -mr-1.5 pt-0.5 -mt-0.5"
               >
                 a better digital
               </motion.span>{" "}

@@ -338,7 +338,7 @@ export function Process() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               <span>HOW I WORK</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.18]">
               From idea to a production-ready product.
             </h2>
             <p className="mt-4 text-lg sm:text-xl text-text-secondary font-normal leading-relaxed">
@@ -1056,7 +1056,7 @@ export function Process() {
 
                   {/* Active Title & Headline */}
                   <motion.div variants={narrativeItemVariants}>
-                    <h3 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-tight">
+                    <h3 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.2]">
                       {currentStage.name}
                     </h3>
                     <p className="mt-3 text-base sm:text-lg font-medium text-text-primary leading-relaxed">
