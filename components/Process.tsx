@@ -184,7 +184,7 @@ function AnimatedProgressCounter({
 
   if (isLive) {
     return (
-      <span className="text-accent font-bold inline-flex items-center gap-1.5 font-mono">
+      <span className="text-accent font-semibold inline-flex items-center gap-1.5 font-sans text-xs">
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
         SHIPPED &amp; LIVE
       </span>
@@ -192,7 +192,7 @@ function AnimatedProgressCounter({
   }
 
   return (
-    <span className="text-accent font-bold tabular-nums font-mono">
+    <span className="text-accent font-semibold tabular-nums font-sans text-xs">
       {displayValue}% COMPLETE
     </span>
   );
@@ -330,14 +330,14 @@ export function Process() {
       <div className="pt-20 pb-12 sm:pt-28 sm:pb-16 border-b border-border/80 dark:border-white/[0.06] bg-bg-subtle/40">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-3 font-medium">
+            <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span>04 · Development Process</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-medium text-text-primary tracking-[-0.02em] leading-[1.2] sm:leading-[1.18]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
               From idea to a production-ready product.
             </h2>
-            <p className="mt-3.5 text-base sm:text-lg text-text-secondary font-normal leading-relaxed">
+            <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary font-normal leading-[1.62]">
               Watch real applications evolve through every phase of the engineering lifecycle—from initial discovery to live production deployment.
             </p>
           </div>
@@ -389,7 +389,7 @@ export function Process() {
                       layout
                       layoutId="process-stage-pill"
                       transition={shouldReduceMotion ? { duration: 0.15 } : SPRING_STAGE_PILL}
-                      className="text-[11px] font-mono font-medium px-2.5 py-0.5 rounded border border-border-accent/40 bg-accent-subtle text-accent flex items-center gap-1.5 transition-colors"
+                      className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded border border-border-accent/40 bg-accent-subtle text-accent flex items-center gap-1.5 transition-colors"
                     >
                       {activeStage === 0 && <span>01 · Discovery &amp; Scope</span>}
                       {activeStage === 1 && (
@@ -434,7 +434,7 @@ export function Process() {
                           transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
                           className="text-center"
                         >
-                          <span className="text-[11px] font-mono uppercase tracking-widest text-text-muted">
+                          <span className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.02em]">
                             BUSINESS &amp; TECHNICAL REQUIREMENTS
                           </span>
                         </motion.div>
@@ -457,7 +457,7 @@ export function Process() {
                               }}
                               className="p-3.5 bg-white dark:bg-card rounded-xl border border-border shadow-2xs space-y-1.5"
                             >
-                              <div className="flex items-center justify-between text-[10px] font-mono text-text-muted">
+                              <div className="flex items-center justify-between text-[11px] font-sans font-medium text-text-muted">
                                 <span>{req.label}</span>
                                 <motion.span
                                   initial={
@@ -502,7 +502,7 @@ export function Process() {
                           }}
                           className="p-3 bg-white dark:bg-card rounded-xl border border-border flex items-center justify-between text-xs text-text-secondary shadow-2xs"
                         >
-                          <span className="font-mono text-[11px]">Technical Scope:</span>
+                          <span className="font-sans font-medium text-[11.5px]">Technical Scope:</span>
                           <span className="font-semibold text-text-primary flex items-center gap-1.5">
                             Next.js 14 + Sanity + Tailwind{" "}
                             <motion.span
@@ -600,12 +600,12 @@ export function Process() {
                                 }
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.15, ...SPRING_TACTILE }}
-                                className="text-[10px] text-emerald-600 dark:text-emerald-400 font-mono font-semibold"
+                                className="text-[10.5px] text-emerald-600 dark:text-emerald-400 font-sans font-semibold"
                               >
                                 +65% Direct Inquiries
                               </motion.span>
                             </div>
-                            <div className="text-xs text-text-secondary leading-relaxed">
+                            <div className="text-xs text-text-secondary leading-relaxed font-normal">
                               Experience tranquil mountain vistas with direct room reservations, live amenity filters, and instant WhatsApp booking.
                             </div>
                             <div className="flex gap-2 pt-1">
@@ -634,7 +634,7 @@ export function Process() {
                               }}
                               className="p-3 bg-surface rounded-lg border border-border space-y-1"
                             >
-                              <div className="text-[10px] text-text-muted font-mono">Deluxe Suite</div>
+                              <div className="text-[10.5px] text-text-muted font-sans font-medium">Deluxe Suite</div>
                               <div className="text-xs font-bold text-text-primary">Mountain View</div>
                               <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Live Availability Sync</div>
                             </motion.div>
@@ -652,7 +652,7 @@ export function Process() {
                               }}
                               className="p-3 bg-surface rounded-lg border border-border space-y-1"
                             >
-                              <div className="text-[10px] text-text-muted font-mono">Executive Room</div>
+                              <div className="text-[10.5px] text-text-muted font-sans font-medium">Executive Room</div>
                               <div className="text-xs font-bold text-text-primary">Garden Terrace</div>
                               <div className="text-[10px] text-accent font-medium">Instant Confirmation</div>
                             </motion.div>
@@ -663,7 +663,7 @@ export function Process() {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.3, duration: 0.3 }}
-                          className="flex items-center justify-between text-xs text-text-muted font-mono px-1"
+                          className="flex items-center justify-between text-xs text-text-muted font-sans px-1"
                         >
                           <span>SEO &amp; AI-Friendly Schema: Active</span>
                           <span className="text-emerald-600 dark:text-emerald-400 font-semibold">100% Mobile Ready</span>
@@ -736,8 +736,8 @@ export function Process() {
                                 }}
                                 className="p-2 rounded-lg bg-bg-subtle border border-border"
                               >
-                                <div className="text-[9px] text-text-muted uppercase font-mono">{metric.label}</div>
-                                <div className={`font-bold mt-0.5 ${metric.color}`}>{metric.val}</div>
+                                <div className="text-[10px] text-text-muted font-sans font-medium">{metric.label}</div>
+                                <div className={`font-semibold mt-0.5 ${metric.color}`}>{metric.val}</div>
                               </motion.div>
                             ))}
                           </div>
@@ -759,16 +759,16 @@ export function Process() {
                           >
                             <div className="flex items-center justify-between text-[11px] font-semibold text-text-primary">
                               <span>Room &amp; Guest Lifecycle</span>
-                              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-mono">Postgres RLS Secure</span>
+                              <span className="text-[10.5px] text-emerald-600 dark:text-emerald-400 font-sans font-medium">Postgres RLS Secure</span>
                             </div>
-                            <div className="space-y-1 text-xs font-mono">
+                            <div className="space-y-1 text-xs">
                               <div className="flex items-center justify-between p-1.5 rounded bg-white dark:bg-navy-950 border border-border/60">
-                                <span className="text-text-secondary text-[11px]">Room 102 (Deluxe)</span>
-                                <span className="text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold">Checked-In • POS Active</span>
+                                <span className="text-text-secondary text-[11px] font-sans">Room 102 (Deluxe)</span>
+                                <span className="text-emerald-700 dark:text-emerald-300 text-[10.5px] font-sans font-semibold">Checked-In • POS Active</span>
                               </div>
                               <div className="flex items-center justify-between p-1.5 rounded bg-white dark:bg-navy-950 border border-border/60">
-                                <span className="text-text-secondary text-[11px]">Room 204 (Suite)</span>
-                                <span className="text-accent text-[10px] font-semibold">Food Bill Added (₹1,450)</span>
+                                <span className="text-text-secondary text-[11px] font-sans">Room 204 (Suite)</span>
+                                <span className="text-accent text-[10.5px] font-sans font-semibold">Food Bill Added (₹1,450)</span>
                               </div>
                             </div>
                           </motion.div>
@@ -786,7 +786,7 @@ export function Process() {
                               duration: 0.35,
                               ease: EASE_OUT_EXPO,
                             }}
-                            className="p-2 rounded-lg bg-bg-subtle border border-border flex items-center justify-between text-[11px] font-mono text-text-secondary"
+                            className="p-2 rounded-lg bg-bg-subtle border border-border flex items-center justify-between text-[11px] font-sans font-medium text-text-secondary"
                           >
                             <span>UI (Next.js)</span>
                             <span className="text-text-muted">→</span>
@@ -818,7 +818,7 @@ export function Process() {
                           transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
                           className="text-center mb-1"
                         >
-                          <span className="text-[11px] font-mono uppercase tracking-widest text-[#35B77A] font-medium">
+                          <span className="text-[11.5px] font-sans font-medium tracking-[0.02em] text-[#35B77A]">
                             3 PRODUCTION PRODUCTS DEPLOYED
                           </span>
                         </motion.div>
@@ -845,14 +845,14 @@ export function Process() {
                                 <span className="text-xs">🌿</span>
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                               </div>
-                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight">
+                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight font-sans">
                                 Hotel Greenery
                               </div>
-                              <div className="text-[10px] text-text-muted">Direct Booking</div>
+                              <div className="text-[10px] text-text-muted font-sans">Direct Booking</div>
                             </div>
                             <div className="pt-1.5 border-t border-border/80">
-                              <div className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">+65% Inquiries</div>
-                              <div className="text-[9px] text-text-muted font-mono">&lt; 0.8s Load</div>
+                              <div className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 font-sans">+65% Inquiries</div>
+                              <div className="text-[9.5px] text-text-muted font-sans font-medium">&lt; 0.8s Load</div>
                             </div>
                           </motion.div>
 
@@ -876,14 +876,14 @@ export function Process() {
                                 <span className="text-xs">🏨</span>
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                               </div>
-                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight">
+                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight font-sans">
                                 Grove PMS
                               </div>
-                              <div className="text-[10px] text-text-muted">Hospitality ERP</div>
+                              <div className="text-[10px] text-text-muted font-sans">Hospitality ERP</div>
                             </div>
                             <div className="pt-1.5 border-t border-border/80">
-                              <div className="text-[10px] font-bold text-accent">4.5 hrs/day</div>
-                              <div className="text-[9px] text-text-muted font-mono">100% In-House</div>
+                              <div className="text-[10px] font-semibold text-accent font-sans">4.5 hrs/day</div>
+                              <div className="text-[9.5px] text-text-muted font-sans font-medium">100% In-House</div>
                             </div>
                           </motion.div>
 
@@ -907,14 +907,14 @@ export function Process() {
                                 <span className="text-xs">✈️</span>
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                               </div>
-                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight">
+                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight font-sans">
                                 Anugra Travels
                               </div>
-                              <div className="text-[10px] text-text-muted">Travel Platform</div>
+                              <div className="text-[10px] text-text-muted font-sans">Travel Platform</div>
                             </div>
                             <div className="pt-1.5 border-t border-border/80">
-                              <div className="text-[10px] font-semibold text-accent">Sanity + Email</div>
-                              <div className="text-[9px] text-text-muted font-mono">SEO Ready</div>
+                              <div className="text-[10px] font-semibold text-accent font-sans">Sanity + Email</div>
+                              <div className="text-[9.5px] text-text-muted font-sans font-medium">SEO Ready</div>
                             </div>
                           </motion.div>
                         </div>
@@ -934,7 +934,7 @@ export function Process() {
                           }}
                           className="p-3 bg-surface rounded-xl border border-border flex items-center justify-between text-xs text-text-primary"
                         >
-                          <span className="flex items-center gap-1.5 font-medium">
+                          <span className="flex items-center gap-1.5 font-medium font-sans">
                             <motion.span
                               initial={
                                 shouldReduceMotion
@@ -957,7 +957,7 @@ export function Process() {
                           </span>
                           <a
                             href="#work"
-                            className="font-semibold text-accent hover:text-accent-hover flex items-center gap-1 text-[11px] group"
+                            className="font-medium text-accent hover:text-accent-hover flex items-center gap-1 text-[11.5px] group font-sans"
                           >
                             <span>Explore Selected Work</span>
                             <ArrowRight
@@ -985,8 +985,8 @@ export function Process() {
 
                   <div className="bg-white dark:bg-card px-5 py-2.5 border-t border-border flex items-center justify-between text-xs text-text-secondary z-30">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-text-muted">STAGE:</span>
-                      <span className="font-semibold text-text-primary flex items-center gap-1">
+                      <span className="font-sans font-medium text-[11px] text-text-muted">STAGE:</span>
+                      <span className="font-semibold text-text-primary flex items-center gap-1 font-sans">
                         <AnimatedStageDigit
                           digit={currentStage.step}
                           reducedMotion={shouldReduceMotion}
@@ -995,7 +995,7 @@ export function Process() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                    <div className="flex items-center gap-2 font-sans font-medium text-[11px]">
                       <span className="text-text-muted">STATUS:</span>
                       <AnimatedProgressCounter
                         targetPercentage={targetPercent}
@@ -1025,7 +1025,7 @@ export function Process() {
                     variants={narrativeItemVariants}
                     className="flex items-center gap-3"
                   >
-                    <span className="text-sm font-mono font-bold text-accent flex items-center gap-1">
+                    <span className="text-sm font-sans font-semibold text-accent flex items-center gap-1 tabular-nums">
                       <AnimatedStageDigit
                         digit={currentStage.step}
                         reducedMotion={shouldReduceMotion}
@@ -1033,17 +1033,17 @@ export function Process() {
                       <span>/ 04</span>
                     </span>
                     <span className="h-px w-10 bg-accent/40" />
-                    <span className="text-xs uppercase tracking-wider font-semibold text-text-muted">
+                    <span className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted">
                       {currentStage.projectCategory}
                     </span>
                   </motion.div>
 
                   {/* Active Title & Headline */}
                   <motion.div variants={narrativeItemVariants}>
-                    <h3 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.2]">
+                    <h3 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-[-0.02em] leading-[1.18]">
                       {currentStage.name}
                     </h3>
-                    <p className="mt-3 text-base sm:text-lg font-medium text-text-primary leading-relaxed">
+                    <p className="mt-3 text-base sm:text-lg font-normal text-text-primary leading-relaxed">
                       {currentStage.headline}
                     </p>
                   </motion.div>
@@ -1061,7 +1061,7 @@ export function Process() {
                     variants={narrativeItemVariants}
                     className="space-y-2.5 pt-4 border-t border-border"
                   >
-                    <div className="text-xs font-semibold uppercase tracking-wider text-text-primary mb-1">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.04em] text-text-primary mb-1">
                       What Gets Built:
                     </div>
                     {currentStage.deliverables.map((item, idx) => (
@@ -1106,14 +1106,14 @@ export function Process() {
                     className="p-3.5 rounded-xl bg-surface border border-border flex items-center justify-between shadow-2xs"
                   >
                     <div>
-                      <div className="text-[10px] text-text-muted uppercase tracking-wider font-mono">
+                      <div className="text-[10px] text-text-muted uppercase tracking-[0.04em] font-medium">
                         Featured Project
                       </div>
-                      <div className="text-xs font-bold text-text-primary mt-0.5">
+                      <div className="text-xs font-semibold text-text-primary mt-0.5">
                         {currentStage.projectFeatured}
                       </div>
                     </div>
-                    <div className="text-xs font-mono text-accent font-semibold">
+                    <div className="text-xs font-sans text-accent font-medium">
                       {currentStage.projectTech}
                     </div>
                   </motion.div>
@@ -1172,24 +1172,24 @@ export function Process() {
             >
               <div className="flex items-center justify-between border-b border-border pb-3">
                 <div>
-                  <span className="text-xs font-mono font-bold text-accent">
+                  <span className="text-xs font-sans font-semibold text-accent tabular-nums">
                     {stageData[activeStage].step} of 04
                   </span>
-                  <h3 className="text-xl font-semibold text-text-primary mt-0.5">
+                  <h3 className="text-xl font-semibold text-text-primary mt-0.5 tracking-[-0.015em]">
                     {stageData[activeStage].name}
                   </h3>
                 </div>
-                <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-surface text-text-secondary border border-border">
+                <span className="text-[10px] uppercase tracking-[0.04em] font-medium px-2 py-0.5 rounded-md bg-surface text-text-secondary border border-border">
                   {stageData[activeStage].projectFeatured}
                 </span>
               </div>
 
-              <p className="text-sm font-medium text-text-primary leading-relaxed">
+              <p className="text-sm font-normal text-text-primary leading-relaxed">
                 {stageData[activeStage].headline}
               </p>
 
               <div className="space-y-2 pt-2 border-t border-border">
-                <div className="text-xs font-semibold uppercase tracking-wider text-text-primary mb-1">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.04em] text-text-primary mb-1">
                   Deliverables
                 </div>
                 {stageData[activeStage].deliverables.map((item, idx) => (
@@ -1217,9 +1217,9 @@ export function Process() {
                 ))}
               </div>
 
-              <div className="pt-2 flex items-center justify-between text-xs text-text-muted font-mono border-t border-border">
-                <span>Stack: {stageData[activeStage].projectTech}</span>
-                <span className="text-accent font-bold">
+              <div className="pt-2 flex items-center justify-between text-xs text-text-muted font-sans border-t border-border">
+                <span>Stack: <span className="font-medium text-text-secondary">{stageData[activeStage].projectTech}</span></span>
+                <span className="text-accent font-semibold tabular-nums">
                   {stageData[activeStage].step} of 04
                 </span>
               </div>

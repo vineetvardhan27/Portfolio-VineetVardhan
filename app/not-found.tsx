@@ -17,16 +17,16 @@ export default function NotFound() {
   return (
     <div className="min-h-[75vh] flex items-center justify-center pt-32 pb-20 bg-bg">
       <div className="container-custom text-center space-y-6 max-w-lg">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface/60 dark:bg-white/[0.04] border border-border text-xs font-mono text-accent">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface/60 dark:bg-white/[0.04] border border-border text-xs font-sans font-medium text-accent">
           <span className="w-1.5 h-1.5 rounded-full bg-accent" />
           <span>404 · Page Not Found</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-semibold text-text-primary tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-semibold text-text-primary tracking-[-0.025em]">
           Page not found
         </h1>
 
-        <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md mx-auto">
+        <p className="text-text-secondary text-base leading-relaxed max-w-md mx-auto font-normal">
           The page or case study you requested could not be located. It may have been moved or the URL might be mistyped.
         </p>
 
@@ -42,7 +42,7 @@ export default function NotFound() {
           </Button>
         </div>
 
-        <div className="pt-6 border-t border-border/80 text-xs text-text-muted font-mono">
+        <div className="pt-6 border-t border-border/80 text-xs text-text-muted font-sans">
           Need assistance? Reach out directly at{" "}
           <a
             href="mailto:vineetvardhanwork@gmail.com"

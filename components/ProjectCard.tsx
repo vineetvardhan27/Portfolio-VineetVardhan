@@ -35,14 +35,14 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             {/* Header: Year, Category & Live Indicator */}
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono text-accent font-semibold">2026</span>
+                <span className="text-[12px] font-sans text-accent font-semibold">2026</span>
                 <span className="text-text-muted/40">·</span>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-text-muted font-medium">
+                <span className="text-[12px] font-sans text-text-muted font-medium">
                   {project.category}
                 </span>
               </div>
               {project.liveUrl && (
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] text-text-secondary border border-border/70 dark:border-white/[0.06]">
+                <span className="inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] text-text-secondary border border-border/70 dark:border-white/[0.06]">
                   <span className="w-1.5 h-1.5 rounded-full bg-success" />
                   Live Product
                 </span>
@@ -50,12 +50,12 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             </div>
 
             {/* Project Title */}
-            <h3 className="text-2xl sm:text-3xl font-medium text-text-primary tracking-tight mt-4">
+            <h3 className="text-2xl sm:text-[28px] font-semibold text-text-primary tracking-tight mt-4">
               {project.name}
             </h3>
 
             {/* Subtext / Summary */}
-            <p className="mt-3 text-sm sm:text-base text-text-secondary leading-relaxed max-w-xl">
+            <p className="mt-3 text-sm sm:text-[15px] text-text-secondary leading-[1.62] max-w-xl font-normal">
               {project.summary}
             </p>
 
@@ -65,13 +65,13 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
                 {project.metrics.map((m, mIdx) => (
                   <div key={m.label} className="flex flex-col">
                     <span
-                      className={`text-2xl sm:text-3xl font-bold font-mono tracking-tight ${
+                      className={`text-2xl sm:text-3xl font-semibold font-sans tracking-tight tabular-nums ${
                         mIdx === 0 ? "text-accent" : "text-text-primary"
                       }`}
                     >
                       {m.value}
                     </span>
-                    <span className="text-[11px] font-mono text-text-muted mt-0.5 tracking-wide">
+                    <span className="text-[12px] font-sans text-text-muted mt-0.5 tracking-normal">
                       {m.label}
                     </span>
                   </div>
@@ -84,7 +84,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
               {project.technologies.slice(0, 4).map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface/80 dark:bg-white/[0.04] text-text-secondary border border-border/60 dark:border-white/[0.06]"
+                  className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/80 dark:bg-white/[0.04] text-text-secondary border border-border/60 dark:border-white/[0.06]"
                 >
                   {tech}
                 </span>
@@ -96,7 +96,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           <div className="mt-8 pt-6 border-t border-border/70 dark:border-white/[0.06] flex items-center justify-between gap-4">
             <Link
               href={`/work/${project.slug}`}
-              className="group/link inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-text-secondary hover:text-text-primary transition-colors"
+              className="group/link inline-flex items-center gap-1.5 text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
             >
               <span>View Case Study</span>
               <ArrowRight
@@ -110,7 +110,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-1.5 rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
               >
                 <span>Live Demo</span>
                 <ArrowUpRight size={13} className="text-text-muted" />
@@ -183,14 +183,14 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
         {/* Top Header: Year, Category & Live Indicator */}
         <div className="flex items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono text-accent font-semibold">2026</span>
+            <span className="text-[12px] font-sans text-accent font-semibold">2026</span>
             <span className="text-text-muted/40">·</span>
-            <span className="text-[11px] font-mono uppercase tracking-wider text-text-muted font-medium">
+            <span className="text-[12px] font-sans text-text-muted font-medium">
               {project.category}
             </span>
           </div>
           {project.liveUrl && (
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] text-text-secondary border border-border/70 dark:border-white/[0.06]">
+            <span className="inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] text-text-secondary border border-border/70 dark:border-white/[0.06]">
               <span className="w-1.5 h-1.5 rounded-full bg-success" />
               Live Product
             </span>
@@ -242,12 +242,12 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
         </div>
 
         {/* Project Title */}
-        <h3 className="text-xl sm:text-2xl font-medium text-text-primary tracking-tight mt-5">
+        <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-tight mt-5">
           {project.name}
         </h3>
 
         {/* Summary */}
-        <p className="mt-2 text-sm text-text-secondary line-clamp-2 leading-relaxed">
+        <p className="mt-2 text-sm sm:text-[14.5px] text-text-secondary line-clamp-2 leading-[1.6] font-normal">
           {project.summary}
         </p>
 
@@ -257,13 +257,13 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             {project.metrics.map((m, mIdx) => (
               <div key={m.label} className="flex flex-col">
                 <span
-                  className={`text-xl sm:text-2xl font-bold font-mono tracking-tight ${
+                  className={`text-xl sm:text-2xl font-semibold font-sans tracking-tight tabular-nums ${
                     mIdx === 0 ? "text-accent" : "text-text-primary"
                   }`}
                 >
                   {m.value}
                 </span>
-                <span className="text-[11px] font-mono text-text-muted mt-0.5">
+                <span className="text-[12px] font-sans text-text-muted mt-0.5">
                   {m.label}
                 </span>
               </div>
@@ -276,7 +276,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           {project.technologies.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface/80 dark:bg-white/[0.04] text-text-secondary border border-border/60 dark:border-white/[0.06]"
+              className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/80 dark:bg-white/[0.04] text-text-secondary border border-border/60 dark:border-white/[0.06]"
             >
               {tech}
             </span>
@@ -288,7 +288,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
       <div className="mt-6 pt-5 border-t border-border/70 dark:border-white/[0.06] flex items-center justify-between gap-4">
         <Link
           href={`/work/${project.slug}`}
-          className="group/link inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-text-secondary hover:text-text-primary transition-colors"
+          className="group/link inline-flex items-center gap-1.5 text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
         >
           <span>View Case Study</span>
           <ArrowRight
@@ -302,7 +302,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-1.5 rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
           >
             <span>Live Demo</span>
             <ArrowUpRight size={12} className="text-text-muted" />

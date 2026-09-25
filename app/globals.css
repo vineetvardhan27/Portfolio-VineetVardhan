@@ -18,6 +18,21 @@
   --accent-hover: #A57233;
   --accent-subtle: rgba(185, 130, 63, 0.08);
   --success: #289E65;
+
+  /* Typography Design Tokens */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --leading-display: 1.08;
+  --leading-hero: 1.12;
+  --leading-heading: 1.18;
+  --leading-snug: 1.35;
+  --leading-body: 1.62;
+  --tracking-display: -0.032em;
+  --tracking-heading: -0.022em;
+  --tracking-subheading: -0.012em;
+  --tracking-body: -0.005em;
+  --tracking-label: 0.015em;
+  --tracking-eyebrow: 0.035em;
 }
 
 .dark {
@@ -43,22 +58,47 @@
     scroll-behavior: auto !important; /* Lenis controls smooth scrolling */
     color: var(--text-primary);
     background-color: var(--bg);
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
     transition: background-color 200ms ease, color 200ms ease;
   }
 
   body {
     background-color: var(--bg);
     color: var(--text-primary);
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-body);
     overflow-x: hidden;
     transition: background-color 200ms ease, color 200ms ease;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1 {
     color: var(--text-primary);
-    letter-spacing: -0.012em;
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-hero);
+    font-weight: 600;
+  }
+
+  h2 {
+    color: var(--text-primary);
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-heading);
+    font-weight: 600;
+  }
+
+  h3 {
+    color: var(--text-primary);
+    letter-spacing: var(--tracking-subheading);
+    line-height: var(--leading-snug);
+    font-weight: 600;
+  }
+
+  h4, h5, h6 {
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
     font-weight: 600;
   }
 
@@ -157,3 +197,35 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ═════════════════════════════════════════════════════
+   Studio Typography Scale Utilities
+   ═════════════════════════════════════════════════════ */
+.type-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem; /* 12px */
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--accent);
+}
+
+.type-subtext {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem; /* 17px */
+  line-height: var(--leading-body);
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 640px) {
+  .type-subtext {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
+.type-mono-tech {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
+}
+

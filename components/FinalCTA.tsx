@@ -39,21 +39,21 @@ export function FinalCTA() {
               {/* Eyebrow with Animated Pulse & Rule */}
               <div className="inline-flex items-center gap-3 mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs uppercase tracking-widest font-semibold text-accent font-mono">
-                  GET IN TOUCH
+                <span className="text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent">
+                  Get in Touch
                 </span>
                 <span className="w-12 h-px bg-accent/40 hidden sm:block" />
               </div>
 
               {/* Headline with Focal Accent Treatment */}
-              <h2 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.18]">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
                 Have a project in mind? Let&apos;s build{" "}
                 <span className="font-semibold text-accent">
                   something exceptional.
                 </span>
               </h2>
 
-              <p className="mt-4 text-base sm:text-lg text-text-secondary leading-relaxed font-normal">
+              <p className="mt-4 text-base sm:text-[17px] text-text-secondary leading-[1.62] font-normal">
                 {finalCTACopy.subtext}
               </p>
 
@@ -63,7 +63,7 @@ export function FinalCTA() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-sm transition-all duration-200 w-full sm:w-auto cursor-pointer shadow-xs"
+                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-[15px] transition-all duration-200 w-full sm:w-auto cursor-pointer shadow-xs"
                 >
                   {/* Quiet Online Status Indicator */}
                   <span className="w-2 h-2 rounded-full bg-[#35B77A] shrink-0" />
@@ -77,7 +77,7 @@ export function FinalCTA() {
 
                 <a
                   href="tel:+919798504212"
-                  className="group inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-surface hover:bg-surface-hover text-text-primary border border-border font-semibold text-sm transition-all duration-200 w-full sm:w-auto"
+                  className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-surface hover:bg-surface-hover text-text-primary border border-border font-medium text-[15px] transition-all duration-200 w-full sm:w-auto"
                 >
                   <span>Call +91 97985 04212</span>
                 </a>
@@ -89,7 +89,7 @@ export function FinalCTA() {
                 <div className="flex items-center gap-3.5 group">
                   <div className="w-1 h-6 rounded-xs bg-accent/50 shrink-0" />
                   <div>
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
+                    <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em]">
                       Direct Email
                     </div>
                     <a
@@ -105,7 +105,7 @@ export function FinalCTA() {
                 <div className="flex items-center gap-3.5 group">
                   <div className="w-1 h-6 rounded-xs bg-accent/50 shrink-0" />
                   <div>
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
+                    <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em]">
                       Guaranteed Response
                     </div>
                     <span className="text-sm font-medium text-text-primary">
@@ -118,7 +118,7 @@ export function FinalCTA() {
                 <div className="flex items-center gap-3.5 group">
                   <div className="w-1 h-6 rounded-xs bg-accent/50 shrink-0" />
                   <div>
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
+                    <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em]">
                       Contract &amp; Milestones
                     </div>
                     <span className="text-sm font-medium text-text-primary">

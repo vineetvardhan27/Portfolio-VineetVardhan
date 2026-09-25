@@ -37,7 +37,7 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div className="flex flex-col gap-2.5">
-            <h4 className="text-xs uppercase tracking-wider font-semibold text-text-muted">
+            <h4 className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted">
               Navigation
             </h4>
             <Link
@@ -80,7 +80,7 @@ export function Footer() {
 
           {/* Connect Links */}
           <div className="flex flex-col gap-2.5">
-            <h4 className="text-xs uppercase tracking-wider font-semibold text-text-muted">
+            <h4 className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted">
               Connect
             </h4>
             <a

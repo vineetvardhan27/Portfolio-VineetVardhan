@@ -18,10 +18,10 @@ export function Pricing() {
 
     return (
       <div className="flex items-baseline tracking-tight">
-        <span className="text-lg sm:text-xl font-medium text-text-muted mr-1 select-none">
+        <span className="text-lg sm:text-xl font-medium text-text-muted mr-1 select-none font-sans">
           {currency}
         </span>
-        <span className="text-3xl sm:text-4xl font-bold font-mono tracking-tight text-text-primary">
+        <span className="text-3xl sm:text-4xl font-semibold font-sans tracking-tight text-text-primary tabular-nums">
           {cleanNumbers}
         </span>
       </div>
@@ -40,14 +40,14 @@ export function Pricing() {
             transition={{ duration: 0.35, ease: "easeOut" }}
             className="max-w-xl"
           >
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-3 font-medium">
+            <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span>03 · Transparent Pricing</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-medium text-text-primary tracking-[-0.02em] leading-[1.2] sm:leading-[1.18]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
               Clear investment expectations. No hidden fees.
             </h2>
-            <p className="mt-3.5 text-base sm:text-lg text-text-secondary leading-relaxed">
+            <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] font-normal">
               Fixed-scope project pricing with direct communication, clear milestones, and complete codebase handover.
             </p>
           </motion.div>
@@ -56,10 +56,10 @@ export function Pricing() {
           <div className="self-start md:self-auto p-1 bg-surface/70 dark:bg-white/[0.03] border border-border/80 dark:border-white/[0.08] rounded-md flex items-center shadow-2xs">
             <button
               onClick={() => setRegion("IN")}
-              className={`px-3.5 py-1.5 text-xs font-mono rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
+              className={`px-3.5 py-1.5 text-xs font-sans rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
                 region === "IN"
                   ? "bg-card text-text-primary font-semibold border border-border shadow-2xs"
-                  : "text-text-muted hover:text-text-secondary"
+                  : "text-text-muted hover:text-text-secondary font-medium"
               }`}
             >
               <span>India (INR)</span>
@@ -67,10 +67,10 @@ export function Pricing() {
 
             <button
               onClick={() => setRegion("INTL")}
-              className={`px-3.5 py-1.5 text-xs font-mono rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
+              className={`px-3.5 py-1.5 text-xs font-sans rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
                 region === "INTL"
                   ? "bg-card text-text-primary font-semibold border border-border shadow-2xs"
-                  : "text-text-muted hover:text-text-secondary"
+                  : "text-text-muted hover:text-text-secondary font-medium"
               }`}
             >
               <span>International (USD)</span>
@@ -100,31 +100,31 @@ export function Pricing() {
                 <div>
                   {/* Top Badge for Featured */}
                   {isFeatured && (
-                    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider font-semibold bg-accent-subtle text-accent border border-border-accent/30 mb-3">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-sans font-medium bg-accent-subtle text-accent border border-border-accent/30 mb-3">
                       <span>Most Popular</span>
                     </div>
                   )}
 
                   {/* Title & Description */}
                   <div className="min-h-[28px]">
-                    <h3 className="text-xl sm:text-2xl font-medium text-text-primary tracking-tight">
+                    <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-tight">
                       {tier.name}
                     </h3>
                   </div>
 
-                  <p className="mt-2 text-xs sm:text-sm text-text-secondary leading-relaxed min-h-[40px]">
+                  <p className="mt-2 text-xs sm:text-[13.5px] text-text-secondary leading-[1.6] min-h-[40px] font-normal">
                     {tier.description}
                   </p>
 
                   {/* Price Display */}
                   <div className="mt-6 pt-6 border-t border-border/70 dark:border-white/[0.06]">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1 font-medium">
+                    <div className="text-[11.5px] font-sans font-medium text-text-muted mb-1 tracking-[0.01em]">
                       Estimated Investment
                     </div>
                     {renderPrice(priceDisplay)}
 
                     {/* Timeline */}
-                    <div className="mt-3 flex items-center gap-1.5 text-xs font-mono text-text-muted">
+                    <div className="mt-3 flex items-center gap-1.5 text-xs font-sans text-text-muted font-normal">
                       <Clock size={12} className="shrink-0 text-text-muted" />
                       <span>Timeline: {tier.timeline}</span>
                     </div>
@@ -132,7 +132,7 @@ export function Pricing() {
 
                   {/* Deliverables Checklist */}
                   <div className="mt-7">
-                    <div className="text-[11px] font-mono font-medium text-text-muted uppercase tracking-wider mb-3.5">
+                    <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em] mb-3.5">
                       What&apos;s Included
                     </div>
 
@@ -140,7 +140,7 @@ export function Pricing() {
                       {tier.deliverables.map((item) => (
                         <div
                           key={item}
-                          className="flex items-start gap-2.5 text-xs text-text-secondary leading-relaxed"
+                          className="flex items-start gap-2.5 text-xs sm:text-[13px] text-text-secondary leading-relaxed font-normal"
                         >
                           <Check size={13} className="shrink-0 mt-0.5 text-accent" />
                           <span>{item}</span>
@@ -161,7 +161,7 @@ export function Pricing() {
                     <span>{tier.ctaText}</span>
                     <ArrowRight size={13} />
                   </Button>
-                  <p className="text-[11px] font-mono text-text-muted text-center mt-3 leading-tight">
+                  <p className="text-xs font-sans text-text-muted text-center mt-3 leading-normal font-normal">
                     Best for: {tier.bestFor}
                   </p>
                 </div>

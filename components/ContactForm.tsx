@@ -173,7 +173,7 @@ export function ContactForm() {
         <div className="w-12 h-12 rounded-lg bg-[#35B77A]/10 text-[#35B77A] flex items-center justify-center mx-auto border border-[#35B77A]/20">
           <CheckCircle2 size={24} />
         </div>
-        <h3 className="text-2xl font-bold text-text-primary tracking-tight">
+        <h3 className="text-2xl font-semibold text-text-primary tracking-[-0.015em]">
           Inquiry Received
         </h3>
         <p className="text-text-secondary text-sm max-w-md mx-auto leading-relaxed">
@@ -236,7 +236,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-name"
-            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+            className="block text-[11px] uppercase tracking-[0.04em] text-text-muted mb-1.5 font-medium"
           >
             Your Name *
           </label>
@@ -262,7 +262,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-email"
-            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+            className="block text-[11px] uppercase tracking-[0.04em] text-text-muted mb-1.5 font-medium"
           >
             Work Email *
           </label>
@@ -291,7 +291,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-phone"
-            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+            className="block text-[11px] uppercase tracking-[0.04em] text-text-muted mb-1.5 font-medium"
           >
             Phone · WhatsApp (Optional)
           </label>
@@ -309,7 +309,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-project-type"
-            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+            className="block text-[11px] uppercase tracking-[0.04em] text-text-muted mb-1.5 font-medium"
           >
             Project Type *
           </label>
@@ -340,7 +340,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-budget"
-            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+            className="block text-[11px] uppercase tracking-[0.04em] text-text-muted mb-1.5 font-medium"
           >
             Estimated Budget *
           </label>
@@ -367,7 +367,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-timeline"
-            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+            className="block text-[11px] uppercase tracking-[0.04em] text-text-muted mb-1.5 font-medium"
           >
             Desired Timeline *
           </label>
@@ -394,7 +394,7 @@ export function ContactForm() {
       <motion.div variants={fieldVariants}>
         <label
           htmlFor="contact-message"
-          className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+          className="block text-[11px] uppercase tracking-[0.04em] text-text-muted mb-1.5 font-medium"
         >
           Project Overview *
         </label>
@@ -425,7 +425,7 @@ export function ContactForm() {
             <ShieldCheck size={15} className="text-accent shrink-0" />
             <span>Human Verification</span>
           </div>
-          <span className="text-[10px] font-mono text-text-muted">Anti-Spam Security</span>
+          <span className="text-[10px] font-medium text-text-muted">Anti-Spam Security</span>
         </div>
 
         <div className="flex flex-wrap items-center gap-3 pt-0.5">
@@ -516,7 +516,7 @@ export function ContactForm() {
         </button>
       </motion.div>
 
-      <motion.p variants={fieldVariants} className="text-center text-[11px] font-mono text-text-muted pt-1">
+      <motion.p variants={fieldVariants} className="text-center text-[11px] text-text-muted pt-1">
         Inquiries delivered straight to vineetvardhanwork@gmail.com • Direct reply within 24h
       </motion.p>
     </motion.form>

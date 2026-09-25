@@ -35,7 +35,7 @@ export function TrustBar() {
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
           
           {/* Left Title Label */}
-          <div className="shrink-0 flex items-center gap-2 text-[11px] font-mono uppercase tracking-wider text-text-muted font-medium">
+          <div className="shrink-0 flex items-center gap-2 text-[12.5px] font-sans text-text-muted font-medium tracking-[0.01em]">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>Specialized In</span>
           </div>

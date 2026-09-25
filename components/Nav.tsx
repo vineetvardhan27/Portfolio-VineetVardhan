@@ -37,10 +37,10 @@ export function Nav() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[13px] font-semibold tracking-tight text-text-primary group-hover:text-accent transition-colors">
+            <span className="text-[14px] font-semibold tracking-[-0.01em] text-text-primary group-hover:text-accent transition-colors">
               Vineet Vardhan
             </span>
-            <span className="text-[11px] text-text-muted flex items-center gap-1.5 font-mono">
+            <span className="text-[12px] text-text-muted flex items-center gap-1.5 font-sans font-normal">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-success" />
               Available for projects
             </span>
@@ -53,7 +53,7 @@ export function Nav() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-[13px] text-text-secondary hover:text-text-primary transition-colors font-medium tracking-tight"
+              className="text-[14.5px] text-text-secondary hover:text-text-primary transition-colors font-medium tracking-normal"
             >
               {link.label}
             </Link>
@@ -98,7 +98,7 @@ export function Nav() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-medium text-text-secondary hover:text-text-primary block py-1.5 transition-colors"
+                  className="text-[15px] font-medium text-text-secondary hover:text-text-primary block py-2 transition-colors"
                 >
                   {link.label}
                 </Link>

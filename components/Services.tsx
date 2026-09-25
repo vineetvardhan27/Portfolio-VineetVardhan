@@ -80,14 +80,14 @@ export function Services() {
           transition={{ duration: 0.35, ease: "easeOut" }}
           className="max-w-2xl mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-3 font-medium">
+          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>02 · Services &amp; Expertise</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-medium text-text-primary tracking-[-0.02em] leading-[1.2] sm:leading-[1.18]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
             Specialized engineering for ambitious businesses.
           </h2>
-          <p className="mt-3.5 text-base sm:text-lg text-text-secondary leading-relaxed">
+          <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] font-normal">
             From direct booking platforms to full custom business operating systems, every deliverable is built for scale.
           </p>
         </motion.div>
@@ -114,29 +114,29 @@ export function Services() {
                     </div>
 
                     {service.badge && (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-accent-subtle text-accent border border-border-accent/30">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11.5px] font-sans font-medium bg-accent-subtle text-accent border border-border-accent/30">
                         <span>{service.badge}</span>
                       </span>
                     )}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-medium text-text-primary tracking-tight">
+                  <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-tight">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-2.5 text-sm text-text-secondary leading-relaxed">
+                  <p className="mt-2.5 text-sm sm:text-[14.5px] text-text-secondary leading-[1.6] font-normal">
                     {service.description}
                   </p>
 
                   {/* Deliverables Checklist */}
                   <div className="mt-6 space-y-2.5">
-                    <div className="text-[11px] font-mono font-medium text-text-muted uppercase tracking-wider mb-2">
+                    <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em] mb-2">
                       Key Deliverables
                     </div>
                     {service.capabilities.map((cap) => (
-                      <div key={cap} className="flex items-center gap-2.5 text-xs text-text-secondary font-medium">
+                      <div key={cap} className="flex items-center gap-2.5 text-[13px] text-text-secondary font-normal sm:font-medium">
                         <Check size={13} className="text-accent shrink-0" />
                         <span>{cap}</span>
                       </div>
@@ -148,7 +148,7 @@ export function Services() {
                 <div className="mt-8 pt-5 border-t border-border/70 dark:border-white/[0.05]">
                   <a
                     href="#contact"
-                    className="group/cta inline-flex items-center gap-1.5 text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors"
+                    className="group/cta inline-flex items-center gap-1.5 text-[13px] font-medium text-text-secondary hover:text-text-primary transition-colors"
                   >
                     <span>{service.ctaText}</span>
                     <ArrowRight

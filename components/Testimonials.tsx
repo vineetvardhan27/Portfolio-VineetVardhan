@@ -33,16 +33,16 @@ export function Testimonials() {
           transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
           className="max-w-3xl mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-3 font-medium">
+          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>06 · Client Feedback</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-medium text-text-primary tracking-[-0.02em] leading-[1.2] sm:leading-[1.18]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
             Trusted by businesses to deliver results.
           </h2>
 
-          <p className="mt-3.5 text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl font-normal">
+          <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] max-w-2xl font-normal">
             Real feedback from direct client partnerships across custom websites, booking engines, and business software.
           </p>
         </motion.div>
@@ -61,7 +61,7 @@ export function Testimonials() {
             {/* Left Column: Client Voice & Attribution */}
             <div className="lg:col-span-7 space-y-6 relative">
               {/* Partnership Label */}
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] border border-border/70 dark:border-white/[0.05] text-[10px] font-mono text-text-muted font-medium">
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] border border-border/70 dark:border-white/[0.05] text-[11.5px] font-sans text-text-muted font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-success" />
                 <span>Hospitality Direct Booking Partnership</span>
               </div>
@@ -69,7 +69,7 @@ export function Testimonials() {
               {/* Editorial Quote */}
               <blockquote className="text-xl sm:text-2xl lg:text-[23px] font-serif italic text-text-primary leading-[1.6] tracking-[0.01em]">
                 &ldquo;Vineet transformed our hotel&apos;s digital presence.{" "}
-                <span className="text-accent font-semibold not-italic">
+                <span className="text-accent font-semibold not-italic font-sans">
                   Direct inquiries through the website increased immediately
                 </span>
                 , and the room showcase looks stunning on mobile.&rdquo;
@@ -86,7 +86,7 @@ export function Testimonials() {
                     <span className="font-semibold text-sm sm:text-base text-text-primary">
                       {item.author}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono font-medium text-success bg-success/15 border border-success/30 px-2 py-0.5 rounded">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-sans font-medium text-success bg-success/15 border border-success/30 px-2 py-0.5 rounded">
                       <CheckCircle2 size={11} />
                       Verified Client
                     </span>
@@ -116,7 +116,7 @@ export function Testimonials() {
                     href="https://www.hotelgreeneryview.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] font-mono text-text-muted hover:text-accent transition-colors"
+                    className="inline-flex items-center gap-1 text-[12px] font-sans text-text-muted hover:text-accent transition-colors font-medium"
                   >
                     <span>Live Site</span>
                     <ExternalLink size={11} />
@@ -125,16 +125,16 @@ export function Testimonials() {
 
                 {/* Hero Metric Callout */}
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted font-medium">
+                  <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em]">
                     Measured Business Impact
                   </div>
-                  <div className="text-3xl sm:text-4xl font-bold font-mono tracking-tight text-success">
+                  <div className="text-3xl sm:text-4xl font-semibold font-sans tracking-tight text-success tabular-nums">
                     +65%
                   </div>
                   <div className="text-xs sm:text-[13px] text-text-secondary font-medium leading-relaxed pt-0.5">
                     Direct Inquiries &amp; Instant WhatsApp Bookings
                   </div>
-                  <p className="text-xs text-text-muted leading-normal pt-0.5">
+                  <p className="text-xs text-text-muted leading-normal pt-0.5 font-normal">
                     Eliminated 18–25% third-party OTA commissions within 60 days of production launch.
                   </p>
                 </div>
@@ -142,12 +142,12 @@ export function Testimonials() {
                 {/* Secondary Technical Vitals */}
                 <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
                   <div className="p-2.5 rounded bg-card border border-border/60 space-y-0.5">
-                    <div className="text-[10px] text-text-muted font-mono">Performance</div>
-                    <div className="font-semibold font-mono text-xs text-text-primary">&lt; 0.8s Load</div>
+                    <div className="text-[11px] text-text-muted font-sans font-medium">Performance</div>
+                    <div className="font-semibold font-sans text-xs text-text-primary tabular-nums">&lt; 0.8s Load</div>
                   </div>
                   <div className="p-2.5 rounded bg-card border border-border/60 space-y-0.5">
-                    <div className="text-[10px] text-text-muted font-mono">SEO &amp; AI Search</div>
-                    <div className="font-semibold font-mono text-xs text-accent">Top LLM Rank</div>
+                    <div className="text-[11px] text-text-muted font-sans font-medium">SEO &amp; AI Search</div>
+                    <div className="font-semibold font-sans text-xs text-accent">Top LLM Rank</div>
                   </div>
                 </div>
 

@@ -25,21 +25,21 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:opacity-50 disabled:pointer-events-none rounded-lg select-none";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:opacity-50 disabled:pointer-events-none rounded-lg select-none leading-normal tracking-normal";
 
   const sizeStyles = {
-    sm: "px-3.5 py-1.5 text-xs font-semibold gap-1.5",
-    md: "px-4.5 py-2.5 text-sm font-semibold gap-2",
-    lg: "px-6 py-3 text-sm sm:text-base font-semibold gap-2.5",
+    sm: "px-3.5 py-1.5 text-[13.5px] font-medium gap-1.5",
+    md: "px-4.5 py-2.5 text-[14.5px] font-medium gap-2",
+    lg: "px-6 py-3 text-[15px] sm:text-[15.5px] font-semibold gap-2.5",
   };
 
   const variantStyles = {
     primary:
       "bg-accent hover:bg-accent-hover text-[#0B0C0E] font-semibold border border-accent/40 shadow-xs hover:shadow-sm active:translate-y-0.5",
     secondary:
-      "bg-surface/70 dark:bg-white/[0.04] hover:bg-surface dark:hover:bg-white/[0.08] text-text-primary border border-border dark:border-white/[0.1] hover:border-border-accent/40 shadow-2xs active:translate-y-0.5",
+      "bg-surface/70 dark:bg-white/[0.04] hover:bg-surface dark:hover:bg-white/[0.08] text-text-primary font-medium border border-border dark:border-white/[0.1] hover:border-border-accent/40 shadow-2xs active:translate-y-0.5",
     ghost:
-      "bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface/60 dark:hover:bg-white/[0.04]",
+      "bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface/60 dark:hover:bg-white/[0.04] font-medium",
   };
 
   const combinedClassName = twMerge(

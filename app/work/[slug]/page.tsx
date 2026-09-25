@@ -109,11 +109,11 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             )}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.015em] max-w-4xl leading-[1.22] sm:leading-[1.18]">
+          <h1 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.025em] max-w-4xl leading-[1.15] sm:leading-[1.1]">
             {project.name}
           </h1>
 
-          <p className="mt-4 text-lg sm:text-xl text-text-secondary max-w-3xl leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-text-secondary max-w-3xl leading-relaxed font-normal">
             {project.tagline}
           </p>
 
@@ -144,10 +144,10 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                 key={m.label}
                 className="p-6 rounded-xl bg-card border border-border"
               >
-                <div className="text-xs font-medium text-text-muted uppercase tracking-wider font-mono">
+                <div className="text-xs font-medium text-text-muted uppercase tracking-[0.04em]">
                   {m.label}
                 </div>
-                <div className="text-3xl font-bold text-text-primary mt-2">
+                <div className="text-2xl sm:text-3xl font-semibold text-text-primary mt-2 tracking-tight tabular-nums">
                   {m.value}
                 </div>
               </div>
@@ -161,36 +161,36 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
           <div className="lg:col-span-8 space-y-12">
             {/* The Challenge */}
             <section className="space-y-3">
-              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+              <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Phase 01
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary tracking-tight">
+              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.015em]">
                 The Challenge
               </h2>
-              <p className="text-text-secondary leading-relaxed text-base sm:text-lg">
+              <p className="text-text-secondary leading-relaxed text-base font-normal">
                 {project.challenge}
               </p>
             </section>
 
             {/* The Solution */}
             <section className="space-y-3">
-              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+              <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Phase 02
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary tracking-tight">
+              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.015em]">
                 The Solution
               </h2>
-              <p className="text-text-secondary leading-relaxed text-base sm:text-lg">
+              <p className="text-text-secondary leading-relaxed text-base font-normal">
                 {project.solution}
               </p>
             </section>
 
             {/* Key Features Implemented */}
             <section className="space-y-3">
-              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+              <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Deliverables 03
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary tracking-tight">
+              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.015em]">
                 Key Architectural Deliverables
               </h2>
               <div className="space-y-3 pt-2">
@@ -210,14 +210,14 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
             {/* The Result */}
             <section className="p-6 sm:p-8 rounded-xl bg-card border border-border space-y-3">
-              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+              <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Impact 04
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2">
+              <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2 tracking-[-0.015em]">
                 <TrendingUp size={20} className="text-accent" />
                 The Business Outcome
               </h2>
-              <p className="text-text-secondary leading-relaxed text-base sm:text-lg">
+              <p className="text-text-secondary leading-relaxed text-base font-normal">
                 {project.result}
               </p>
             </section>
@@ -229,7 +229,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               {/* Project Meta Card */}
               <div className="p-6 rounded-xl bg-card border border-border space-y-6">
                 <div>
-                  <div className="text-xs font-medium uppercase tracking-wider text-text-muted mb-3 flex items-center gap-2 font-mono">
+                  <div className="text-xs font-medium uppercase tracking-[0.04em] text-text-muted mb-3 flex items-center gap-2">
                     <Code2 size={14} className="text-accent" />
                     <span>Technologies Used</span>
                   </div>
@@ -237,7 +237,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-surface text-text-primary border border-border"
+                        className="text-xs font-sans font-medium px-2.5 py-1 rounded-md bg-surface text-text-primary border border-border"
                       >
                         {tech}
                       </span>
@@ -282,17 +282,17 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         {/* Next Project Footer Bar */}
         <div className="mt-20 pt-10 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <div className="text-xs uppercase tracking-wider font-medium text-text-muted font-mono">
+            <div className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted">
               Next Case Study
             </div>
-            <div className="text-xl font-semibold text-text-primary mt-1">
+            <div className="text-xl font-semibold text-text-primary mt-1 tracking-tight">
               {nextProject.name}
             </div>
           </div>
 
           <Link
             href={`/work/${nextProject.slug}`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-surface hover:bg-surface-hover text-text-primary font-semibold text-sm border border-border transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-surface hover:bg-surface-hover text-text-primary font-medium text-sm border border-border transition-colors"
           >
             <span>Read Next Case Study</span>
             <ArrowRight size={16} />
