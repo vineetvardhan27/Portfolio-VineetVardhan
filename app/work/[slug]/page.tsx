@@ -82,13 +82,13 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         technologies={project.technologies}
         year={project.year}
       />
-      <div className="pt-28 pb-24 sm:pt-36 sm:pb-32 bg-bg min-h-screen">
+      <div className="pt-24 pb-16 sm:pt-36 sm:pb-32 bg-bg min-h-screen">
       <div className="container-custom">
         {/* Back Link */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors font-medium"
+            className="inline-flex items-center gap-2 py-1.5 min-h-[44px] text-sm text-text-secondary hover:text-text-primary transition-colors font-medium"
           >
             <ArrowLeft size={16} />
             <span>Back to all projects</span>
@@ -119,17 +119,17 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
           {/* Above-the-fold Live Site CTA */}
           {project.liveUrl && (
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-sm shadow-xs transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-sm shadow-xs transition-colors w-full sm:w-auto"
               >
                 <span>Visit Live Site</span>
                 <ExternalLink size={15} />
               </a>
-              <Button href="/#contact" variant="secondary" size="md">
+              <Button href="/#contact" variant="secondary" size="md" className="w-full sm:w-auto justify-center">
                 Discuss Similar Project
               </Button>
             </div>
@@ -292,7 +292,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
           <Link
             href={`/work/${nextProject.slug}`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-surface hover:bg-surface-hover text-text-primary font-medium text-sm border border-border transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] rounded-lg bg-surface hover:bg-surface-hover text-text-primary font-medium text-sm border border-border transition-colors w-full sm:w-auto"
           >
             <span>Read Next Case Study</span>
             <ArrowRight size={16} />

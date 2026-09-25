@@ -28,9 +28,9 @@ export function Button({
     "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:opacity-50 disabled:pointer-events-none rounded-lg select-none leading-normal tracking-normal";
 
   const sizeStyles = {
-    sm: "px-3.5 py-1.5 text-[13.5px] font-medium gap-1.5",
-    md: "px-4.5 py-2.5 text-[14.5px] font-medium gap-2",
-    lg: "px-6 py-3 text-[15px] sm:text-[15.5px] font-semibold gap-2.5",
+    sm: "px-3.5 py-1.5 min-h-[38px] text-[13.5px] font-medium gap-1.5",
+    md: "px-4.5 py-2.5 min-h-[44px] text-[14.5px] font-medium gap-2",
+    lg: "px-6 py-3 min-h-[46px] text-[15px] sm:text-[15.5px] font-semibold gap-2.5",
   };
 
   const variantStyles = {

@@ -94,7 +94,7 @@ export function FinalCTA() {
                     </div>
                     <a
                       href="mailto:vineetvardhanwork@gmail.com"
-                      className="text-sm font-medium text-text-primary hover:text-accent transition-colors"
+                      className="text-sm font-medium text-text-primary hover:text-accent transition-colors break-all"
                     >
                       vineetvardhanwork@gmail.com
                     </a>

@@ -53,7 +53,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-          className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-6 sm:p-9 lg:p-10 shadow-xs transition-colors"
+          className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-5 sm:p-8 lg:p-10 shadow-xs transition-colors"
         >
           {/* Horizontal Split Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -67,7 +67,7 @@ export function Testimonials() {
               </div>
 
               {/* Editorial Quote */}
-              <blockquote className="text-xl sm:text-2xl lg:text-[23px] font-serif italic text-text-primary leading-[1.6] tracking-[0.01em]">
+              <blockquote className="text-lg sm:text-2xl lg:text-[23px] font-serif italic text-text-primary leading-[1.6] tracking-[0.01em]">
                 &ldquo;Vineet transformed our hotel&apos;s digital presence.{" "}
                 <span className="text-accent font-semibold not-italic font-sans">
                   Direct inquiries through the website increased immediately
@@ -155,7 +155,7 @@ export function Testimonials() {
                 <div className="pt-2">
                   <Link
                     href="/work/hotel-greenery-view"
-                    className="inline-flex items-center justify-between w-full px-3.5 py-2 rounded-md bg-card hover:bg-surface border border-border/80 text-text-primary text-xs font-medium transition-colors group"
+                    className="inline-flex items-center justify-between w-full px-3.5 py-2.5 min-h-[44px] rounded-md bg-card hover:bg-surface border border-border/80 text-text-primary text-xs font-medium transition-colors group"
                   >
                     <span className="group-hover:text-accent transition-colors">Explore Full Case Study</span>
                     <ArrowRight

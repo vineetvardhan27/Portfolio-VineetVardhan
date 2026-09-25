@@ -6,9 +6,9 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-bg-subtle border-t border-border mt-20">
-      <div className="container-custom py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer className="bg-bg-subtle border-t border-border mt-14 sm:mt-20">
+      <div className="container-custom py-10 sm:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10">
           {/* Brand Col */}
           <div className="md:col-span-2 flex flex-col gap-3">
             <div className="flex items-center gap-2.5">
@@ -30,73 +30,73 @@ export function Footer() {
             <p className="text-text-secondary text-sm max-w-md mt-1">
               Designing and engineering high-converting websites, booking platforms, and custom business software for modern businesses.
             </p>
-            <div className="flex items-center gap-3 mt-3 text-text-muted">
+            <div className="flex items-center gap-3 mt-2 text-text-muted">
               <span className="text-xs">Based in India • Serving Global Clients</span>
             </div>
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col gap-2.5">
-            <h4 className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted">
+          <div className="flex flex-col gap-2">
+            <h4 className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted mb-1">
               Navigation
             </h4>
             <Link
               href="/#work"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors py-1 inline-flex items-center"
             >
               Featured Projects
             </Link>
             <Link
               href="/#services"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors py-1 inline-flex items-center"
             >
               Services & Expertise
             </Link>
             <Link
               href="/#pricing"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors py-1 inline-flex items-center"
             >
               Pricing & Rate Card
             </Link>
             <Link
               href="/#process"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors py-1 inline-flex items-center"
             >
               Development Process
             </Link>
             <Link
               href="/#why-me"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors py-1 inline-flex items-center"
             >
               Why Work With Me
             </Link>
             <Link
               href="/#contact"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors py-1 inline-flex items-center"
             >
               Contact & Inquiries
             </Link>
           </div>
 
           {/* Connect Links */}
-          <div className="flex flex-col gap-2.5">
-            <h4 className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted">
+          <div className="flex flex-col gap-2">
+            <h4 className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted mb-1">
               Connect
             </h4>
             <a
               href="mailto:vineetvardhanwork@gmail.com"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5 py-1"
             >
-              <Mail size={15} />
-              <span>vineetvardhanwork@gmail.com</span>
+              <Mail size={15} className="shrink-0" />
+              <span className="break-all">vineetvardhanwork@gmail.com</span>
             </a>
             <a
               href="https://github.com/vineetvardhan27"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5 py-1"
             >
-              <Github size={15} />
+              <Github size={15} className="shrink-0" />
               <span>GitHub</span>
               <ArrowUpRight size={13} className="text-text-muted" />
             </a>
@@ -104,9 +104,9 @@ export function Footer() {
               href="https://www.linkedin.com/in/vineetvardhan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5"
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5 py-1"
             >
-              <Linkedin size={15} />
+              <Linkedin size={15} className="shrink-0" />
               <span>LinkedIn</span>
               <ArrowUpRight size={13} className="text-text-muted" />
             </a>
@@ -114,10 +114,10 @@ export function Footer() {
               href="https://wa.me/919798504212"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-accent hover:text-accent-hover font-medium transition-colors flex items-center gap-1.5 mt-1"
+              className="text-sm text-accent hover:text-accent-hover font-medium transition-colors flex items-center gap-1.5 py-1 mt-0.5"
             >
               <span>WhatsApp (+91 97985 04212)</span>
-              <ArrowUpRight size={13} />
+              <ArrowUpRight size={13} className="shrink-0" />
             </a>
           </div>
         </div>

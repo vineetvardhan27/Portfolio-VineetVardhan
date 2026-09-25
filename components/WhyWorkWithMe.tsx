@@ -111,7 +111,7 @@ export function WhyWorkWithMe() {
           {/* 1. LEAD SPOTLIGHT CARD */}
           <motion.div
             variants={itemVariants}
-            className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-6 sm:p-9 shadow-xs transition-colors"
+            className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-5 sm:p-8 lg:p-9 shadow-xs transition-colors"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
               {/* Left Column: Numeral, Icon & Elevated Title */}
@@ -167,7 +167,7 @@ export function WhyWorkWithMe() {
                 <motion.div
                   key={item.title}
                   variants={itemVariants}
-                  className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-6 flex flex-col justify-between shadow-xs transition-colors"
+                  className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-5 sm:p-6 flex flex-col justify-between shadow-xs transition-colors"
                 >
                   {/* Top Bar: Numeral & Icon */}
                   <div>

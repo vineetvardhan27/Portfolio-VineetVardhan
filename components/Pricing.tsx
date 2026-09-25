@@ -56,7 +56,7 @@ export function Pricing() {
           <div className="self-start md:self-auto p-1 bg-surface/70 dark:bg-white/[0.03] border border-border/80 dark:border-white/[0.08] rounded-md flex items-center shadow-2xs">
             <button
               onClick={() => setRegion("IN")}
-              className={`px-3.5 py-1.5 text-xs font-sans rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
+              className={`px-3.5 py-2 min-h-[38px] text-xs font-sans rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
                 region === "IN"
                   ? "bg-card text-text-primary font-semibold border border-border shadow-2xs"
                   : "text-text-muted hover:text-text-secondary font-medium"
@@ -67,7 +67,7 @@ export function Pricing() {
 
             <button
               onClick={() => setRegion("INTL")}
-              className={`px-3.5 py-1.5 text-xs font-sans rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
+              className={`px-3.5 py-2 min-h-[38px] text-xs font-sans rounded transition-colors select-none flex items-center gap-1.5 focus:outline-none ${
                 region === "INTL"
                   ? "bg-card text-text-primary font-semibold border border-border shadow-2xs"
                   : "text-text-muted hover:text-text-secondary font-medium"
@@ -91,7 +91,7 @@ export function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.35, delay: idx * 0.08, ease: "easeOut" }}
-                className={`relative flex flex-col justify-between p-6 sm:p-8 rounded-xl bg-card border transition-all duration-200 shadow-xs ${
+                className={`relative flex flex-col justify-between p-5 sm:p-8 rounded-xl bg-card border transition-all duration-200 shadow-xs ${
                   isFeatured
                     ? "border-accent/60 dark:border-accent/50 ring-1 ring-accent/30"
                     : "border-border/80 dark:border-white/[0.07] hover:border-border-accent/40"

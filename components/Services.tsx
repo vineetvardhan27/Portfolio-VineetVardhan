@@ -104,7 +104,7 @@ export function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.35, delay: idx * 0.08, ease: "easeOut" }}
-                className="relative group rounded-xl p-6 sm:p-8 flex flex-col justify-between bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs transition-colors"
+                className="relative group rounded-xl p-5 sm:p-8 flex flex-col justify-between bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs transition-colors"
               >
                 <div>
                   {/* Top: Icon + Optional Badge */}
@@ -148,7 +148,7 @@ export function Services() {
                 <div className="mt-8 pt-5 border-t border-border/70 dark:border-white/[0.05]">
                   <a
                     href="#contact"
-                    className="group/cta inline-flex items-center gap-1.5 text-[13px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+                    className="group/cta inline-flex items-center gap-1.5 py-2 min-h-[44px] text-[13px] font-medium text-text-secondary hover:text-text-primary transition-colors"
                   >
                     <span>{service.ctaText}</span>
                     <ArrowRight

@@ -19,13 +19,36 @@ const navLinks = [
 export function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Close mobile menu on Escape key press
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  // Lock body scroll when mobile menu is open to prevent background scrolling
+  React.useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-bg/92 backdrop-blur-md border-b border-border shadow-2xs py-3"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-bg/92 backdrop-blur-md border-b border-border shadow-2xs py-2.5 sm:py-3"
     >
       <div className="container-custom flex items-center justify-between">
         {/* Brand / Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link href="/" className="flex items-center gap-2.5 group py-1">
           <div className="w-8 h-8 rounded-full overflow-hidden border border-border shadow-2xs group-hover:scale-102 transition-transform shrink-0">
             <img
               src="/avatar.png"
@@ -37,11 +60,11 @@ export function Nav() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[14px] font-semibold tracking-[-0.01em] text-text-primary group-hover:text-accent transition-colors">
+            <span className="text-[14px] font-semibold tracking-[-0.01em] text-text-primary group-hover:text-accent transition-colors leading-tight">
               Vineet Vardhan
             </span>
-            <span className="text-[12px] text-text-muted flex items-center gap-1.5 font-sans font-normal">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-success" />
+            <span className="text-[11.5px] text-text-muted flex items-center gap-1.5 font-sans font-normal mt-0.5">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-success shrink-0" />
               Available for projects
             </span>
           </div>
@@ -53,7 +76,7 @@ export function Nav() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-[14.5px] text-text-secondary hover:text-text-primary transition-colors font-medium tracking-normal"
+              className="text-[14.5px] text-text-secondary hover:text-text-primary transition-colors font-medium tracking-normal py-1"
             >
               {link.label}
             </Link>
@@ -69,54 +92,69 @@ export function Nav() {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="flex md:hidden items-center gap-2">
+        {/* Mobile Menu Button & Theme Toggle */}
+        <div className="flex md:hidden items-center gap-1.5">
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 rounded-md text-text-secondary hover:text-text-primary hover:bg-surface transition-colors focus:outline-none"
-            aria-label="Toggle menu"
+            className="w-10 h-10 inline-flex items-center justify-center rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-accent/25"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav Overlay */}
+      {/* Mobile Nav Overlay & Backdrop */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="md:hidden bg-bg/98 backdrop-blur-xl border-b border-border shadow-md px-6 py-5"
-          >
-            <div className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-[15px] font-medium text-text-secondary hover:text-text-primary block py-2 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="pt-3 border-t border-border flex flex-col gap-3">
-                <Button
-                  href="/#contact"
-                  variant="primary"
-                  size="md"
-                  className="w-full justify-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span>Start a Project</span>
-                  <ArrowUpRight size={14} className="opacity-80" />
-                </Button>
+          <>
+            {/* Backdrop click to dismiss */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 top-[57px] sm:top-[61px] bg-black/40 backdrop-blur-xs z-40 md:hidden"
+              aria-hidden="true"
+            />
+
+            {/* Slide Down Navigation Drawer */}
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="md:hidden bg-bg/98 backdrop-blur-xl border-b border-border shadow-xl px-4 py-4 relative z-50 max-h-[calc(100vh-4rem)] overflow-y-auto"
+            >
+              <div className="flex flex-col gap-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-[15px] font-medium text-text-secondary hover:text-text-primary hover:bg-surface/70 px-3.5 py-2.5 rounded-lg transition-colors flex items-center min-h-[44px]"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <div className="pt-3 mt-2 border-t border-border flex flex-col gap-2.5">
+                  <Button
+                    href="/#contact"
+                    variant="primary"
+                    size="md"
+                    className="w-full justify-center min-h-[46px]"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span>Start a Project</span>
+                    <ArrowUpRight size={14} className="opacity-80" />
+                  </Button>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

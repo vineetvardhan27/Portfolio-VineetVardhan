@@ -202,7 +202,7 @@ export function ContactForm() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       onSubmit={handleSubmit(onSubmit)}
-      className="p-6 sm:p-8 bg-card rounded-xl border border-border relative overflow-hidden space-y-5"
+      className="p-5 sm:p-8 bg-card rounded-xl border border-border relative overflow-hidden space-y-5"
     >
       {/* Invisible Honeypot Field to trap spam bots */}
       <div
@@ -429,7 +429,7 @@ export function ContactForm() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 pt-0.5">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <div className="h-10 px-3.5 rounded-md bg-[#F4F4F1] dark:bg-[#121318] border border-accent/30 text-accent font-mono font-bold text-sm tracking-widest flex items-center shadow-xs select-none">
               {captchaLoading ? (
                 <span className="flex items-center gap-1 text-xs text-text-muted font-normal">
@@ -448,13 +448,13 @@ export function ContactForm() {
               disabled={captchaLoading}
               aria-label="Generate a new security challenge"
               title="Click to generate a new security challenge"
-              className="h-10 w-10 flex items-center justify-center rounded-md border border-border dark:border-white/[0.08] bg-[#F4F4F1] dark:bg-[#121318] text-text-muted hover:text-text-primary hover:border-accent/40 transition-colors cursor-pointer disabled:opacity-50"
+              className="h-10 w-10 min-w-[40px] flex items-center justify-center rounded-md border border-border dark:border-white/[0.08] bg-[#F4F4F1] dark:bg-[#121318] text-text-muted hover:text-text-primary hover:border-accent/40 transition-colors cursor-pointer disabled:opacity-50"
             >
               <RefreshCw size={14} className={captchaLoading ? "animate-spin" : ""} />
             </button>
           </div>
 
-          <div className="flex-1 min-w-[120px]">
+          <div className="w-full min-[420px]:flex-1 min-w-[120px]">
             <label htmlFor="captcha-answer" className="sr-only">
               Security challenge answer
             </label>

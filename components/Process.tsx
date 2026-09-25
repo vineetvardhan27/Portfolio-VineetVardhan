@@ -1126,15 +1126,16 @@ export function Process() {
       </div>
 
       {/* Mobile & Tablet Stepper Experience */}
-      <div className="block lg:hidden py-12">
-        <div className="container-custom space-y-6">
+      <div className="block lg:hidden py-8 sm:py-12">
+        <div className="container-custom space-y-5 sm:space-y-6">
           {/* Mobile stage selector tabs */}
-          <div className="grid grid-cols-4 gap-1.5 p-1 bg-surface rounded-xl border border-border">
+          <div className="grid grid-cols-4 gap-1 p-1 bg-surface rounded-xl border border-border">
             {stageData.map((st, i) => (
               <button
                 key={st.step}
                 onClick={() => setActiveStage(i)}
-                className={`py-2 px-1 text-center rounded-lg text-xs font-semibold transition-all relative ${
+                aria-label={`Stage ${st.step}: ${st.name}`}
+                className={`min-h-[44px] py-2 px-1 text-center rounded-lg text-xs font-semibold transition-all relative flex flex-col items-center justify-center gap-0.5 ${
                   activeStage === i
                     ? "text-text-primary"
                     : "text-text-muted hover:text-text-secondary"
@@ -1148,6 +1149,7 @@ export function Process() {
                   />
                 )}
                 <span className="relative z-10">{st.step}</span>
+                <span className="relative z-10 text-[10px] hidden sm:inline font-normal truncate max-w-full px-1">{st.name}</span>
               </button>
             ))}
           </div>
@@ -1168,14 +1170,14 @@ export function Process() {
                   : { opacity: 0, y: -8 }
               }
               transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-              className="p-6 bg-white dark:bg-card rounded-2xl border border-border shadow-sm space-y-5"
+              className="p-5 sm:p-6 bg-white dark:bg-card rounded-xl border border-border shadow-xs space-y-4 sm:space-y-5"
             >
               <div className="flex items-center justify-between border-b border-border pb-3">
                 <div>
                   <span className="text-xs font-sans font-semibold text-accent tabular-nums">
                     {stageData[activeStage].step} of 04
                   </span>
-                  <h3 className="text-xl font-semibold text-text-primary mt-0.5 tracking-[-0.015em]">
+                  <h3 className="text-lg sm:text-xl font-semibold text-text-primary mt-0.5 tracking-[-0.015em]">
                     {stageData[activeStage].name}
                   </h3>
                 </div>
@@ -1222,6 +1224,26 @@ export function Process() {
                 <span className="text-accent font-semibold tabular-nums">
                   {stageData[activeStage].step} of 04
                 </span>
+              </div>
+
+              {/* Prev / Next Stage Thumb Controls */}
+              <div className="pt-3 flex items-center justify-between gap-3 border-t border-border">
+                <button
+                  type="button"
+                  disabled={activeStage === 0}
+                  onClick={() => setActiveStage(Math.max(0, activeStage - 1))}
+                  className="px-3.5 py-2 min-h-[42px] rounded-lg text-xs font-medium text-text-secondary bg-surface hover:bg-surface-hover border border-border disabled:opacity-40 disabled:pointer-events-none transition-colors"
+                >
+                  ← Prev Stage
+                </button>
+                <button
+                  type="button"
+                  disabled={activeStage === stageData.length - 1}
+                  onClick={() => setActiveStage(Math.min(stageData.length - 1, activeStage + 1))}
+                  className="px-3.5 py-2 min-h-[42px] rounded-lg text-xs font-semibold text-text-primary bg-accent/15 hover:bg-accent/25 border border-accent/30 disabled:opacity-40 disabled:pointer-events-none transition-colors"
+                >
+                  Next Stage →
+                </button>
               </div>
             </motion.div>
           </AnimatePresence>

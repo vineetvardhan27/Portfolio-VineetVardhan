@@ -30,7 +30,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
         className="lg:col-span-12 group relative flex flex-col lg:flex-row bg-card rounded-xl overflow-hidden transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs"
       >
         {/* Left Column: Narrative, Metrics, CTAs */}
-        <div className="lg:w-[50%] p-6 sm:p-8 lg:p-10 flex flex-col justify-between order-2 lg:order-1">
+        <div className="lg:w-[50%] p-5 sm:p-8 lg:p-10 flex flex-col justify-between order-2 lg:order-1">
           <div>
             {/* Header: Year, Category & Live Indicator */}
             <div className="flex items-center justify-between gap-3">
@@ -61,7 +61,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
 
             {/* Inline Stat Chips */}
             {project.metrics && (
-              <div className="mt-6 sm:mt-8 flex flex-wrap items-baseline gap-6 sm:gap-8">
+              <div className="mt-6 sm:mt-8 grid grid-cols-2 min-[440px]:flex min-[440px]:flex-wrap items-baseline gap-4 sm:gap-8">
                 {project.metrics.map((m, mIdx) => (
                   <div key={m.label} className="flex flex-col">
                     <span
@@ -96,7 +96,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           <div className="mt-8 pt-6 border-t border-border/70 dark:border-white/[0.06] flex items-center justify-between gap-4">
             <Link
               href={`/work/${project.slug}`}
-              className="group/link inline-flex items-center gap-1.5 text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+              className="group/link inline-flex items-center gap-1.5 py-2 min-h-[44px] text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
             >
               <span>View Case Study</span>
               <ArrowRight
@@ -110,7 +110,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-1.5 rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-2 min-h-[40px] rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
               >
                 <span>Live Demo</span>
                 <ArrowUpRight size={13} className="text-text-muted" />
@@ -177,7 +177,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
-      className="lg:col-span-6 group relative flex flex-col justify-between bg-card rounded-xl p-6 sm:p-7 transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs"
+      className="lg:col-span-6 group relative flex flex-col justify-between bg-card rounded-xl p-5 sm:p-7 transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs"
     >
       <div>
         {/* Top Header: Year, Category & Live Indicator */}
@@ -253,7 +253,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
 
         {/* Metrics */}
         {project.metrics && (
-          <div className="mt-5 flex flex-wrap items-baseline gap-5 sm:gap-6">
+          <div className="mt-5 grid grid-cols-2 min-[440px]:flex min-[440px]:flex-wrap items-baseline gap-4 sm:gap-6">
             {project.metrics.map((m, mIdx) => (
               <div key={m.label} className="flex flex-col">
                 <span
@@ -288,7 +288,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
       <div className="mt-6 pt-5 border-t border-border/70 dark:border-white/[0.06] flex items-center justify-between gap-4">
         <Link
           href={`/work/${project.slug}`}
-          className="group/link inline-flex items-center gap-1.5 text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+          className="group/link inline-flex items-center gap-1.5 py-2 min-h-[44px] text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
         >
           <span>View Case Study</span>
           <ArrowRight
@@ -302,7 +302,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-1.5 rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-2 min-h-[40px] rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
           >
             <span>Live Demo</span>
             <ArrowUpRight size={12} className="text-text-muted" />
