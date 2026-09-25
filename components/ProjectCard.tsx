@@ -150,7 +150,11 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             <div className="relative w-full h-[calc(100%-25px)] overflow-hidden bg-neutral-100 dark:bg-neutral-950">
               <img
                 src={project.image}
-                alt={`${project.name} Screenshot`}
+                alt={`${project.name} — custom software interface preview`}
+                width={1200}
+                height={750}
+                loading="lazy"
+                decoding="async"
                 className={`w-full object-cover object-top transition-transform ease-out will-change-transform ${
                   isHovered && !shouldReduceMotion
                     ? "duration-[4500ms] -translate-y-[45%]"
@@ -223,7 +227,11 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           <div className="relative w-full h-[calc(100%-25px)] overflow-hidden bg-neutral-100 dark:bg-neutral-950">
             <img
               src={project.image}
-              alt={`${project.name} Screenshot`}
+              alt={`${project.name} — custom software interface preview`}
+              width={1200}
+              height={750}
+              loading="lazy"
+              decoding="async"
               className={`w-full object-cover object-top transition-transform ease-out will-change-transform ${
                 isHovered && !shouldReduceMotion
                   ? "duration-[4500ms] -translate-y-[45%]"

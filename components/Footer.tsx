@@ -15,7 +15,11 @@ export function Footer() {
               <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
                 <img
                   src="/avatar.png"
-                  alt="Vineet Vardhan"
+                  alt="Vineet Vardhan — Full-Stack Developer & Software Engineer"
+                  width={32}
+                  height={32}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>

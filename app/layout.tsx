@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/lib/lenis-provider";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { RootJsonLd } from "@/components/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,36 +13,80 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FBFBFA" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0C0E" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Vineet Vardhan — Websites, Booking Systems & Business Software",
+  metadataBase: new URL("https://vineetvardhan.dev"),
+  title: {
+    default: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+    template: "%s | Vineet Vardhan",
+  },
   description:
-    "Bespoke, high-converting websites, hospitality booking engines, and custom SaaS software engineered with Next.js 14 and modern enterprise performance standards.",
+    "Freelance full-stack developer and software engineer specializing in high-performance Next.js websites, custom hospitality booking systems, PMS software, and tailored business web applications.",
   keywords: [
+    "Vineet Vardhan",
     "Freelance Web Developer",
-    "Product Engineer",
+    "Full Stack Developer",
+    "Software Engineer India",
+    "Custom Software Developer",
     "Next.js Developer",
+    "React Developer",
+    "Custom PMS Software",
+    "Hotel Booking System",
     "Hotel Website Development",
-    "Booking Systems",
-    "Property Management System",
-    "Custom Business Software",
+    "SaaS Developer",
+    "Business Software Developer",
+    "AI Developer",
     "Hospitality Tech",
   ],
-  authors: [{ name: "Vineet Vardhan" }],
+  authors: [{ name: "Vineet Vardhan", url: "https://vineetvardhan.dev" }],
   creator: "Vineet Vardhan",
+  publisher: "Vineet Vardhan",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://vineetvardhan.dev",
-    title: "Vineet Vardhan — Websites, Booking Systems & Business Software",
-    description:
-      "Bespoke websites and custom enterprise software that turn visitors into customers and automate business workflows.",
     siteName: "Vineet Vardhan Portfolio",
+    title: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+    description:
+      "Bespoke websites, high-converting booking systems, and custom SaaS software engineered with Next.js 14 and enterprise performance standards.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vineet Vardhan — Websites, Booking Systems & Business Software",
+    title: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
     description:
-      "Bespoke websites and custom enterprise software that turn visitors into customers and automate business workflows.",
+      "Bespoke websites, hospitality booking engines, and custom business software engineered with Next.js 14.",
+    images: ["/og-image.png"],
+    creator: "@vineetvardhan",
   },
   icons: {
     icon: [
@@ -60,6 +105,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} font-sans`} suppressHydrationWarning>
       <head>
+        <RootJsonLd />
         <script
           dangerouslySetInnerHTML={{
             __html: `

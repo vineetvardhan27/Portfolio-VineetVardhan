@@ -234,11 +234,16 @@ export function ContactForm() {
       <motion.div variants={fieldVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Name */}
         <div>
-          <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
+          <label
+            htmlFor="contact-name"
+            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+          >
             Your Name *
           </label>
           <input
+            id="contact-name"
             type="text"
+            autoComplete="name"
             placeholder="Ohm Adhikari"
             {...register("name")}
             className={`w-full h-11 px-4 rounded-lg border text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 caret-accent ${
@@ -255,11 +260,16 @@ export function ContactForm() {
 
         {/* Email */}
         <div>
-          <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
+          <label
+            htmlFor="contact-email"
+            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+          >
             Work Email *
           </label>
           <input
+            id="contact-email"
             type="email"
+            autoComplete="email"
             placeholder="ohm@hotelgreenery.com"
             {...register("email")}
             className={`w-full h-11 px-4 rounded-lg border text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 caret-accent ${
@@ -279,11 +289,16 @@ export function ContactForm() {
       <motion.div variants={fieldVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Phone */}
         <div>
-          <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
+          <label
+            htmlFor="contact-phone"
+            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+          >
             Phone · WhatsApp (Optional)
           </label>
           <input
+            id="contact-phone"
             type="tel"
+            autoComplete="tel"
             placeholder="+91 97985 04212"
             {...register("phone")}
             className="w-full h-11 px-4 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 caret-accent"
@@ -292,11 +307,15 @@ export function ContactForm() {
 
         {/* Project Type */}
         <div>
-          <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
+          <label
+            htmlFor="contact-project-type"
+            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+          >
             Project Type *
           </label>
           <div className="relative">
             <select
+              id="contact-project-type"
               {...register("projectType")}
               className="w-full h-11 px-4 pr-10 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
             >
@@ -319,11 +338,15 @@ export function ContactForm() {
       <motion.div variants={fieldVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Budget */}
         <div>
-          <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
+          <label
+            htmlFor="contact-budget"
+            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+          >
             Estimated Budget *
           </label>
           <div className="relative">
             <select
+              id="contact-budget"
               {...register("budget")}
               className="w-full h-11 px-4 pr-10 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
             >
@@ -342,11 +365,15 @@ export function ContactForm() {
 
         {/* Timeline */}
         <div>
-          <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
+          <label
+            htmlFor="contact-timeline"
+            className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+          >
             Desired Timeline *
           </label>
           <div className="relative">
             <select
+              id="contact-timeline"
               {...register("timeline")}
               className="w-full h-11 px-4 pr-10 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
             >
@@ -365,10 +392,14 @@ export function ContactForm() {
 
       {/* Row 4: Message */}
       <motion.div variants={fieldVariants}>
-        <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
+        <label
+          htmlFor="contact-message"
+          className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium"
+        >
           Project Overview *
         </label>
         <textarea
+          id="contact-message"
           rows={4}
           placeholder="Describe your project goals, core requirements, reference sites, or existing challenges..."
           {...register("message")}
@@ -415,6 +446,7 @@ export function ContactForm() {
               type="button"
               onClick={fetchCaptcha}
               disabled={captchaLoading}
+              aria-label="Generate a new security challenge"
               title="Click to generate a new security challenge"
               className="h-10 w-10 flex items-center justify-center rounded-md border border-border dark:border-white/[0.08] bg-[#F4F4F1] dark:bg-[#121318] text-text-muted hover:text-text-primary hover:border-accent/40 transition-colors cursor-pointer disabled:opacity-50"
             >
@@ -423,7 +455,11 @@ export function ContactForm() {
           </div>
 
           <div className="flex-1 min-w-[120px]">
+            <label htmlFor="captcha-answer" className="sr-only">
+              Security challenge answer
+            </label>
             <input
+              id="captcha-answer"
               type="text"
               inputMode="numeric"
               placeholder="Your answer"

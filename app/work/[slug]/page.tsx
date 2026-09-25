@@ -13,6 +13,8 @@ import {
 import { projects } from "@/content/projects";
 import { Button } from "@/components/ui/Button";
 
+import { ProjectJsonLd } from "@/components/JsonLd";
+
 interface CaseStudyProps {
   params: {
     slug: string;
@@ -30,8 +32,31 @@ export function generateMetadata({ params }: CaseStudyProps): Metadata {
   if (!project) return { title: "Project Not Found" };
 
   return {
-    title: `${project.name} Case Study — Vineet Vardhan`,
+    title: `${project.name} — Case Study`,
     description: project.summary,
+    alternates: {
+      canonical: `/work/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.name} Case Study — Vineet Vardhan`,
+      description: project.summary,
+      url: `https://vineetvardhan.dev/work/${project.slug}`,
+      type: "article",
+      images: [
+        {
+          url: project.image,
+          width: 1200,
+          height: 630,
+          alt: `${project.name} Case Study Interface Preview`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} Case Study — Vineet Vardhan`,
+      description: project.summary,
+      images: [project.image],
+    },
   };
 }
 
@@ -47,7 +72,17 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
   const nextProject = projects[nextProjectIndex];
 
   return (
-    <div className="pt-28 pb-24 sm:pt-36 sm:pb-32 bg-bg min-h-screen">
+    <>
+      <ProjectJsonLd
+        name={project.name}
+        tagline={project.tagline}
+        summary={project.summary}
+        slug={project.slug}
+        image={project.image}
+        technologies={project.technologies}
+        year={project.year}
+      />
+      <div className="pt-28 pb-24 sm:pt-36 sm:pb-32 bg-bg min-h-screen">
       <div className="container-custom">
         {/* Back Link */}
         <div className="mb-8">
@@ -265,5 +300,6 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }

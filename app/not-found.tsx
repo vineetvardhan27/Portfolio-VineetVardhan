@@ -1,26 +1,55 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
+import { ArrowLeft, Home, FolderKanban, Mail } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description: "The page or case study you are looking for does not exist.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center pt-24 pb-16">
-      <div className="container-custom text-center space-y-6 max-w-md">
-        <div className="text-sm font-bold uppercase tracking-wider text-accent">
-          404 Error
+    <div className="min-h-[75vh] flex items-center justify-center pt-32 pb-20 bg-bg">
+      <div className="container-custom text-center space-y-6 max-w-lg">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface/60 dark:bg-white/[0.04] border border-border text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+          <span>404 · Page Not Found</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-semibold text-text-primary">
-          Page Not Found
+
+        <h1 className="text-4xl sm:text-5xl font-semibold text-text-primary tracking-tight">
+          Page not found
         </h1>
-        <p className="text-text-secondary text-base">
-          The page or case study you are looking for doesn't exist or has been moved.
+
+        <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md mx-auto">
+          The page or case study you requested could not be located. It may have been moved or the URL might be mistyped.
         </p>
-        <div className="pt-4">
+
+        <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
           <Button href="/" variant="primary" size="md">
-            <ArrowLeft size={16} />
-            <span>Return to Home</span>
+            <Home size={16} />
+            <span>Return to Homepage</span>
           </Button>
+
+          <Button href="/#work" variant="secondary" size="md">
+            <FolderKanban size={16} />
+            <span>View Projects</span>
+          </Button>
+        </div>
+
+        <div className="pt-6 border-t border-border/80 text-xs text-text-muted font-mono">
+          Need assistance? Reach out directly at{" "}
+          <a
+            href="mailto:vineetvardhanwork@gmail.com"
+            className="text-text-primary hover:text-accent underline transition-colors"
+          >
+            vineetvardhanwork@gmail.com
+          </a>
         </div>
       </div>
     </div>
