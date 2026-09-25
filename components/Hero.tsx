@@ -55,21 +55,21 @@ export function Hero() {
               </span>
             </div>
 
-            {/* 2. Headline — Editorial hierarchy via weight and typography, solid off-white */}
-            <h1 className="text-4xl sm:text-[46px] lg:text-[52px] xl:text-[56px] leading-[1.09] sm:leading-[1.08] lg:leading-[1.07] font-semibold text-text-primary tracking-[-0.03em] max-w-2xl">
+            {/* 2. Headline — Groww-inspired editorial hierarchy with nuanced weight and tight restraint */}
+            <h1 className="text-[34px] sm:text-[42px] md:text-[48px] lg:text-[52px] xl:text-[56px] leading-[1.09] lg:leading-[1.08] font-semibold text-text-primary tracking-[-0.025em] max-w-3xl">
               <span className="font-medium text-text-primary/90 block">
                 Your business deserves
               </span>
-              <span className="font-semibold text-text-primary tracking-[-0.035em] block">
+              <span className="font-semibold text-text-primary block">
                 a better digital
               </span>
-              <span className="font-medium text-text-primary block">
+              <span className="font-semibold text-text-primary block">
                 experience.
               </span>
             </h1>
 
-            {/* 3. Subheading */}
-            <p className="mt-5 text-[17px] sm:text-[18px] text-text-secondary max-w-[620px] leading-[1.62] font-normal tracking-[-0.005em]">
+            {/* 3. Subheading — Refined product supporting copy */}
+            <p className="mt-5 text-[17px] sm:text-[18px] text-text-secondary max-w-[640px] leading-[1.62] font-normal tracking-normal">
               {heroCopy.subtext}
             </p>
 

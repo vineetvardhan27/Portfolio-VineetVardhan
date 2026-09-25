@@ -133,7 +133,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
                 <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
                 <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
               </div>
-              <div className="text-[10px] font-mono text-text-muted truncate max-w-[170px] px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04]">
+              <div className="text-[10.5px] font-sans font-medium text-text-muted truncate max-w-[170px] px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04]">
                 {project.liveUrl
                   ? project.liveUrl.replace("https://", "").replace("www.", "")
                   : "preview"}
@@ -210,7 +210,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
               <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
               <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
             </div>
-            <div className="text-[10px] font-mono text-text-muted truncate max-w-[150px] px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04]">
+            <div className="text-[10.5px] font-sans font-medium text-text-muted truncate max-w-[150px] px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04]">
               {project.liveUrl
                 ? project.liveUrl.replace("https://", "").replace("www.", "")
                 : "preview"}

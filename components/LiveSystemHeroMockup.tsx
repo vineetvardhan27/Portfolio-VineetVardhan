@@ -45,7 +45,7 @@ export function LiveSystemHeroMockup() {
               <span className="w-2.5 h-2.5 rounded-full bg-border-hover dark:bg-white/[0.15]" />
             </div>
 
-            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04] border border-border/60 dark:border-white/[0.06] text-[11px] font-mono text-text-muted">
+            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04] border border-border/60 dark:border-white/[0.06] text-[11px] font-sans font-medium text-text-muted">
               <Lock size={10} className="text-text-muted" />
               <span className="text-text-secondary">grovepms.internal</span>
               <span className="text-text-muted">/live-ops</span>
@@ -71,11 +71,11 @@ export function LiveSystemHeroMockup() {
               <div className="text-[11px] font-sans font-medium text-text-muted flex items-center justify-between tracking-normal">
                 <span>Direct MTD</span>
               </div>
-              <div className="mt-1 font-sans text-base sm:text-[17px] font-semibold text-text-primary tracking-tight tabular-nums">
+              <div className="mt-1 font-sans text-[14px] sm:text-[15px] font-semibold text-text-primary tracking-tight tabular-nums whitespace-nowrap">
                 {isUpdated ? "₹4,90,500" : "₹4,82,000"}
               </div>
-              <div className="text-[11px] font-sans text-success flex items-center gap-0.5 mt-0.5 font-medium">
-                <TrendingUp size={11} /> +38% OTA cut
+              <div className="text-[11px] font-sans text-success flex items-center gap-0.5 mt-0.5 font-medium whitespace-nowrap">
+                <TrendingUp size={11} className="shrink-0" /> +38% OTA cut
               </div>
             </div>
 
@@ -84,10 +84,10 @@ export function LiveSystemHeroMockup() {
               <div className="text-[11px] font-sans font-medium text-text-muted tracking-normal">
                 Occupancy
               </div>
-              <div className="mt-1 font-sans text-base sm:text-[17px] font-semibold text-text-primary tracking-tight tabular-nums">
+              <div className="mt-1 font-sans text-[14px] sm:text-[15px] font-semibold text-text-primary tracking-tight tabular-nums whitespace-nowrap">
                 {isUpdated ? "95.0%" : "90.0%"}
               </div>
-              <div className="text-[11px] font-sans text-text-muted mt-0.5">
+              <div className="text-[11px] font-sans text-text-muted mt-0.5 whitespace-nowrap">
                 {isUpdated ? "19/20 Rooms" : "18/20 Rooms"}
               </div>
             </div>
@@ -97,10 +97,10 @@ export function LiveSystemHeroMockup() {
               <div className="text-[11px] font-sans font-medium text-text-muted tracking-normal">
                 Arrivals
               </div>
-              <div className="mt-1 font-sans text-base sm:text-[17px] font-semibold text-text-primary tracking-tight tabular-nums">
+              <div className="mt-1 font-sans text-[13.5px] sm:text-[14.5px] font-semibold text-text-primary tracking-tight tabular-nums whitespace-nowrap">
                 {isUpdated ? "5 Checked-in" : "4 Checked-in"}
               </div>
-              <div className="text-[11px] font-sans text-text-muted mt-0.5">
+              <div className="text-[11px] font-sans text-text-muted mt-0.5 whitespace-nowrap">
                 0 Pending Sync
               </div>
             </div>
