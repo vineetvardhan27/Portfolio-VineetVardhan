@@ -3,31 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --bg: #FFFFFF;
-  --bg-subtle: #F8FAFC;
-  --surface: #F1F5F9;
+  --bg: #FBFBFA;
+  --bg-subtle: #F3F3F0;
+  --surface: #EDEDE9;
+  --surface-hover: #E4E4DF;
   --card: #FFFFFF;
-  --border: #E2E8F0;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --accent: #2563EB;
-  --accent-hover: #1D4ED8;
-  --success: #10B981;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --border-accent: rgba(185, 130, 63, 0.35);
+  --text-primary: #121316;
+  --text-secondary: #585956;
+  --text-muted: #868783;
+  --accent: #B9823F;
+  --accent-hover: #A57233;
+  --accent-subtle: rgba(185, 130, 63, 0.08);
+  --success: #289E65;
 }
 
 .dark {
-  --bg: #0D0D10; /* Sophisticated near-black base (avoids pure #000000 halation) */
-  --bg-subtle: #121216; /* Tier 1.5 subtle background for alternating sections */
-  --card: #141418; /* Tier 2 elevated card & container background */
-  --surface: #1A1A20; /* Tier 3 nested/inset elements, chips, inputs, icon boxes */
-  --border: rgba(255, 255, 255, 0.08); /* 1px low-opacity crisp white surface separator */
-  --text-primary: #F4F4F5; /* ~96% white luminance for crisp headings without eye strain */
-  --text-secondary: rgba(255, 255, 255, 0.76); /* 76% white opacity for body text, optimal WCAG AA legibility */
-  --text-muted: rgba(255, 255, 255, 0.48); /* ~48% white opacity for subtext and meta */
-  --accent: #2F6EEB; /* Calibrated, desaturated elegant blue tailored for dark mode */
-  --accent-hover: #3B82F6; /* Vibrant hover state */
-  --success: #34D399; /* Vibrant yet soft emerald */
+  --bg: #0B0C0E; /* Deep charcoal-black base */
+  --bg-subtle: #101114; /* Tier 1.5 section separator */
+  --card: #141519; /* Tier 2 elevated card surface */
+  --surface: #191A20; /* Tier 3 inset, chips, inputs */
+  --surface-hover: #22242B;
+  --border: rgba(255, 255, 255, 0.08); /* 1px crisp, quiet separator */
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-accent: rgba(201, 149, 82, 0.35);
+  --text-primary: #F1F0EC; /* Warm off-white */
+  --text-secondary: #9A9A96; /* Muted neutral for optimal readability */
+  --text-muted: #666662; /* Low-emphasis metadata */
+  --accent: #C99552; /* Sophisticated muted copper / amber accent */
+  --accent-hover: #D6A15C; /* Warm hover state */
+  --accent-subtle: rgba(201, 149, 82, 0.10);
+  --success: #35B77A; /* Muted functional green */
 }
 
 @layer base {
@@ -78,6 +86,19 @@
   p {
     color: var(--text-secondary);
     line-height: 1.6;
+  }
+
+  /* Form input & textarea placeholders: consistently muted across both light and dark modes */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.75;
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+    opacity: 1;
   }
 
   /* Form select options dark mode visibility */

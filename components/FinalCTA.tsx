@@ -48,7 +48,7 @@ export function FinalCTA() {
               {/* Headline with Focal Accent Treatment */}
               <h2 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.18]">
                 Have a project in mind? Let&apos;s build{" "}
-                <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-400 to-accent pb-1 -mb-1 pr-1.5 -mr-1.5 tracking-[0.015em]">
+                <span className="font-semibold text-accent">
                   something exceptional.
                 </span>
               </h2>
@@ -63,41 +63,38 @@ export function FinalCTA() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 w-full sm:w-auto cursor-pointer"
+                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-sm transition-all duration-200 w-full sm:w-auto cursor-pointer shadow-xs"
                 >
-                  {/* Animated "Online Now" Indicator */}
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-300" />
-                  </span>
-                  <MessageSquare size={17} />
+                  {/* Quiet Online Status Indicator */}
+                  <span className="w-2 h-2 rounded-full bg-[#35B77A] shrink-0" />
+                  <MessageSquare size={16} />
                   <span>Chat on WhatsApp</span>
                   <ArrowRight
-                    size={15}
+                    size={14}
                     className="transition-transform duration-200 group-hover:translate-x-1"
                   />
                 </a>
 
                 <a
                   href="tel:+919798504212"
-                  className="group inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-white dark:bg-white/[0.04] hover:bg-surface dark:hover:bg-white/[0.09] text-text-primary border border-border dark:border-white/[0.14] font-semibold text-sm shadow-2xs hover:shadow-xs transition-all duration-200 w-full sm:w-auto"
+                  className="group inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-surface hover:bg-surface-hover text-text-primary border border-border font-semibold text-sm transition-all duration-200 w-full sm:w-auto"
                 >
                   <span>Call +91 97985 04212</span>
                 </a>
               </div>
 
-              {/* Quiet Editorial Trust Indicators (Vertical Accent Bars replacing uniform boxes) */}
-              <div className="mt-10 space-y-5 pt-8 border-t border-border/70">
+              {/* Quiet Editorial Trust Indicators */}
+              <div className="mt-10 space-y-4 pt-8 border-t border-border">
                 {/* 1. Direct Email */}
                 <div className="flex items-center gap-3.5 group">
-                  <div className="w-1 h-8 rounded-full bg-blue-500 dark:bg-blue-400 shrink-0 transition-transform duration-200 group-hover:scale-y-110" />
+                  <div className="w-1 h-6 rounded-xs bg-accent/50 shrink-0" />
                   <div>
                     <div className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
                       Direct Email
                     </div>
                     <a
                       href="mailto:vineetvardhanwork@gmail.com"
-                      className="text-sm sm:text-base font-semibold text-text-primary hover:text-accent transition-colors"
+                      className="text-sm font-medium text-text-primary hover:text-accent transition-colors"
                     >
                       vineetvardhanwork@gmail.com
                     </a>
@@ -106,12 +103,12 @@ export function FinalCTA() {
 
                 {/* 2. Guaranteed Response */}
                 <div className="flex items-center gap-3.5 group">
-                  <div className="w-1 h-8 rounded-full bg-emerald-500 dark:bg-emerald-400 shrink-0 transition-transform duration-200 group-hover:scale-y-110" />
+                  <div className="w-1 h-6 rounded-xs bg-accent/50 shrink-0" />
                   <div>
                     <div className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
                       Guaranteed Response
                     </div>
-                    <span className="text-sm sm:text-base font-semibold text-text-primary">
+                    <span className="text-sm font-medium text-text-primary">
                       Within 24 hours on all inquiries
                     </span>
                   </div>
@@ -119,12 +116,12 @@ export function FinalCTA() {
 
                 {/* 3. Contract & Milestones */}
                 <div className="flex items-center gap-3.5 group">
-                  <div className="w-1 h-8 rounded-full bg-amber-500 dark:bg-amber-400 shrink-0 transition-transform duration-200 group-hover:scale-y-110" />
+                  <div className="w-1 h-6 rounded-xs bg-accent/50 shrink-0" />
                   <div>
                     <div className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
                       Contract &amp; Milestones
                     </div>
-                    <span className="text-sm sm:text-base font-semibold text-text-primary">
+                    <span className="text-sm font-medium text-text-primary">
                       Fixed scope, clear deliverables &amp; NDA protection
                     </span>
                   </div>

@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   Code2,
   TrendingUp,
-  ShieldCheck,
 } from "lucide-react";
 import { projects } from "@/content/projects";
 import { Button } from "@/components/ui/Button";
@@ -64,12 +63,12 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         {/* Case Study Header */}
         <div className="border-b border-border pb-10">
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-surface border border-border text-text-primary">
+            <span className="text-xs font-medium px-3 py-1 rounded-md bg-surface border border-border text-text-primary">
               {project.category}
             </span>
             {project.liveUrl && (
-              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#35B77A] bg-[#35B77A]/10 px-2.5 py-1 rounded-md border border-[#35B77A]/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#35B77A]" />
                 Production Live
               </span>
             )}
@@ -90,10 +89,10 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent hover:bg-accent-hover text-white font-semibold text-sm shadow-sm transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-sm shadow-xs transition-colors"
               >
                 <span>Visit Live Site</span>
-                <ExternalLink size={16} />
+                <ExternalLink size={15} />
               </a>
               <Button href="/#contact" variant="secondary" size="md">
                 Discuss Similar Project
@@ -108,9 +107,9 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             {project.metrics.map((m) => (
               <div
                 key={m.label}
-                className="p-6 rounded-2xl bg-bg-subtle border border-border"
+                className="p-6 rounded-xl bg-card border border-border"
               >
-                <div className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <div className="text-xs font-medium text-text-muted uppercase tracking-wider font-mono">
                   {m.label}
                 </div>
                 <div className="text-3xl font-bold text-text-primary mt-2">
@@ -126,9 +125,11 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
           {/* Left / Main Column: Challenge, Solution, Result, Features */}
           <div className="lg:col-span-8 space-y-12">
             {/* The Challenge */}
-            <section className="space-y-4">
-              <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+            <section className="space-y-3">
+              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+                Phase 01
+              </div>
+              <h2 className="text-2xl font-semibold text-text-primary tracking-tight">
                 The Challenge
               </h2>
               <p className="text-text-secondary leading-relaxed text-base sm:text-lg">
@@ -137,9 +138,11 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             </section>
 
             {/* The Solution */}
-            <section className="space-y-4">
-              <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+            <section className="space-y-3">
+              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+                Phase 02
+              </div>
+              <h2 className="text-2xl font-semibold text-text-primary tracking-tight">
                 The Solution
               </h2>
               <p className="text-text-secondary leading-relaxed text-base sm:text-lg">
@@ -148,18 +151,20 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             </section>
 
             {/* Key Features Implemented */}
-            <section className="space-y-4">
-              <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+            <section className="space-y-3">
+              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+                Deliverables 03
+              </div>
+              <h2 className="text-2xl font-semibold text-text-primary tracking-tight">
                 Key Architectural Deliverables
               </h2>
               <div className="space-y-3 pt-2">
                 {project.features.map((feat) => (
                   <div
                     key={feat}
-                    className="p-4 rounded-xl bg-surface border border-border/80 flex items-start gap-3"
+                    className="p-4 rounded-lg bg-card border border-border flex items-start gap-3"
                   >
-                    <CheckCircle2 size={18} className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={17} className="text-[#35B77A] shrink-0 mt-0.5" />
                     <span className="text-sm sm:text-base text-text-primary font-medium">
                       {feat}
                     </span>
@@ -169,9 +174,12 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             </section>
 
             {/* The Result */}
-            <section className="p-6 sm:p-8 rounded-2xl bg-surface border border-border space-y-3">
+            <section className="p-6 sm:p-8 rounded-xl bg-card border border-border space-y-3">
+              <div className="text-xs font-mono uppercase tracking-widest text-accent font-medium">
+                Impact 04
+              </div>
               <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2">
-                <TrendingUp size={22} className="text-accent" />
+                <TrendingUp size={20} className="text-accent" />
                 The Business Outcome
               </h2>
               <p className="text-text-secondary leading-relaxed text-base sm:text-lg">
@@ -184,17 +192,17 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
           <div className="lg:col-span-4 space-y-6">
             <div className="space-y-6 sticky top-28">
               {/* Project Meta Card */}
-              <div className="p-6 rounded-2xl bg-bg-subtle dark:bg-card border border-border space-y-6">
+              <div className="p-6 rounded-xl bg-card border border-border space-y-6">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-3 flex items-center gap-2">
-                    <Code2 size={15} className="text-accent" />
+                  <div className="text-xs font-medium uppercase tracking-wider text-text-muted mb-3 flex items-center gap-2 font-mono">
+                    <Code2 size={14} className="text-accent" />
                     <span>Technologies Used</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs font-medium px-2.5 py-1 rounded-md bg-surface dark:bg-navy-900 text-text-primary border border-border"
+                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-surface text-text-primary border border-border"
                       >
                         {tech}
                       </span>
@@ -204,12 +212,12 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
                 <div className="pt-4 border-t border-border space-y-3 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-text-muted">Client / Project:</span>
+                    <span className="text-text-muted">Client · Project:</span>
                     <span className="font-semibold text-text-primary">{project.client ?? project.name}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-muted">Year:</span>
-                    <span className="font-semibold text-text-primary">{project.year ?? "2024"}</span>
+                    <span className="font-semibold text-text-primary">{project.year ?? "2026"}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-muted">Role:</span>
@@ -219,7 +227,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               </div>
 
               {/* Sidebar CTA Card */}
-              <div className="p-6 rounded-2xl bg-white dark:bg-card border border-accent/30 shadow-xs space-y-3">
+              <div className="p-6 rounded-xl bg-card border border-accent/30 space-y-3">
                 <h3 className="text-base font-semibold text-text-primary">
                   Need a similar system built?
                 </h3>
@@ -239,7 +247,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         {/* Next Project Footer Bar */}
         <div className="mt-20 pt-10 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <div className="text-xs uppercase tracking-wider font-semibold text-text-muted">
+            <div className="text-xs uppercase tracking-wider font-medium text-text-muted font-mono">
               Next Case Study
             </div>
             <div className="text-xl font-semibold text-text-primary mt-1">
@@ -249,7 +257,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
           <Link
             href={`/work/${nextProject.slug}`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface hover:bg-slate-200 dark:hover:bg-navy-900 text-text-primary font-semibold text-sm border border-border transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-surface hover:bg-surface-hover text-text-primary font-semibold text-sm border border-border transition-colors"
           >
             <span>Read Next Case Study</span>
             <ArrowRight size={16} />

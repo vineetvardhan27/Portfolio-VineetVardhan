@@ -60,7 +60,7 @@ const stageData: StageInfo[] = [
     projectFeatured: "Hotel Greenery View",
     projectCategory: "Hospitality & Direct Booking",
     projectTech: "Next.js 14 + Sanity CMS",
-    techStack: ["Next.js 14", "Sanity CMS", "Tailwind CSS", "AIO / LLM SEO"],
+    techStack: ["Next.js 14", "Sanity CMS", "Tailwind CSS", "AIO · LLM SEO"],
     deliverables: [
       "Bespoke high-converting room & suite exploration interface",
       "Zero-commission direct inquiry & instant WhatsApp engine",
@@ -74,7 +74,7 @@ const stageData: StageInfo[] = [
       "Engineer the product with reliable architecture, real data, and production-ready functionality.",
     tagline: "Engineering the Grove PMS cloud property operating system.",
     projectFeatured: "Grove PMS Cloud",
-    projectCategory: "Custom Hospitality ERP / PMS",
+    projectCategory: "Custom Hospitality ERP · PMS",
     projectTech: "Next.js + Supabase (Postgres & RLS)",
     techStack: ["Next.js 14", "Supabase", "TypeScript", "POS & Food Billing"],
     deliverables: [
@@ -101,7 +101,7 @@ const stageData: StageInfo[] = [
   },
 ];
 
-// Requirement cards organized in natural reading order (top-left, top-right, bottom-left, bottom-right)
+// Requirement cards organized in natural reading order
 const stage01Requirements = [
   {
     id: "business-goal",
@@ -109,8 +109,7 @@ const stage01Requirements = [
     title: "Direct Bookings",
     desc: "Eliminate 18-25% OTA commissions",
     badge: "High Priority",
-    color:
-      "border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/50 text-accent",
+    color: "border-border-accent/40 bg-accent-subtle text-accent",
   },
   {
     id: "user-experience",
@@ -118,8 +117,7 @@ const stage01Requirements = [
     title: "Fast Mobile Exploration",
     desc: "Instant room & amenity filters",
     badge: "UX Flow",
-    color:
-      "border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300",
+    color: "border-border bg-surface text-text-secondary",
   },
   {
     id: "content-engine",
@@ -127,8 +125,7 @@ const stage01Requirements = [
     title: "Sanity CMS",
     desc: "Seasonal rate & room updates",
     badge: "Headless CMS",
-    color:
-      "border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300",
+    color: "border-border bg-surface text-text-secondary",
   },
   {
     id: "discoverability",
@@ -136,8 +133,7 @@ const stage01Requirements = [
     title: "SEO & AI-Search (AIO)",
     desc: "Top ranking in Google & LLMs",
     badge: "AIO Schema",
-    color:
-      "border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300",
+    color: "border-border bg-surface text-text-secondary",
   },
 ];
 
@@ -328,20 +324,20 @@ export function Process() {
     <section
       id="process"
       ref={containerRef}
-      className="relative bg-bg border-t border-border"
+      className="relative bg-bg border-t border-border/80 dark:border-white/[0.06]"
     >
       {/* Top Section Header */}
-      <div className="pt-24 pb-12 sm:pt-32 sm:pb-16 border-b border-border bg-bg-subtle/50">
+      <div className="pt-20 pb-12 sm:pt-28 sm:pb-16 border-b border-border/80 dark:border-white/[0.06] bg-bg-subtle/40">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-card border border-border text-xs font-semibold text-accent mb-4 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span>HOW I WORK</span>
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-3 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span>04 · Development Process</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.18]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-medium text-text-primary tracking-[-0.02em] leading-[1.2] sm:leading-[1.18]">
               From idea to a production-ready product.
             </h2>
-            <p className="mt-4 text-lg sm:text-xl text-text-secondary font-normal leading-relaxed">
+            <p className="mt-3.5 text-base sm:text-lg text-text-secondary font-normal leading-relaxed">
               Watch real applications evolve through every phase of the engineering lifecycle—from initial discovery to live production deployment.
             </p>
           </div>
@@ -355,19 +351,19 @@ export function Process() {
             
             {/* LEFT COLUMN: Persistent Browser / Product Frame */}
             <div className="col-span-7 h-[560px]">
-              <div className="w-full h-full bg-white dark:bg-card rounded-2xl border border-border shadow-md flex flex-col justify-between overflow-hidden relative transition-all">
+              <div className="w-full h-full bg-card rounded-xl border border-border/80 dark:border-white/[0.07] shadow-xs flex flex-col justify-between overflow-hidden relative transition-all">
                 
                 {/* Persistent Browser Window Header */}
-                <div className="bg-surface/90 dark:bg-navy-900/90 backdrop-blur-xs px-5 py-3 border-b border-border flex items-center justify-between z-30">
+                <div className="bg-bg-subtle/80 px-4 py-2.5 border-b border-border/70 dark:border-white/[0.06] flex items-center justify-between z-30">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                      <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
+                      <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
+                      <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
                     </div>
 
-                    {/* Dynamic Browser Address Bar with Smooth Gliding Crossfade */}
-                    <div className="px-3.5 py-1 rounded-md bg-white dark:bg-navy-950 border border-border text-[11px] font-mono text-text-secondary flex items-center gap-1.5 shadow-2xs overflow-hidden">
+                    {/* Dynamic Browser Address Bar */}
+                    <div className="px-3 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04] border border-border/60 dark:border-white/[0.06] text-[11px] font-mono text-text-secondary flex items-center gap-1.5 shadow-2xs overflow-hidden">
                       <span className="text-text-muted">https://</span>
                       <AnimatePresence mode="popLayout" initial={false}>
                         <motion.span
@@ -376,7 +372,7 @@ export function Process() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
                           transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
-                          className="font-semibold text-text-primary inline-block"
+                          className="font-medium text-text-primary inline-block"
                         >
                           {activeStage === 0 && "blueprint.internal/scope"}
                           {activeStage === 1 && "hotelgreeneryview.com"}
@@ -387,39 +383,31 @@ export function Process() {
                     </div>
                   </div>
 
-                  {/* Stage Dynamic Pill Badge with layoutId Width Morphing */}
+                  {/* Stage Dynamic Pill Badge */}
                   <div className="flex items-center">
                     <motion.div
                       layout
                       layoutId="process-stage-pill"
                       transition={shouldReduceMotion ? { duration: 0.15 } : SPRING_STAGE_PILL}
-                      className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border flex items-center gap-1.5 transition-colors duration-300 ${
-                        activeStage === 0
-                          ? "bg-blue-50 dark:bg-blue-950/60 text-accent border-blue-200 dark:border-blue-800"
-                          : activeStage === 1
-                          ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800"
-                          : activeStage === 2
-                          ? "bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800"
-                          : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800"
-                      }`}
+                      className="text-[11px] font-mono font-medium px-2.5 py-0.5 rounded border border-border-accent/40 bg-accent-subtle text-accent flex items-center gap-1.5 transition-colors"
                     >
-                      {activeStage === 0 && <span>STAGE 01 // DISCOVERY</span>}
+                      {activeStage === 0 && <span>01 · Discovery &amp; Scope</span>}
                       {activeStage === 1 && (
                         <>
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          <span>DESIGNING UI</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                          <span>02 · Interface Design</span>
                         </>
                       )}
                       {activeStage === 2 && (
                         <>
-                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                          <span>BUILDING FULL-STACK</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                          <span>03 · Full-Stack Build</span>
                         </>
                       )}
                       {activeStage === 3 && (
                         <>
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          <span>LIVE PRODUCTS</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-success" />
+                          <span>04 · Production Release</span>
                         </>
                       )}
                     </motion.div>
@@ -447,7 +435,7 @@ export function Process() {
                           className="text-center"
                         >
                           <span className="text-[11px] font-mono uppercase tracking-widest text-text-muted">
-                            // BUSINESS &amp; TECHNICAL REQUIREMENTS
+                            BUSINESS &amp; TECHNICAL REQUIREMENTS
                           </span>
                         </motion.div>
 
@@ -621,14 +609,10 @@ export function Process() {
                               Experience tranquil mountain vistas with direct room reservations, live amenity filters, and instant WhatsApp booking.
                             </div>
                             <div className="flex gap-2 pt-1">
-                              <motion.span
-                                whileHover={{ scale: 1.03 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="px-3 py-1 bg-accent text-white rounded-full text-xs font-semibold shadow-2xs cursor-default"
-                              >
+                              <span className="px-2.5 py-1 bg-accent text-[#0B0C0E] rounded text-xs font-semibold shadow-2xs cursor-default">
                                 Direct Booking CTA
-                              </motion.span>
-                              <span className="px-3 py-1 bg-white dark:bg-navy-900 text-text-primary border border-border rounded-full text-xs font-medium cursor-default">
+                              </span>
+                              <span className="px-2.5 py-1 bg-surface text-text-primary border border-border rounded text-xs font-medium cursor-default">
                                 WhatsApp Direct
                               </span>
                             </div>
@@ -784,7 +768,7 @@ export function Process() {
                               </div>
                               <div className="flex items-center justify-between p-1.5 rounded bg-white dark:bg-navy-950 border border-border/60">
                                 <span className="text-text-secondary text-[11px]">Room 204 (Suite)</span>
-                                <span className="text-blue-700 dark:text-blue-300 text-[10px] font-semibold">Food Bill Added (₹1,450)</span>
+                                <span className="text-accent text-[10px] font-semibold">Food Bill Added (₹1,450)</span>
                               </div>
                             </div>
                           </motion.div>
@@ -834,8 +818,8 @@ export function Process() {
                           transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
                           className="text-center mb-1"
                         >
-                          <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-semibold">
-                            // 3 PRODUCTION PRODUCTS DEPLOYED
+                          <span className="text-[11px] font-mono uppercase tracking-widest text-[#35B77A] font-medium">
+                            3 PRODUCTION PRODUCTS DEPLOYED
                           </span>
                         </motion.div>
 
@@ -929,7 +913,7 @@ export function Process() {
                               <div className="text-[10px] text-text-muted">Travel Platform</div>
                             </div>
                             <div className="pt-1.5 border-t border-border/80">
-                              <div className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">Sanity + Email</div>
+                              <div className="text-[10px] font-semibold text-accent">Sanity + Email</div>
                               <div className="text-[9px] text-text-muted font-mono">SEO Ready</div>
                             </div>
                           </motion.div>
@@ -1189,13 +1173,13 @@ export function Process() {
               <div className="flex items-center justify-between border-b border-border pb-3">
                 <div>
                   <span className="text-xs font-mono font-bold text-accent">
-                    {stageData[activeStage].step} / 04
+                    {stageData[activeStage].step} of 04
                   </span>
                   <h3 className="text-xl font-semibold text-text-primary mt-0.5">
                     {stageData[activeStage].name}
                   </h3>
                 </div>
-                <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-surface text-text-secondary border border-border">
+                <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-surface text-text-secondary border border-border">
                   {stageData[activeStage].projectFeatured}
                 </span>
               </div>
@@ -1236,7 +1220,7 @@ export function Process() {
               <div className="pt-2 flex items-center justify-between text-xs text-text-muted font-mono border-t border-border">
                 <span>Stack: {stageData[activeStage].projectTech}</span>
                 <span className="text-accent font-bold">
-                  {stageData[activeStage].step} / 04
+                  {stageData[activeStage].step} of 04
                 </span>
               </div>
             </motion.div>

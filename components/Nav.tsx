@@ -29,14 +29,14 @@ export function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/85 dark:bg-[#0D0D10]/85 backdrop-blur-md border-b border-border/80 dark:border-white/[0.08] shadow-xs py-3.5"
-          : "bg-transparent py-5"
+          ? "bg-bg/92 backdrop-blur-md border-b border-border shadow-2xs py-3"
+          : "bg-transparent py-4.5"
       }`}
     >
       <div className="container-custom flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-full overflow-hidden border border-border/80 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+          <div className="w-8 h-8 rounded-full overflow-hidden border border-border shadow-2xs group-hover:scale-102 transition-transform shrink-0">
             <img
               src="/avatar.png"
               alt="Vineet Vardhan"
@@ -44,11 +44,11 @@ export function Nav() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold tracking-tight text-text-primary group-hover:text-accent transition-colors">
+            <span className="text-[13px] font-semibold tracking-tight text-text-primary group-hover:text-accent transition-colors">
               Vineet Vardhan
             </span>
-            <span className="text-[11px] text-text-muted flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[11px] text-text-muted flex items-center gap-1.5 font-mono">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-success" />
               Available for projects
             </span>
           </div>
@@ -60,7 +60,7 @@ export function Nav() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-xs lg:text-sm text-text-secondary hover:text-text-primary transition-colors font-medium"
+              className="text-[13px] text-text-secondary hover:text-text-primary transition-colors font-medium tracking-tight"
             >
               {link.label}
             </Link>
@@ -71,7 +71,8 @@ export function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
           <Button href="/#contact" variant="primary" size="sm">
-            Start a Project
+            <span>Start a Project</span>
+            <ArrowUpRight size={13} className="opacity-80" />
           </Button>
         </div>
 
@@ -80,10 +81,10 @@ export function Nav() {
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface transition-colors focus:outline-none"
+            className="p-1.5 rounded-md text-text-secondary hover:text-text-primary hover:bg-surface transition-colors focus:outline-none"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -95,25 +96,19 @@ export function Nav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden bg-white/98 dark:bg-[#0D0D10]/98 backdrop-blur-xl border-b border-border dark:border-white/[0.08] shadow-lg px-6 py-6"
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="md:hidden bg-bg/98 backdrop-blur-xl border-b border-border shadow-md px-6 py-5"
           >
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link, i) => (
-                <motion.div
+            <div className="flex flex-col gap-3">
+              {navLinks.map((link) => (
+                <Link
                   key={link.label}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.2 }}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-medium text-text-secondary hover:text-text-primary block py-1.5 transition-colors"
                 >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-base font-medium text-text-secondary hover:text-text-primary block py-1.5 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
+                  {link.label}
+                </Link>
               ))}
               <div className="pt-3 border-t border-border flex flex-col gap-3">
                 <Button
@@ -123,7 +118,8 @@ export function Nav() {
                   className="w-full justify-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Start a Project
+                  <span>Start a Project</span>
+                  <ArrowUpRight size={14} className="opacity-80" />
                 </Button>
               </div>
             </div>

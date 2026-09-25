@@ -18,12 +18,12 @@ export function Card({
   ...props
 }: CardProps) {
   const baseStyles =
-    "bg-white rounded-2xl border border-border overflow-hidden transition-shadow duration-200";
+    "bg-card rounded-lg sm:rounded-xl border border-border overflow-hidden transition-all duration-200";
 
   const combinedClassName = twMerge(
     clsx(
       baseStyles,
-      hoverEffect ? "hover:shadow-md hover:border-zinc-300" : "shadow-sm",
+      hoverEffect ? "hover:border-border-accent/40 hover:shadow-xs" : "shadow-2xs",
       className
     )
   );

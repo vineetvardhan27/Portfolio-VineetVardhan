@@ -15,7 +15,7 @@ const contactSchema = z
     phone: z.string().trim().optional(),
     projectType: z.string().optional().default("General Inquiry"),
     budget: z.string().min(1, "Please select an estimated budget"),
-    timeline: z.string().optional().default("Flexible / Exploring options"),
+    timeline: z.string().optional().default("Flexible · Exploring options"),
     message: z.string().trim().optional(),
     brief: z.string().trim().optional(),
     company: z.string().trim().optional(),

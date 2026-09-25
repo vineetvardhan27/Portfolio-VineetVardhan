@@ -71,7 +71,7 @@ export function ThemeToggle({ className }: { className?: string }) {
             transition={{ type: "spring", stiffness: 450, damping: 32 }}
           />
         )}
-        <Moon size={13} className={theme === "dark" ? "text-blue-400" : "text-text-muted dark:text-zinc-500"} />
+        <Moon size={13} className={theme === "dark" ? "text-accent" : "text-text-muted dark:text-zinc-500"} />
         <span className="text-[11px] hidden sm:inline">Dark</span>
       </button>
     </div>

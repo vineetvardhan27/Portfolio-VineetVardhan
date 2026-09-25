@@ -25,24 +25,24 @@ const contactSchema = z.object({
   phone: z.string().optional(),
   projectType: z.enum([
     "Hotel Website & Booking",
-    "Custom PMS / ERP Software",
+    "Custom PMS · ERP Software",
     "Travel & Tour Platform",
-    "SaaS / Web Application",
+    "SaaS · Web Application",
     "Website Redesign & SEO",
-    "Other / General Inquiry",
+    "Other · General Inquiry",
   ]),
   budget: z.enum([
-    "Under ₹50,000 / $1,000",
-    "₹50,000 – ₹1,00,000 / $1,500",
-    "₹1,00,000 – ₹2,50,000 / $3,500+",
-    "₹2,50,000+ / Custom Enterprise",
-    "Not sure / Let's discuss",
+    "Under ₹50,000 · $1,000",
+    "₹50,000 – ₹1,00,000 · $1,500",
+    "₹1,00,000 – ₹2,50,000 · $3,500+",
+    "₹2,50,000+ · Custom Enterprise",
+    "Not sure · Let's discuss",
   ]),
   timeline: z.enum([
     "Immediately (Next 1–2 weeks)",
     "Within 1 month",
     "1–3 months",
-    "Flexible / Exploring options",
+    "Flexible · Exploring options",
   ]),
   message: z.string().min(10, "Please share a brief summary of your project"),
 });
@@ -96,7 +96,7 @@ export function ContactForm() {
     resolver: zodResolver(contactSchema),
     defaultValues: {
       projectType: "Hotel Website & Booking",
-      budget: "₹50,000 – ₹1,00,000 / $1,500",
+      budget: "₹50,000 – ₹1,00,000 · $1,500",
       timeline: "Within 1 month",
     },
   });
@@ -169,13 +169,12 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="p-8 sm:p-12 bg-card rounded-3xl border border-emerald-200 dark:border-emerald-800/80 text-center space-y-4 shadow-md relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-400" />
-        <div className="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto shadow-2xs">
-          <CheckCircle2 size={28} />
+      <div className="p-8 sm:p-12 bg-card rounded-xl border border-border text-center space-y-4 shadow-sm relative overflow-hidden">
+        <div className="w-12 h-12 rounded-lg bg-[#35B77A]/10 text-[#35B77A] flex items-center justify-center mx-auto border border-[#35B77A]/20">
+          <CheckCircle2 size={24} />
         </div>
         <h3 className="text-2xl font-bold text-text-primary tracking-tight">
-          Inquiry Received!
+          Inquiry Received
         </h3>
         <p className="text-text-secondary text-sm max-w-md mx-auto leading-relaxed">
           Thank you for sharing your project details. I have received your submission and will review it thoroughly. Expect a direct, personal response within 24 hours.
@@ -203,11 +202,8 @@ export function ContactForm() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       onSubmit={handleSubmit(onSubmit)}
-      className="p-6 sm:p-9 bg-card rounded-2xl sm:rounded-3xl border border-border/80 dark:border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.35)] relative overflow-hidden space-y-5"
+      className="p-6 sm:p-8 bg-card rounded-xl border border-border relative overflow-hidden space-y-5"
     >
-      {/* Top Subtle Ambient Highlight Accent Line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-
       {/* Invisible Honeypot Field to trap spam bots */}
       <div
         aria-hidden="true"
@@ -245,8 +241,8 @@ export function ContactForm() {
             type="text"
             placeholder="Ohm Adhikari"
             {...register("name")}
-            className={`w-full h-11 px-4 rounded-xl border text-sm text-text-primary bg-slate-50/70 dark:bg-white/[0.03] focus:bg-white dark:focus:bg-[#121216] focus:border-accent dark:focus:border-blue-400 focus:ring-4 focus:ring-accent/15 dark:focus:ring-blue-500/15 focus:outline-hidden transition-all duration-200 ${
-              errors.name ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20" : "border-slate-200/90 dark:border-white/[0.08]"
+            className={`w-full h-11 px-4 rounded-lg border text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 caret-accent ${
+              errors.name ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20" : "border-border dark:border-white/[0.08]"
             }`}
           />
           {errors.name && (
@@ -266,8 +262,8 @@ export function ContactForm() {
             type="email"
             placeholder="ohm@hotelgreenery.com"
             {...register("email")}
-            className={`w-full h-11 px-4 rounded-xl border text-sm text-text-primary bg-slate-50/70 dark:bg-white/[0.03] focus:bg-white dark:focus:bg-[#121216] focus:border-accent dark:focus:border-blue-400 focus:ring-4 focus:ring-accent/15 dark:focus:ring-blue-500/15 focus:outline-hidden transition-all duration-200 ${
-              errors.email ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20" : "border-slate-200/90 dark:border-white/[0.08]"
+            className={`w-full h-11 px-4 rounded-lg border text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 caret-accent ${
+              errors.email ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20" : "border-border dark:border-white/[0.08]"
             }`}
           />
           {errors.email && (
@@ -284,13 +280,13 @@ export function ContactForm() {
         {/* Phone */}
         <div>
           <label className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5 font-medium">
-            Phone / WhatsApp (Optional)
+            Phone · WhatsApp (Optional)
           </label>
           <input
             type="tel"
             placeholder="+91 97985 04212"
             {...register("phone")}
-            className="w-full h-11 px-4 rounded-xl border border-slate-200/90 dark:border-white/[0.08] text-sm text-text-primary bg-slate-50/70 dark:bg-white/[0.03] focus:bg-white dark:focus:bg-[#121216] focus:border-accent dark:focus:border-blue-400 focus:ring-4 focus:ring-accent/15 dark:focus:ring-blue-500/15 focus:outline-hidden transition-all duration-200"
+            className="w-full h-11 px-4 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 caret-accent"
           />
         </div>
 
@@ -302,14 +298,14 @@ export function ContactForm() {
           <div className="relative">
             <select
               {...register("projectType")}
-              className="w-full h-11 px-4 pr-10 rounded-xl border border-slate-200/90 dark:border-white/[0.08] text-sm text-text-primary bg-slate-50/70 dark:bg-white/[0.03] focus:bg-white dark:focus:bg-[#121216] focus:border-accent dark:focus:border-blue-400 focus:ring-4 focus:ring-accent/15 dark:focus:ring-blue-500/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
+              className="w-full h-11 px-4 pr-10 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
             >
               <option value="Hotel Website & Booking">Hotel Website & Booking</option>
-              <option value="Custom PMS / ERP Software">Custom PMS / ERP Software</option>
+              <option value="Custom PMS · ERP Software">Custom PMS · ERP Software</option>
               <option value="Travel & Tour Platform">Travel & Tour Platform</option>
-              <option value="SaaS / Web Application">SaaS / Web Application</option>
+              <option value="SaaS · Web Application">SaaS · Web Application</option>
               <option value="Website Redesign & SEO">Website Redesign & SEO</option>
-              <option value="Other / General Inquiry">Other / General Inquiry</option>
+              <option value="Other · General Inquiry">Other · General Inquiry</option>
             </select>
             <ChevronDown
               size={16}
@@ -329,13 +325,13 @@ export function ContactForm() {
           <div className="relative">
             <select
               {...register("budget")}
-              className="w-full h-11 px-4 pr-10 rounded-xl border border-slate-200/90 dark:border-white/[0.08] text-sm text-text-primary bg-slate-50/70 dark:bg-white/[0.03] focus:bg-white dark:focus:bg-[#121216] focus:border-accent dark:focus:border-blue-400 focus:ring-4 focus:ring-accent/15 dark:focus:ring-blue-500/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
+              className="w-full h-11 px-4 pr-10 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
             >
-              <option value="Under ₹50,000 / $1,000">Under ₹50,000 / $1,000</option>
-              <option value="₹50,000 – ₹1,00,000 / $1,500">₹50,000 – ₹1,00,000 / $1,500</option>
-              <option value="₹1,00,000 – ₹2,50,000 / $3,500+">₹1,00,000 – ₹2,50,000 / $3,500+</option>
-              <option value="₹2,50,000+ / Custom Enterprise">₹2,50,000+ / Custom Enterprise</option>
-              <option value="Not sure / Let's discuss">Not sure / Let's discuss</option>
+              <option value="Under ₹50,000 · $1,000">Under ₹50,000 · $1,000</option>
+              <option value="₹50,000 – ₹1,00,000 · $1,500">₹50,000 – ₹1,00,000 · $1,500</option>
+              <option value="₹1,00,000 – ₹2,50,000 · $3,500+">₹1,00,000 – ₹2,50,000 · $3,500+</option>
+              <option value="₹2,50,000+ · Custom Enterprise">₹2,50,000+ · Custom Enterprise</option>
+              <option value="Not sure · Let's discuss">Not sure · Let's discuss</option>
             </select>
             <ChevronDown
               size={16}
@@ -352,12 +348,12 @@ export function ContactForm() {
           <div className="relative">
             <select
               {...register("timeline")}
-              className="w-full h-11 px-4 pr-10 rounded-xl border border-slate-200/90 dark:border-white/[0.08] text-sm text-text-primary bg-slate-50/70 dark:bg-white/[0.03] focus:bg-white dark:focus:bg-[#121216] focus:border-accent dark:focus:border-blue-400 focus:ring-4 focus:ring-accent/15 dark:focus:ring-blue-500/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
+              className="w-full h-11 px-4 pr-10 rounded-lg border border-border dark:border-white/[0.08] text-sm text-text-primary bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 appearance-none cursor-pointer"
             >
               <option value="Immediately (Next 1–2 weeks)">Immediately (Next 1–2 weeks)</option>
               <option value="Within 1 month">Within 1 month</option>
               <option value="1–3 months">1–3 months</option>
-              <option value="Flexible / Exploring options">Flexible / Exploring options</option>
+              <option value="Flexible · Exploring options">Flexible · Exploring options</option>
             </select>
             <ChevronDown
               size={16}
@@ -376,8 +372,8 @@ export function ContactForm() {
           rows={4}
           placeholder="Describe your project goals, core requirements, reference sites, or existing challenges..."
           {...register("message")}
-          className={`w-full px-4 py-3 rounded-xl border text-sm text-text-primary bg-slate-50/70 dark:bg-white/[0.03] focus:bg-white dark:focus:bg-[#121216] focus:border-accent dark:focus:border-blue-400 focus:ring-4 focus:ring-accent/15 dark:focus:ring-blue-500/15 focus:outline-hidden transition-all duration-200 resize-none ${
-            errors.message ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20" : "border-slate-200/90 dark:border-white/[0.08]"
+          className={`w-full px-4 py-3 rounded-lg border text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 resize-none caret-accent ${
+            errors.message ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20" : "border-border dark:border-white/[0.08]"
           }`}
         />
         {errors.message && (
@@ -391,11 +387,11 @@ export function ContactForm() {
       {/* Interactive Anti-Bot CAPTCHA Challenge */}
       <motion.div
         variants={fieldVariants}
-        className="p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-200/90 dark:border-white/[0.08] space-y-2.5"
+        className="p-4 rounded-lg bg-surface/30 border border-border dark:border-white/[0.08] space-y-2.5"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5 text-text-secondary text-xs font-medium">
-            <ShieldCheck size={15} className="text-accent dark:text-blue-400 shrink-0" />
+            <ShieldCheck size={15} className="text-accent shrink-0" />
             <span>Human Verification</span>
           </div>
           <span className="text-[10px] font-mono text-text-muted">Anti-Spam Security</span>
@@ -403,7 +399,7 @@ export function ContactForm() {
 
         <div className="flex flex-wrap items-center gap-3 pt-0.5">
           <div className="flex items-center gap-2">
-            <div className="h-10 px-3.5 rounded-lg bg-white dark:bg-[#121218] border border-accent/30 dark:border-blue-500/30 text-accent dark:text-blue-300 font-mono font-bold text-sm tracking-widest flex items-center shadow-xs select-none">
+            <div className="h-10 px-3.5 rounded-md bg-[#F4F4F1] dark:bg-[#121318] border border-accent/30 text-accent font-mono font-bold text-sm tracking-widest flex items-center shadow-xs select-none">
               {captchaLoading ? (
                 <span className="flex items-center gap-1 text-xs text-text-muted font-normal">
                   <Loader2 size={12} className="animate-spin" /> Generating...
@@ -420,7 +416,7 @@ export function ContactForm() {
               onClick={fetchCaptcha}
               disabled={captchaLoading}
               title="Click to generate a new security challenge"
-              className="h-10 w-10 flex items-center justify-center rounded-lg border border-slate-200/90 dark:border-white/[0.08] bg-white dark:bg-[#121218] text-text-muted hover:text-text-primary hover:border-accent/40 transition-colors cursor-pointer disabled:opacity-50"
+              className="h-10 w-10 flex items-center justify-center rounded-md border border-border dark:border-white/[0.08] bg-[#F4F4F1] dark:bg-[#121318] text-text-muted hover:text-text-primary hover:border-accent/40 transition-colors cursor-pointer disabled:opacity-50"
             >
               <RefreshCw size={14} className={captchaLoading ? "animate-spin" : ""} />
             </button>
@@ -436,10 +432,10 @@ export function ContactForm() {
                 setCaptchaAnswer(e.target.value);
                 if (captchaFieldError) setCaptchaFieldError(null);
               }}
-              className={`w-full h-10 px-3 rounded-lg border text-sm text-text-primary bg-white dark:bg-[#121218] focus:border-accent dark:focus:border-blue-400 focus:ring-3 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 ${
+              className={`w-full h-10 px-3 rounded-md border text-sm text-text-primary placeholder:text-text-muted dark:placeholder:text-[#7A7A75] bg-[#F4F4F1] dark:bg-[#121318] focus:bg-white dark:focus:bg-[#16171E] focus:border-accent focus:ring-2 focus:ring-accent/15 focus:outline-hidden transition-all duration-200 caret-accent ${
                 captchaFieldError
                   ? "border-red-400 dark:border-red-500 ring-1 ring-red-400/20"
-                  : "border-slate-200/90 dark:border-white/[0.08]"
+                  : "border-border dark:border-white/[0.08]"
               }`}
             />
           </div>
@@ -454,18 +450,18 @@ export function ContactForm() {
       </motion.div>
 
       {submitError && (
-        <div className="p-3.5 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-xs flex items-center gap-2">
+        <div className="p-3.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs flex items-center gap-2">
           <AlertCircle size={16} className="shrink-0" />
           <span>{submitError}</span>
         </div>
       )}
 
-      {/* Submit Button (Hero High-Intent CTA) */}
+      {/* Submit Button */}
       <motion.div variants={fieldVariants} className="pt-1">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-accent to-blue-500 hover:from-blue-500 hover:to-accent text-white font-semibold text-sm shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2.5 group disabled:opacity-60 disabled:pointer-events-none cursor-pointer"
+          className="w-full py-3.5 px-6 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2.5 group disabled:opacity-60 disabled:pointer-events-none cursor-pointer shadow-xs"
         >
           {isSubmitting ? (
             <>
@@ -476,8 +472,8 @@ export function ContactForm() {
             <>
               <span>Send Project Inquiry</span>
               <Send
-                size={15}
-                className="transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5"
+                size={14}
+                className="transition-transform duration-200 group-hover:translate-x-1"
               />
             </>
           )}

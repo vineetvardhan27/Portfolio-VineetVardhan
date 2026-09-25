@@ -4,7 +4,7 @@ export const positioning = {
 };
 
 export const heroCopy = {
-  badge: "Available for Q3/Q4 Projects",
+  badge: "Available for 2026 Projects",
   headline: "Your business deserves a better digital experience.",
   subtext:
     "I design and build fast, modern websites and custom software that turn visitors into customers and automate daily operations.",

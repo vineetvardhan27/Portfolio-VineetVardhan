@@ -14,19 +14,20 @@ export function ProjectsGrid() {
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="max-w-2xl mb-12 sm:mb-16"
         >
-          <div className="text-xs uppercase tracking-wider font-semibold text-accent mb-2">
-            Selected Work
+          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-3 font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <span>01 · Selected Work</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-[-0.015em] leading-[1.22] sm:leading-[1.2]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-medium text-text-primary tracking-[-0.02em] leading-[1.2] sm:leading-[1.18]">
             Proven software engineered for real business outcomes.
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-text-secondary">
+          <p className="mt-3.5 text-base sm:text-lg text-text-secondary leading-relaxed">
             Each project is built from scratch with custom architecture, high conversion rates, and sub-second performance.
           </p>
         </motion.div>

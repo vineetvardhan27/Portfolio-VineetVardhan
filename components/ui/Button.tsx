@@ -25,21 +25,21 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/20 disabled:opacity-50 disabled:pointer-events-none rounded-full select-none";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:opacity-50 disabled:pointer-events-none rounded-lg select-none";
 
   const sizeStyles = {
-    sm: "px-4 py-2 text-xs font-semibold gap-1.5",
-    md: "px-5 py-2.5 text-sm font-semibold gap-2",
-    lg: "px-7 py-3.5 text-base font-semibold gap-2.5",
+    sm: "px-3.5 py-1.5 text-xs font-semibold gap-1.5",
+    md: "px-4.5 py-2.5 text-sm font-semibold gap-2",
+    lg: "px-6 py-3 text-sm sm:text-base font-semibold gap-2.5",
   };
 
   const variantStyles = {
     primary:
-      "bg-accent text-white hover:bg-accent-hover dark:bg-[#2B66DF] dark:hover:bg-[#3B82F6] dark:border dark:border-blue-400/25 dark:hover:shadow-[0_0_24px_rgba(59,130,246,0.4)] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:bg-accent-hover",
+      "bg-accent hover:bg-accent-hover text-[#0B0C0E] font-semibold border border-accent/40 shadow-xs hover:shadow-sm active:translate-y-0.5",
     secondary:
-      "bg-white dark:bg-white/[0.06] border border-slate-300 dark:border-white/25 text-text-primary dark:text-zinc-100 hover:bg-surface hover:border-slate-400 dark:hover:border-white/50 dark:hover:bg-white/[0.12] shadow-2xs hover:-translate-y-0.5 active:translate-y-0",
+      "bg-surface/70 dark:bg-white/[0.04] hover:bg-surface dark:hover:bg-white/[0.08] text-text-primary border border-border dark:border-white/[0.1] hover:border-border-accent/40 shadow-2xs active:translate-y-0.5",
     ghost:
-      "bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface dark:hover:bg-white/[0.06]",
+      "bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface/60 dark:hover:bg-white/[0.04]",
   };
 
   const combinedClassName = twMerge(

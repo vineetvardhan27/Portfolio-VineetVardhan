@@ -23,6 +23,7 @@ export const projects: Project[] = [
     slug: "hotel-greenery-view",
     name: "Hotel Greenery View",
     category: "Hospitality & Direct Booking",
+    year: "2026",
     tagline: "Bespoke Next.js Website with Sanity CMS, SEO & AI Search Optimization",
     summary:
       "Built the entire UI in Next.js with Sanity CMS, SEO-friendly architecture, and AI-friendly knowledge structure for high ranking in LLMs and direct room bookings.",
@@ -58,14 +59,15 @@ export const projects: Project[] = [
   {
     slug: "grove-pms",
     name: "Grove PMS",
-    category: "Custom Hospitality ERP / PMS",
+    category: "Custom Hospitality ERP · PMS",
+    year: "2026",
     tagline: "Custom Property Management System Tailored for Hotel Operations",
     summary:
       "Built a custom Property Management System (PMS) in Next.js & Supabase tailored around actual hotel staff workflows—handling room booking, inventory, billing, food orders, and operational dashboards from one unified platform.",
     liveUrl: "https://grovepms.vercel.app/",
     image: "/images/grove-pms.png",
     metrics: [
-      { label: "Time Saved", value: "4.5 hrs/day" },
+      { label: "Time Saved", value: "4.5 hrs daily" },
       { label: "Operations", value: "100% Unified" },
       { label: "Billing Accuracy", value: "99.9%" },
     ],
@@ -97,6 +99,7 @@ export const projects: Project[] = [
     slug: "anugra-travels",
     name: "Anugra Travels",
     category: "Travel & Tour Platform",
+    year: "2026",
     tagline: "SEO-Friendly Travel Platform with Sanity CMS & EmailOctopus",
     summary:
       "Built the entire travel website with SEO-friendly architecture, Sanity CMS dynamic package management, and EmailOctopus newsletter lead capture integration.",
@@ -114,7 +117,7 @@ export const projects: Project[] = [
     result:
       "Elevated organic search traffic for travel packages, streamlined client content management via Sanity, and accelerated email subscriber acquisition via EmailOctopus.",
     technologies: [
-      "Next.js / HTML5",
+      "Next.js · HTML5",
       "Sanity CMS",
       "EmailOctopus API",
       "Technical SEO",

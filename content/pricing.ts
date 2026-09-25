@@ -49,9 +49,9 @@ export const pricingTiers: PricingTier[] = [
     timeline: "3–4 weeks",
     deliverables: [
       "User authentication & role permissions",
-      "Relational database modeling (Supabase/Postgres)",
+      "Relational database modeling (Supabase & Postgres)",
       "Custom business workflows & dashboard UI",
-      "Payment gateway integration (Stripe / Razorpay)",
+      "Payment gateway integration (Stripe · Razorpay)",
       "Automated email notifications & alerts",
       "30 days of post-launch maintenance & monitoring",
     ],
@@ -60,7 +60,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "enterprise-pms",
-    name: "Full Custom PMS / ERP",
+    name: "Full Custom PMS · ERP",
     description:
       "End-to-end multi-tenant business systems engineered to replace fragmented spreadsheets and legacy software.",
     price: {
