@@ -30,7 +30,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-bg overflow-hidden">
+    <section className="relative pt-24 pb-10 md:pt-28 md:pb-12 bg-bg overflow-hidden">
       {/* Subtle, restrained top ambient highlight - no loud blue/purple glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-64 bg-radial from-white/[0.03] dark:from-white/[0.02] to-transparent pointer-events-none" />
 
@@ -47,7 +47,7 @@ export function Hero() {
             className="lg:col-span-7 flex flex-col items-start"
           >
             {/* 1. Technical Availability Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface/60 dark:bg-white/[0.03] border border-border dark:border-white/[0.06] mb-6 text-xs font-mono text-text-secondary">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface/60 dark:bg-white/[0.03] border border-border dark:border-white/[0.06] mb-5 text-xs font-mono text-text-secondary">
               <span className="w-1.5 h-1.5 rounded-full bg-success" />
               <span>
                 Websites <span className="text-text-muted px-1">•</span> Booking Systems{" "}
@@ -105,7 +105,7 @@ export function Hero() {
             </div>
 
             {/* 6. Technical Credibility Strip (Refined product specification layout) */}
-            <div className="mt-10 pt-7 border-t border-border/80 dark:border-white/[0.06] w-full flex flex-wrap items-center gap-y-3 gap-x-5 sm:gap-x-7 text-xs font-mono text-text-secondary">
+            <div className="mt-8 pt-5 border-t border-border/80 dark:border-white/[0.06] w-full flex flex-wrap items-center gap-y-3 gap-x-5 sm:gap-x-7 text-xs font-mono text-text-secondary">
               {trustItems.map((item, idx) => (
                 <div key={item.text} className="flex items-center gap-2">
                   <item.icon size={14} className={`${item.iconColor} shrink-0`} />

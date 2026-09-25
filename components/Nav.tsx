@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useScroll, useMotionValueEvent, motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/Button";
 import { ThemeToggle } from "./ThemeToggle";
@@ -17,21 +17,11 @@ const navLinks = [
 ];
 
 export function Nav() {
-  const { scrollY } = useScroll();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 50);
-  });
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-bg/92 backdrop-blur-md border-b border-border shadow-2xs py-3"
-          : "bg-transparent py-4.5"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-bg/92 backdrop-blur-md border-b border-border shadow-2xs py-3"
     >
       <div className="container-custom flex items-center justify-between">
         {/* Brand / Logo */}
