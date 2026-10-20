@@ -117,7 +117,7 @@ export function Nav() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 top-[57px] sm:top-[61px] bg-black/40 backdrop-blur-xs z-40 md:hidden"
+              className="fixed inset-0 top-[57px] sm:top-[61px] bg-black/12 backdrop-blur-[2px] dark:bg-black/45 dark:backdrop-blur-xs z-40 md:hidden"
               aria-hidden="true"
             />
 
@@ -127,7 +127,7 @@ export function Nav() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="md:hidden bg-bg/98 backdrop-blur-xl border-b border-border shadow-xl px-4 py-4 relative z-50 max-h-[calc(100vh-4rem)] overflow-y-auto"
+              className="md:hidden bg-bg border-b border-border shadow-xl px-4 py-4 relative z-50 max-h-[calc(100vh-4rem)] overflow-y-auto dark:bg-bg/95 dark:backdrop-blur-xl dark:supports-[backdrop-filter]:bg-bg/90"
             >
               <div className="flex flex-col gap-1">
                 {navLinks.map((link) => (
@@ -135,7 +135,7 @@ export function Nav() {
                     key={link.label}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-[15px] font-medium text-text-secondary hover:text-text-primary hover:bg-surface/70 px-3.5 py-2.5 rounded-lg transition-colors flex items-center min-h-[44px]"
+                    className="text-[15px] font-medium text-text-primary hover:text-accent hover:bg-surface/80 dark:text-text-secondary dark:hover:text-text-primary dark:hover:bg-surface/70 px-3.5 py-2.5 rounded-lg transition-colors flex items-center min-h-[44px]"
                   >
                     {link.label}
                   </Link>
