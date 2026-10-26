@@ -14,20 +14,20 @@ export function ProjectsGrid() {
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
+          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>01 · Selected Work</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
             Proven software engineered for real business outcomes.
           </h2>
-          <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] font-normal">
+          <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary leading-[1.6] max-w-xl font-normal">
             Each project is built from scratch with custom architecture, high conversion rates, and sub-second performance.
           </p>
         </motion.div>

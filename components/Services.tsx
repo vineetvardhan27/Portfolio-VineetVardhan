@@ -74,20 +74,20 @@ export function Services() {
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
+          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>02 · Services &amp; Expertise</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
             Specialized engineering for ambitious businesses.
           </h2>
-          <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] font-normal">
+          <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary leading-[1.6] max-w-xl font-normal">
             From direct booking platforms to full custom business operating systems, every deliverable is built for scale.
           </p>
         </motion.div>
@@ -102,9 +102,9 @@ export function Services() {
                 key={service.title}
                 initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.35, delay: idx * 0.08, ease: "easeOut" }}
-                className="relative group rounded-xl p-5 sm:p-8 flex flex-col justify-between bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs transition-colors"
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="relative group rounded-xl p-5 sm:p-8 flex flex-col justify-between bg-card border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md transition-all duration-300"
               >
                 <div>
                   {/* Top: Icon + Optional Badge */}
@@ -121,18 +121,18 @@ export function Services() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-tight">
+                  <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-[-0.03em] leading-snug">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-2.5 text-sm sm:text-[14.5px] text-text-secondary leading-[1.6] font-normal">
+                  <p className="mt-2.5 text-sm sm:text-[14.5px] text-text-secondary leading-[1.62] font-normal">
                     {service.description}
                   </p>
 
                   {/* Deliverables Checklist */}
                   <div className="mt-6 space-y-2.5">
-                    <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em] mb-2">
+                    <div className="text-[12px] font-sans font-medium text-text-muted tracking-[0.01em] mb-2">
                       Key Deliverables
                     </div>
                     {service.capabilities.map((cap) => (
@@ -148,12 +148,12 @@ export function Services() {
                 <div className="mt-8 pt-5 border-t border-border/70 dark:border-white/[0.05]">
                   <a
                     href="#contact"
-                    className="group/cta inline-flex items-center gap-1.5 py-2 min-h-[44px] text-[13px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+                    className="group/cta inline-flex items-center gap-1.5 py-2 min-h-[44px] text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
                   >
                     <span>{service.ctaText}</span>
                     <ArrowRight
                       size={13}
-                      className="group-hover/cta:translate-x-1 transition-transform duration-200"
+                      className="group-hover/cta:translate-x-1 group-hover/cta:-translate-y-0.5 transition-transform duration-200 ease-out"
                     />
                   </a>
                 </div>

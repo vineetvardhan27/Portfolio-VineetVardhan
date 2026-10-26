@@ -30,19 +30,19 @@ export function Testimonials() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
+          transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
           className="max-w-3xl mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
+          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>06 · Client Feedback</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
             Trusted by businesses to deliver results.
           </h2>
 
-          <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] max-w-2xl font-normal">
+          <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary leading-[1.6] max-w-2xl font-normal">
             Real feedback from direct client partnerships across custom websites, booking engines, and business software.
           </p>
         </motion.div>
@@ -52,8 +52,8 @@ export function Testimonials() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-          className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-5 sm:p-8 lg:p-10 shadow-xs transition-colors"
+          transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
+          className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md p-5 sm:p-8 lg:p-10 transition-all duration-300"
         >
           {/* Horizontal Split Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -67,9 +67,9 @@ export function Testimonials() {
               </div>
 
               {/* Editorial Quote */}
-              <blockquote className="text-lg sm:text-2xl lg:text-[23px] font-serif italic text-text-primary leading-[1.6] tracking-[0.01em]">
+              <blockquote className="text-lg sm:text-2xl lg:text-[23px] font-sans font-normal text-text-primary leading-[1.55] tracking-[-0.02em]">
                 &ldquo;Vineet transformed our hotel&apos;s digital presence.{" "}
-                <span className="text-accent font-semibold not-italic font-sans">
+                <span className="text-accent font-semibold">
                   Direct inquiries through the website increased immediately
                 </span>
                 , and the room showcase looks stunning on mobile.&rdquo;
@@ -160,7 +160,7 @@ export function Testimonials() {
                     <span className="group-hover:text-accent transition-colors">Explore Full Case Study</span>
                     <ArrowRight
                       size={13}
-                      className="text-text-muted group-hover:text-accent group-hover:translate-x-0.5 transition-all"
+                      className="text-text-muted group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200 ease-out"
                     />
                   </Link>
                 </div>

@@ -109,11 +109,11 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             )}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-semibold text-text-primary tracking-[-0.025em] max-w-4xl leading-[1.15] sm:leading-[1.1]">
+          <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-semibold text-text-primary tracking-[-0.04em] max-w-4xl leading-[1.08] sm:leading-[1.05]">
             {project.name}
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg text-text-secondary max-w-3xl leading-relaxed font-normal">
+          <p className="mt-4 text-[17px] sm:text-[19px] text-text-secondary max-w-3xl leading-[1.6] font-normal">
             {project.tagline}
           </p>
 
@@ -147,7 +147,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                 <div className="text-xs font-medium text-text-muted uppercase tracking-[0.04em]">
                   {m.label}
                 </div>
-                <div className="text-2xl sm:text-3xl font-semibold text-text-primary mt-2 tracking-tight tabular-nums">
+                <div className="text-2xl sm:text-3xl font-semibold text-text-primary mt-2 tracking-[-0.03em] tabular-nums">
                   {m.value}
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Phase 01
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.015em]">
+              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.03em] leading-snug">
                 The Challenge
               </h2>
               <p className="text-text-secondary leading-relaxed text-base font-normal">
@@ -177,7 +177,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Phase 02
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.015em]">
+              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.03em] leading-snug">
                 The Solution
               </h2>
               <p className="text-text-secondary leading-relaxed text-base font-normal">
@@ -190,7 +190,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Deliverables 03
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.015em]">
+              <h2 className="text-2xl font-semibold text-text-primary tracking-[-0.03em] leading-snug">
                 Key Architectural Deliverables
               </h2>
               <div className="space-y-3 pt-2">
@@ -213,7 +213,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               <div className="text-[12px] font-sans font-medium uppercase tracking-[0.04em] text-accent">
                 Impact 04
               </div>
-              <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2 tracking-[-0.015em]">
+              <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2 tracking-[-0.03em] leading-snug">
                 <TrendingUp size={20} className="text-accent" />
                 The Business Outcome
               </h2>

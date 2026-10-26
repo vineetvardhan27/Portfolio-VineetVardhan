@@ -34,20 +34,20 @@ export function Pricing() {
         {/* Section Header & Currency Toggle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <motion.div
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl"
           >
-            <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
+            <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span>03 · Transparent Pricing</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
               Clear investment expectations. No hidden fees.
             </h2>
-            <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] font-normal">
+            <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary leading-[1.6] font-normal">
               Fixed-scope project pricing with direct communication, clear milestones, and complete codebase handover.
             </p>
           </motion.div>
@@ -90,11 +90,11 @@ export function Pricing() {
                 initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.35, delay: idx * 0.08, ease: "easeOut" }}
-                className={`relative flex flex-col justify-between p-5 sm:p-8 rounded-xl bg-card border transition-all duration-200 shadow-xs ${
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className={`relative flex flex-col justify-between p-5 sm:p-8 rounded-xl bg-card border transition-all duration-300 shadow-xs hover:shadow-md ${
                   isFeatured
-                    ? "border-accent/60 dark:border-accent/50 ring-1 ring-accent/30"
-                    : "border-border/80 dark:border-white/[0.07] hover:border-border-accent/40"
+                    ? "border-accent/70 dark:border-accent/60 ring-1 ring-accent/30 hover:border-accent"
+                    : "border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20"
                 }`}
               >
                 <div>
@@ -107,12 +107,12 @@ export function Pricing() {
 
                   {/* Title & Description */}
                   <div className="min-h-[28px]">
-                    <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-tight">
+                    <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-[-0.03em] leading-snug">
                       {tier.name}
                     </h3>
                   </div>
 
-                  <p className="mt-2 text-xs sm:text-[13.5px] text-text-secondary leading-[1.6] min-h-[40px] font-normal">
+                  <p className="mt-2 text-xs sm:text-[14px] text-text-secondary leading-[1.62] min-h-[40px] font-normal">
                     {tier.description}
                   </p>
 

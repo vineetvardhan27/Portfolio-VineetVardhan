@@ -32,28 +32,26 @@ export function FinalCTA() {
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
+            transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
             className="lg:col-span-5 flex flex-col justify-between"
           >
             <div>
-              {/* Eyebrow with Animated Pulse & Rule */}
-              <div className="inline-flex items-center gap-3 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent">
-                  Get in Touch
-                </span>
-                <span className="w-12 h-px bg-accent/40 hidden sm:block" />
+              {/* Eyebrow with Subtle Status Marker */}
+              <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span>07 · Get in Touch</span>
+                <span className="w-8 h-px bg-accent/40 hidden sm:block ml-1" />
               </div>
 
               {/* Headline with Focal Accent Treatment */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
                 Have a project in mind? Let&apos;s build{" "}
                 <span className="font-semibold text-accent">
                   something exceptional.
                 </span>
               </h2>
 
-              <p className="mt-4 text-base sm:text-[17px] text-text-secondary leading-[1.62] font-normal">
+              <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary leading-[1.6] font-normal">
                 {finalCTACopy.subtext}
               </p>
 
@@ -63,7 +61,7 @@ export function FinalCTA() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-[15px] transition-all duration-200 w-full sm:w-auto cursor-pointer shadow-xs"
+                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg bg-accent hover:bg-accent-hover text-bg font-semibold text-[15px] shadow-xs hover:shadow-md transition-all duration-200 active:scale-[0.99] w-full sm:w-auto cursor-pointer"
                 >
                   {/* Quiet Online Status Indicator */}
                   <span className="w-2 h-2 rounded-full bg-[#35B77A] shrink-0" />
@@ -71,13 +69,13 @@ export function FinalCTA() {
                   <span>Chat on WhatsApp</span>
                   <ArrowRight
                     size={14}
-                    className="transition-transform duration-200 group-hover:translate-x-1"
+                    className="transition-transform duration-200 ease-out group-hover:translate-x-0.5"
                   />
                 </a>
 
                 <a
                   href="tel:+919798504212"
-                  className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-surface hover:bg-surface-hover text-text-primary border border-border font-medium text-[15px] transition-all duration-200 w-full sm:w-auto"
+                  className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-surface hover:bg-surface-hover hover:border-black/20 dark:hover:border-white/20 text-text-primary border border-border font-medium text-[15px] transition-all duration-200 active:scale-[0.99] w-full sm:w-auto"
                 >
                   <span>Call +91 97985 04212</span>
                 </a>

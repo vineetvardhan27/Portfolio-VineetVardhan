@@ -329,18 +329,24 @@ export function Process() {
       {/* Top Section Header */}
       <div className="pt-20 pb-12 sm:pt-28 sm:pb-16 border-b border-border/80 dark:border-white/[0.06] bg-bg-subtle/40">
         <div className="container-custom">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
+          <motion.div
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span>04 · Development Process</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
               From idea to a production-ready product.
             </h2>
-            <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary font-normal leading-[1.62]">
+            <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary font-normal leading-[1.6] max-w-2xl">
               Watch real applications evolve through every phase of the engineering lifecycle—from initial discovery to live production deployment.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
 

@@ -26,8 +26,8 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
         initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
-        className="lg:col-span-12 group relative flex flex-col lg:flex-row bg-card rounded-xl overflow-hidden transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs"
+        transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+        className="lg:col-span-12 group relative flex flex-col lg:flex-row bg-card rounded-xl overflow-hidden transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md"
       >
         {/* Left Column: Narrative, Metrics, CTAs */}
         <div className="lg:w-[50%] p-5 sm:p-8 lg:p-10 flex flex-col justify-between order-2 lg:order-1">
@@ -50,7 +50,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             </div>
 
             {/* Project Title */}
-            <h3 className="text-2xl sm:text-[28px] font-semibold text-text-primary tracking-tight mt-4">
+            <h3 className="text-2xl sm:text-[28px] font-semibold text-text-primary tracking-[-0.035em] mt-4 leading-snug">
               {project.name}
             </h3>
 
@@ -65,7 +65,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
                 {project.metrics.map((m, mIdx) => (
                   <div key={m.label} className="flex flex-col">
                     <span
-                      className={`text-2xl sm:text-3xl font-semibold font-sans tracking-tight tabular-nums ${
+                      className={`text-2xl sm:text-3xl font-semibold font-sans tracking-[-0.03em] tabular-nums ${
                         mIdx === 0 ? "text-accent" : "text-text-primary"
                       }`}
                     >
@@ -101,7 +101,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
               <span>View Case Study</span>
               <ArrowRight
                 size={14}
-                className="group-hover/link:translate-x-1 transition-transform duration-200"
+                className="group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5 transition-transform duration-200 ease-out"
               />
             </Link>
 
@@ -146,7 +146,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
               </div>
             </div>
 
-            {/* Screenshot */}
+            {/* Screenshot with subtle restrained hover scaling */}
             <div className="relative w-full h-[calc(100%-25px)] overflow-hidden bg-neutral-100 dark:bg-neutral-950">
               <img
                 src={project.image}
@@ -155,10 +155,8 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
                 height={750}
                 loading="lazy"
                 decoding="async"
-                className={`w-full object-cover object-top transition-transform ease-out will-change-transform ${
-                  isHovered && !shouldReduceMotion
-                    ? "duration-[4500ms] -translate-y-[45%]"
-                    : "duration-[600ms] translate-y-0"
+                className={`w-full h-full object-cover object-top transition-transform duration-500 ease-out will-change-transform ${
+                  isHovered && !shouldReduceMotion ? "scale-[1.02]" : "scale-100"
                 }`}
               />
             </div>
@@ -176,8 +174,8 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
       initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
-      className="lg:col-span-6 group relative flex flex-col justify-between bg-card rounded-xl p-5 sm:p-7 transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 shadow-xs"
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="lg:col-span-6 group relative flex flex-col justify-between bg-card rounded-xl p-5 sm:p-7 transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md"
     >
       <div>
         {/* Top Header: Year, Category & Live Indicator */}
@@ -197,7 +195,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           )}
         </div>
 
-        {/* Embedded Browser Screenshot */}
+        {/* Embedded Browser Screenshot with restrained hover scaling */}
         <div
           className="relative aspect-[16/10] bg-neutral-900 rounded-lg overflow-hidden border border-border/80 dark:border-white/[0.07] shadow-xs group/preview cursor-pointer"
           onMouseEnter={() => setIsHovered(true)}
@@ -232,17 +230,15 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
               height={750}
               loading="lazy"
               decoding="async"
-              className={`w-full object-cover object-top transition-transform ease-out will-change-transform ${
-                isHovered && !shouldReduceMotion
-                  ? "duration-[4500ms] -translate-y-[45%]"
-                  : "duration-[600ms] translate-y-0"
+              className={`w-full h-full object-cover object-top transition-transform duration-500 ease-out will-change-transform ${
+                isHovered && !shouldReduceMotion ? "scale-[1.02]" : "scale-100"
               }`}
             />
           </div>
         </div>
 
         {/* Project Title */}
-        <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-tight mt-5">
+        <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-[-0.03em] mt-5 leading-snug">
           {project.name}
         </h3>
 
@@ -257,7 +253,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             {project.metrics.map((m, mIdx) => (
               <div key={m.label} className="flex flex-col">
                 <span
-                  className={`text-xl sm:text-2xl font-semibold font-sans tracking-tight tabular-nums ${
+                  className={`text-xl sm:text-2xl font-semibold font-sans tracking-[-0.03em] tabular-nums ${
                     mIdx === 0 ? "text-accent" : "text-text-primary"
                   }`}
                 >
@@ -293,7 +289,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           <span>View Case Study</span>
           <ArrowRight
             size={14}
-            className="group-hover/link:translate-x-1 transition-transform duration-200"
+            className="group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5 transition-transform duration-200 ease-out"
           />
         </Link>
 

@@ -61,7 +61,7 @@ export function WhyWorkWithMe() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.35,
+        duration: 0.5,
         ease: EASE_OUT_EXPO,
       },
     },
@@ -80,20 +80,20 @@ export function WhyWorkWithMe() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
+          transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
           className="max-w-3xl mb-12 sm:mb-16"
         >
           {/* Eyebrow with Subtle Marker */}
-          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3">
+          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>05 · Why Work With Me</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-text-primary tracking-[-0.022em] leading-[1.18] sm:leading-[1.16]">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
             Senior full-stack engineering with zero agency overhead.
           </h2>
 
-          <p className="mt-3.5 text-base sm:text-[17px] text-text-secondary leading-[1.62] max-w-2xl font-normal">
+          <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary leading-[1.6] max-w-2xl font-normal">
             You partner directly with the engineer designing and coding your
             product, resulting in faster turnarounds, cleaner code, and direct
             accountability.
@@ -111,7 +111,7 @@ export function WhyWorkWithMe() {
           {/* 1. LEAD SPOTLIGHT CARD */}
           <motion.div
             variants={itemVariants}
-            className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-5 sm:p-8 lg:p-9 shadow-xs transition-colors"
+            className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md p-5 sm:p-8 lg:p-9 transition-all duration-300"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
               {/* Left Column: Numeral, Icon & Elevated Title */}
@@ -129,7 +129,7 @@ export function WhyWorkWithMe() {
                   <div className="w-10 h-10 rounded-md bg-surface/80 dark:bg-white/[0.04] border border-border/80 text-accent flex items-center justify-center shrink-0">
                     <LeadIcon size={20} />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-text-primary tracking-tight leading-snug">
+                  <h3 className="text-xl sm:text-[22px] lg:text-[24px] font-semibold text-text-primary tracking-[-0.035em] leading-snug">
                     {leadItem.title}
                   </h3>
                 </div>
@@ -137,7 +137,7 @@ export function WhyWorkWithMe() {
 
               {/* Right Column: Narrative & Metadata */}
               <div className="lg:col-span-6 space-y-4 lg:border-l lg:border-border/70 dark:lg:border-white/[0.06] lg:pl-8">
-                <p className="text-sm sm:text-[15px] text-text-secondary leading-[1.62] max-w-xl font-normal">
+                <p className="text-[15px] sm:text-[16px] text-text-secondary leading-[1.62] max-w-xl font-normal">
                   {leadItem.description}
                 </p>
 
@@ -167,7 +167,7 @@ export function WhyWorkWithMe() {
                 <motion.div
                   key={item.title}
                   variants={itemVariants}
-                  className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-border-accent/40 p-5 sm:p-6 flex flex-col justify-between shadow-xs transition-colors"
+                  className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md p-5 sm:p-6 flex flex-col justify-between transition-all duration-300"
                 >
                   {/* Top Bar: Numeral & Icon */}
                   <div>
@@ -187,12 +187,12 @@ export function WhyWorkWithMe() {
                     </div>
 
                     {/* Typography: Elevated Title */}
-                    <h3 className="text-lg sm:text-[19px] font-semibold text-text-primary tracking-tight">
+                    <h3 className="text-lg sm:text-[19px] lg:text-[20px] font-semibold text-text-primary tracking-[-0.03em] leading-snug">
                       {item.title}
                     </h3>
 
                     {/* Body Text */}
-                    <p className="mt-2.5 text-xs sm:text-[13.5px] text-text-secondary leading-[1.6] font-normal">
+                    <p className="mt-2.5 text-xs sm:text-[14px] text-text-secondary leading-[1.6] font-normal">
                       {item.description}
                     </p>
                   </div>
@@ -204,7 +204,7 @@ export function WhyWorkWithMe() {
                     </span>
                     <ArrowUpRight
                       size={13}
-                      className="text-text-muted opacity-50 group-hover:opacity-100 group-hover:text-accent transition-all"
+                      className="text-text-muted opacity-50 group-hover:opacity-100 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 ease-out"
                     />
                   </div>
                 </motion.div>
