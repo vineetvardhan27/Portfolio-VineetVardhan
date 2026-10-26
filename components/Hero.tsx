@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, TrendingUp, ShieldCheck } from "lucide-react";
+import { ArrowRight, Zap, TrendingUp, ShieldCheck } from "lucide-react";
 import { Button } from "./ui/Button";
 import { heroCopy } from "@/content/copy";
 import { useReducedMotion } from "@/lib/reduced-motion";
@@ -15,19 +15,19 @@ export function Hero() {
 
   const trustItems = [
     {
-      icon: CheckCircle2,
-      text: "Next.js 14 & Sub-second Speed",
-      iconColor: "text-success",
+      icon: Zap,
+      text: "Sub-Second Next.js Speed",
+      iconColor: "text-amber-500 dark:text-[#E5A93C]",
     },
     {
       icon: ShieldCheck,
       text: "Zero Agency Markup",
-      iconColor: "text-accent",
+      iconColor: "text-accent dark:text-[#E5A93C]",
     },
     {
       icon: TrendingUp,
       text: "Conversion-Engineered",
-      iconColor: "text-success",
+      iconColor: "text-success dark:text-[#10B981]",
     },
   ];
 
@@ -133,10 +133,10 @@ export function Hero() {
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.48, ease: EASE_EDITORIAL }}
-              className="mt-8 sm:mt-9 pt-5 border-t border-border/80 dark:border-white/[0.06] w-full grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 text-xs sm:text-[13px] font-sans font-medium text-text-secondary"
+              className="mt-8 sm:mt-9 pt-5 border-t border-border/80 dark:border-white/[0.06] w-full flex flex-wrap items-center gap-x-5 sm:gap-x-7 gap-y-2.5 text-xs sm:text-[13px] font-sans font-medium text-text-secondary"
             >
               {trustItems.map((item) => (
-                <div key={item.text} className="flex items-center gap-2 py-0.5">
+                <div key={item.text} className="flex items-center gap-2 py-0.5 whitespace-nowrap">
                   <item.icon size={14} className={`${item.iconColor} shrink-0`} />
                   <span>{item.text}</span>
                 </div>

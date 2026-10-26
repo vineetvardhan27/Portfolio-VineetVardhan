@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, ArrowUpRight } from "lucide-react";
 import { Project } from "@/content/projects";
@@ -27,7 +28,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-        className="lg:col-span-12 group relative flex flex-col lg:flex-row bg-card rounded-xl overflow-hidden transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md"
+        className="lg:col-span-12 group relative flex flex-col lg:flex-row bg-card dark:bg-[#121318] rounded-2xl overflow-hidden transition-all duration-300 border border-border/80 dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/[0.16] hover:shadow-md"
       >
         {/* Left Column: Narrative, Metrics, CTAs */}
         <div className="lg:w-[50%] p-5 sm:p-8 lg:p-10 flex flex-col justify-between order-2 lg:order-1">
@@ -35,43 +36,46 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             {/* Header: Year, Category & Live Indicator */}
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="text-[12px] font-sans text-accent font-semibold">2026</span>
+                <span className="text-[12px] font-mono text-accent dark:text-[#E5A93C] font-semibold">2026</span>
                 <span className="text-text-muted/40">·</span>
-                <span className="text-[12px] font-sans text-text-muted font-medium">
+                <span className="text-[12px] font-sans text-text-muted dark:text-[#A0A3AC] font-medium">
                   {project.category}
                 </span>
               </div>
               {project.liveUrl && (
-                <span className="inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] text-text-secondary border border-border/70 dark:border-white/[0.06]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-success" />
+                <span className="inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   Live Product
                 </span>
               )}
             </div>
 
             {/* Project Title */}
-            <h3 className="text-2xl sm:text-[28px] font-semibold text-text-primary tracking-[-0.035em] mt-4 leading-snug">
+            <h3 className="text-2xl sm:text-[28px] font-semibold text-text-primary dark:text-[#F4F4F6] tracking-[-0.035em] mt-4 leading-snug">
               {project.name}
             </h3>
 
             {/* Subtext / Summary */}
-            <p className="mt-3 text-sm sm:text-[15px] text-text-secondary leading-[1.62] max-w-xl font-normal">
+            <p className="mt-3 text-sm sm:text-[15px] text-text-secondary dark:text-[#A0A3AC] leading-[1.62] max-w-xl font-normal">
               {project.summary}
             </p>
 
-            {/* Inline Stat Chips */}
+            {/* Structured Metric Chips */}
             {project.metrics && (
-              <div className="mt-6 sm:mt-8 grid grid-cols-2 min-[440px]:flex min-[440px]:flex-wrap items-baseline gap-4 sm:gap-8">
+              <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-2.5 sm:gap-3">
                 {project.metrics.map((m, mIdx) => (
-                  <div key={m.label} className="flex flex-col">
+                  <div
+                    key={m.label}
+                    className="px-3.5 py-2 rounded-lg bg-surface/70 dark:bg-white/[0.03] border border-border/80 dark:border-white/[0.06] flex flex-col"
+                  >
                     <span
-                      className={`text-2xl sm:text-3xl font-semibold font-sans tracking-[-0.03em] tabular-nums ${
-                        mIdx === 0 ? "text-accent" : "text-text-primary"
+                      className={`text-lg sm:text-xl font-bold font-sans tracking-tight tabular-nums ${
+                        mIdx === 0 ? "text-accent dark:text-[#E5A93C]" : "text-text-primary dark:text-[#F4F4F6]"
                       }`}
                     >
                       {m.value}
                     </span>
-                    <span className="text-[12px] font-sans text-text-muted mt-0.5 tracking-normal">
+                    <span className="text-[11px] font-sans text-text-muted dark:text-[#A0A3AC] tracking-tight">
                       {m.label}
                     </span>
                   </div>
@@ -81,10 +85,10 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
 
             {/* Tech Tags */}
             <div className="mt-6 flex flex-wrap gap-1.5">
-              {project.technologies.slice(0, 4).map((tech) => (
+              {project.technologies.slice(0, 5).map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/80 dark:bg-white/[0.04] text-text-secondary border border-border/60 dark:border-white/[0.06]"
+                  className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/90 dark:bg-white/[0.04] text-text-secondary dark:text-[#A0A3AC] border border-border/70 dark:border-white/[0.06]"
                 >
                   {tech}
                 </span>
@@ -96,12 +100,12 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           <div className="mt-8 pt-6 border-t border-border/70 dark:border-white/[0.06] flex items-center justify-between gap-4">
             <Link
               href={`/work/${project.slug}`}
-              className="group/link inline-flex items-center gap-1.5 py-2 min-h-[44px] text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+              className="group/link inline-flex items-center gap-2 py-2 min-h-[44px] text-[13.5px] font-semibold text-text-primary dark:text-[#F4F4F6] hover:text-accent dark:hover:text-[#E5A93C] transition-colors"
             >
-              <span>View Case Study</span>
+              <span>Explore Full Case Study</span>
               <ArrowRight
                 size={14}
-                className="group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5 transition-transform duration-200 ease-out"
+                className="group-hover/link:translate-x-1 transition-transform duration-200 ease-out"
               />
             </Link>
 
@@ -110,10 +114,10 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-2 min-h-[40px] rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 text-[12.5px] font-medium px-3.5 py-2 min-h-[38px] rounded-lg bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary dark:text-[#F4F4F6] border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
               >
-                <span>Live Demo</span>
-                <ArrowUpRight size={13} className="text-text-muted" />
+                <span>Live Site</span>
+                <ArrowUpRight size={13} className="text-text-muted dark:text-[#A0A3AC]" />
               </a>
             )}
           </div>
@@ -121,46 +125,44 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
 
         {/* Right Column: Embedded Screenshot Preview */}
         <div className="lg:w-[50%] p-4 sm:p-6 lg:p-8 flex items-center justify-center order-1 lg:order-2">
-          <div
-            className="relative w-full aspect-[16/10] bg-neutral-900 rounded-lg overflow-hidden border border-border/80 dark:border-white/[0.07] shadow-xs group/preview cursor-pointer"
+          <Link
+            href={`/work/${project.slug}`}
+            className="relative w-full aspect-[16/10] bg-neutral-900 rounded-xl overflow-hidden border border-border/80 dark:border-white/[0.08] shadow-xs group/preview cursor-pointer block"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             {/* Minimal Browser Top Bar */}
-            <div className="bg-bg-subtle/95 px-3 py-1.5 border-b border-border/70 dark:border-white/[0.06] flex items-center justify-between z-20 relative">
+            <div className="bg-bg-subtle/95 dark:bg-[#16171E] px-3.5 py-2 border-b border-border/70 dark:border-white/[0.06] flex items-center justify-between z-20 relative">
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
-                <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
-                <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/60 dark:bg-red-500/40" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60 dark:bg-amber-500/40" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60 dark:bg-emerald-500/40" />
               </div>
-              <div className="text-[10.5px] font-sans font-medium text-text-muted truncate max-w-[170px] px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04]">
-                {project.liveUrl
-                  ? project.liveUrl.replace("https://", "").replace("www.", "")
-                  : "preview"}
+              <div className="text-[11px] font-mono text-text-muted dark:text-[#A0A3AC] truncate max-w-[200px] px-2.5 py-0.5 rounded-full bg-surface dark:bg-white/[0.04] border border-border/60 dark:border-white/[0.06] flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span>{project.liveUrl ? project.liveUrl.replace("https://", "").replace("www.", "") : "preview"}</span>
               </div>
-              <div className="w-4 flex justify-end">
+              <div className="w-5 flex justify-end">
                 <ExternalLink
-                  size={10}
-                  className="text-text-muted group-hover/preview:text-text-primary transition-colors"
+                  size={12}
+                  className="text-text-muted dark:text-[#A0A3AC] group-hover/preview:text-accent dark:group-hover/preview:text-[#E5A93C] transition-colors"
                 />
               </div>
             </div>
 
-            {/* Screenshot with subtle restrained hover scaling */}
-            <div className="relative w-full h-[calc(100%-25px)] overflow-hidden bg-neutral-100 dark:bg-neutral-950">
-              <img
+            {/* Screenshot */}
+            <div className="relative w-full h-[calc(100%-29px)] overflow-hidden bg-neutral-100 dark:bg-neutral-950">
+              <Image
                 src={project.image}
                 alt={`${project.name} — custom software interface preview`}
-                width={1200}
-                height={750}
-                loading="lazy"
-                decoding="async"
-                className={`w-full h-full object-cover object-top transition-transform duration-500 ease-out will-change-transform ${
-                  isHovered && !shouldReduceMotion ? "scale-[1.02]" : "scale-100"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className={`object-cover object-top transition-transform duration-500 ease-out will-change-transform ${
+                  isHovered && !shouldReduceMotion ? "scale-[1.03]" : "scale-100"
                 }`}
               />
             </div>
-          </div>
+          </Link>
         </div>
       </motion.div>
     );
@@ -175,91 +177,92 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="lg:col-span-6 group relative flex flex-col justify-between bg-card rounded-xl p-5 sm:p-7 transition-all duration-300 border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md"
+      className="lg:col-span-6 group relative flex flex-col justify-between bg-card dark:bg-[#121318] rounded-2xl p-5 sm:p-7 transition-all duration-300 border border-border/80 dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/[0.16] hover:shadow-md"
     >
       <div>
         {/* Top Header: Year, Category & Live Indicator */}
         <div className="flex items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-[12px] font-sans text-accent font-semibold">2026</span>
+            <span className="text-[12px] font-mono text-accent dark:text-[#E5A93C] font-semibold">2026</span>
             <span className="text-text-muted/40">·</span>
-            <span className="text-[12px] font-sans text-text-muted font-medium">
+            <span className="text-[12px] font-sans text-text-muted dark:text-[#A0A3AC] font-medium">
               {project.category}
             </span>
           </div>
           {project.liveUrl && (
-            <span className="inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] text-text-secondary border border-border/70 dark:border-white/[0.06]">
-              <span className="w-1.5 h-1.5 rounded-full bg-success" />
+            <span className="inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               Live Product
             </span>
           )}
         </div>
 
         {/* Embedded Browser Screenshot with restrained hover scaling */}
-        <div
-          className="relative aspect-[16/10] bg-neutral-900 rounded-lg overflow-hidden border border-border/80 dark:border-white/[0.07] shadow-xs group/preview cursor-pointer"
+        <Link
+          href={`/work/${project.slug}`}
+          className="relative aspect-[16/10] bg-neutral-900 rounded-xl overflow-hidden border border-border/80 dark:border-white/[0.08] shadow-xs group/preview cursor-pointer block"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Minimal Browser Top Bar */}
-          <div className="bg-bg-subtle/95 px-3 py-1.5 border-b border-border/70 dark:border-white/[0.06] flex items-center justify-between z-20 relative">
+          <div className="bg-bg-subtle/95 dark:bg-[#16171E] px-3.5 py-2 border-b border-border/70 dark:border-white/[0.06] flex items-center justify-between z-20 relative">
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
-              <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
-              <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/60 dark:bg-red-500/40" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60 dark:bg-amber-500/40" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60 dark:bg-emerald-500/40" />
             </div>
-            <div className="text-[10.5px] font-sans font-medium text-text-muted truncate max-w-[150px] px-2 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04]">
-              {project.liveUrl
-                ? project.liveUrl.replace("https://", "").replace("www.", "")
-                : "preview"}
+            <div className="text-[11px] font-mono text-text-muted dark:text-[#A0A3AC] truncate max-w-[160px] px-2.5 py-0.5 rounded-full bg-surface dark:bg-white/[0.04] border border-border/60 dark:border-white/[0.06] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>{project.liveUrl ? project.liveUrl.replace("https://", "").replace("www.", "") : "preview"}</span>
             </div>
-            <div className="w-4 flex justify-end">
+            <div className="w-5 flex justify-end">
               <ExternalLink
-                size={10}
-                className="text-text-muted group-hover/preview:text-text-primary transition-colors"
+                size={12}
+                className="text-text-muted dark:text-[#A0A3AC] group-hover/preview:text-accent dark:group-hover/preview:text-[#E5A93C] transition-colors"
               />
             </div>
           </div>
 
           {/* Screenshot */}
-          <div className="relative w-full h-[calc(100%-25px)] overflow-hidden bg-neutral-100 dark:bg-neutral-950">
-            <img
+          <div className="relative w-full h-[calc(100%-29px)] overflow-hidden bg-neutral-100 dark:bg-neutral-950">
+            <Image
               src={project.image}
               alt={`${project.name} — custom software interface preview`}
-              width={1200}
-              height={750}
-              loading="lazy"
-              decoding="async"
-              className={`w-full h-full object-cover object-top transition-transform duration-500 ease-out will-change-transform ${
-                isHovered && !shouldReduceMotion ? "scale-[1.02]" : "scale-100"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className={`object-cover object-top transition-transform duration-500 ease-out will-change-transform ${
+                isHovered && !shouldReduceMotion ? "scale-[1.03]" : "scale-100"
               }`}
             />
           </div>
-        </div>
+        </Link>
 
         {/* Project Title */}
-        <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary tracking-[-0.03em] mt-5 leading-snug">
+        <h3 className="text-xl sm:text-[22px] font-semibold text-text-primary dark:text-[#F4F4F6] tracking-[-0.03em] mt-5 leading-snug">
           {project.name}
         </h3>
 
         {/* Summary */}
-        <p className="mt-2 text-sm sm:text-[14.5px] text-text-secondary line-clamp-2 leading-[1.6] font-normal">
+        <p className="mt-2 text-sm sm:text-[14.5px] text-text-secondary dark:text-[#A0A3AC] line-clamp-2 leading-[1.6] font-normal">
           {project.summary}
         </p>
 
-        {/* Metrics */}
+        {/* Structured Metric Chips */}
         {project.metrics && (
-          <div className="mt-5 grid grid-cols-2 min-[440px]:flex min-[440px]:flex-wrap items-baseline gap-4 sm:gap-6">
+          <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:gap-3">
             {project.metrics.map((m, mIdx) => (
-              <div key={m.label} className="flex flex-col">
+              <div
+                key={m.label}
+                className="px-3 py-1.5 rounded-lg bg-surface/70 dark:bg-white/[0.03] border border-border/80 dark:border-white/[0.06] flex flex-col"
+              >
                 <span
-                  className={`text-xl sm:text-2xl font-semibold font-sans tracking-[-0.03em] tabular-nums ${
-                    mIdx === 0 ? "text-accent" : "text-text-primary"
+                  className={`text-base sm:text-lg font-bold font-sans tracking-tight tabular-nums ${
+                    mIdx === 0 ? "text-accent dark:text-[#E5A93C]" : "text-text-primary dark:text-[#F4F4F6]"
                   }`}
                 >
                   {m.value}
                 </span>
-                <span className="text-[12px] font-sans text-text-muted mt-0.5">
+                <span className="text-[10.5px] font-sans text-text-muted dark:text-[#A0A3AC]">
                   {m.label}
                 </span>
               </div>
@@ -272,7 +275,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
           {project.technologies.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/80 dark:bg-white/[0.04] text-text-secondary border border-border/60 dark:border-white/[0.06]"
+              className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded bg-surface/90 dark:bg-white/[0.04] text-text-secondary dark:text-[#A0A3AC] border border-border/70 dark:border-white/[0.06]"
             >
               {tech}
             </span>
@@ -284,12 +287,12 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
       <div className="mt-6 pt-5 border-t border-border/70 dark:border-white/[0.06] flex items-center justify-between gap-4">
         <Link
           href={`/work/${project.slug}`}
-          className="group/link inline-flex items-center gap-1.5 py-2 min-h-[44px] text-[13.5px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+          className="group/link inline-flex items-center gap-2 py-2 min-h-[44px] text-[13.5px] font-semibold text-text-primary dark:text-[#F4F4F6] hover:text-accent dark:hover:text-[#E5A93C] transition-colors"
         >
-          <span>View Case Study</span>
+          <span>Explore Full Case Study</span>
           <ArrowRight
             size={14}
-            className="group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5 transition-transform duration-200 ease-out"
+            className="group-hover/link:translate-x-1 transition-transform duration-200 ease-out"
           />
         </Link>
 
@@ -298,13 +301,14 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-2 min-h-[40px] rounded-md bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 text-[12.5px] font-medium px-3.5 py-2 min-h-[38px] rounded-lg bg-surface hover:bg-surface-hover dark:bg-white/[0.04] dark:hover:bg-white/[0.08] text-text-primary dark:text-[#F4F4F6] border border-border/80 dark:border-white/[0.08] transition-colors shadow-2xs"
           >
-            <span>Live Demo</span>
-            <ArrowUpRight size={12} className="text-text-muted" />
+            <span>Live Site</span>
+            <ArrowUpRight size={12} className="text-text-muted dark:text-[#A0A3AC]" />
           </a>
         )}
       </div>
     </motion.div>
   );
 }
+
