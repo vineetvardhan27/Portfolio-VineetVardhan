@@ -1,333 +1,269 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   motion,
   useScroll,
-  useSpring,
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
 import {
   CheckCircle2,
   ArrowRight,
+  Lock,
 } from "lucide-react";
 import { useReducedMotion } from "@/lib/reduced-motion";
 
-// Custom animation curves & spring physics for bespoke craft feel
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
-const EASE_OUT_PANEL = [0.22, 1, 0.32, 1] as const;
 
-const SPRING_TACTILE = { type: "spring", stiffness: 350, damping: 22 } as const;
-const SPRING_CHECK = { type: "spring", stiffness: 320, damping: 20 } as const;
-const SPRING_STAGE_PILL = { type: "spring", stiffness: 380, damping: 28 } as const;
+// ═══════════════════════════════════════════════
+// DATA ARCHITECTURE: SINGLE SOURCE OF TRUTH
+// ═══════════════════════════════════════════════
 
-interface StageInfo {
+export interface StageData {
+  id: string;
   step: string;
+  stepNumber: number;
   name: string;
-  headline: string;
-  tagline: string;
-  projectFeatured: string;
-  projectCategory: string;
-  projectTech: string;
-  techStack: string[];
+  category: string;
+  browserUrl: string;
+  stageBadge: string;
+  heading: string;
+  lead: string;
+  supporting: string;
+  deliverablesHeading: string;
   deliverables: string[];
+  featuredProject: string;
+  technologyLabel: string;
+  statusLabel: string;
+  progressPercent: number;
+  isLive?: boolean;
 }
 
-const stageData: StageInfo[] = [
+const STAGES: StageData[] = [
   {
+    id: "understand",
     step: "01",
+    stepNumber: 1,
     name: "Understand",
-    headline:
-      "Understand the business, users, workflows, and constraints before writing a single line of code.",
-    tagline: "Translating business goals into a structured technical scope.",
-    projectFeatured: "System Discovery",
-    projectCategory: "Requirements & System Scope",
-    projectTech: "Architecture Blueprint",
-    techStack: ["Business Goals", "User Flows", "Data Model", "Constraints"],
+    category: "REQUIREMENTS & SYSTEM SCOPE",
+    browserUrl: "blueprint.internal/scope",
+    stageBadge: "01 · Discovery & Scope",
+    heading: "Understand",
+    lead: "Understand the business, users, workflows, and constraints before writing a single line of code.",
+    supporting: "Translating business goals into a structured technical scope.",
+    deliverablesHeading: "WHAT GETS BUILT:",
     deliverables: [
       "Discovery on target audience, revenue drivers, and friction points",
       "Information architecture, database schema, and route mapping",
       "Scope freeze with transparent deliverables and zero bloat",
     ],
+    featuredProject: "System Discovery",
+    technologyLabel: "Architecture Blueprint",
+    statusLabel: "25% COMPLETE",
+    progressPercent: 25,
   },
   {
+    id: "design",
     step: "02",
+    stepNumber: 2,
     name: "Design",
-    headline:
-      "Turn the requirements into a clean interface designed around usability, trust, and conversion.",
-    tagline: "Assembling the Hotel Greenery View direct booking experience.",
-    projectFeatured: "Hotel Greenery View",
-    projectCategory: "Hospitality & Direct Booking",
-    projectTech: "Next.js 14 + Sanity CMS",
-    techStack: ["Next.js 14", "Sanity CMS", "Tailwind CSS", "AIO · LLM SEO"],
+    category: "HOSPITALITY & DIRECT BOOKING",
+    browserUrl: "www.hotelgreeneryview.com",
+    stageBadge: "02 · Interface Design",
+    heading: "Design",
+    lead: "Turn the requirements into a clean interface designed around usability, trust, and conversion.",
+    supporting: "Assembling the Hotel Greenery View direct booking experience.",
+    deliverablesHeading: "WHAT GETS BUILT:",
     deliverables: [
-      "Bespoke high-converting room & suite exploration interface",
-      "Zero-commission direct inquiry & instant WhatsApp engine",
-      "Structured SEO & AI-friendly schema markup for LLM discovery",
+      "Bespoke high-converting room and suite exploration interface",
+      "Direct inquiry flows and instant WhatsApp booking integration",
+      "Structured SEO and AI-friendly schema markup for discoverability",
     ],
+    featuredProject: "Hotel Greenery View",
+    technologyLabel: "Next.js 14 + Sanity CMS",
+    statusLabel: "50% COMPLETE",
+    progressPercent: 50,
   },
   {
+    id: "build",
     step: "03",
+    stepNumber: 3,
     name: "Build",
-    headline:
-      "Engineer the product with reliable architecture, real data, and production-ready functionality.",
-    tagline: "Engineering the Grove PMS cloud property operating system.",
-    projectFeatured: "Grove PMS Cloud",
-    projectCategory: "Custom Hospitality ERP · PMS",
-    projectTech: "Next.js + Supabase (Postgres & RLS)",
-    techStack: ["Next.js 14", "Supabase", "TypeScript", "POS & Food Billing"],
+    category: "CUSTOM HOSPITALITY ERP · PMS",
+    browserUrl: "grovepms.vercel.app",
+    stageBadge: "03 · Full-Stack Build",
+    heading: "Build",
+    lead: "Engineer the product with reliable architecture, real data, and production-ready functionality.",
+    supporting: "Engineering the Grove PMS cloud property operating system.",
+    deliverablesHeading: "WHAT GETS BUILT:",
     deliverables: [
-      "Multi-tenant room matrix & guest lifecycle management",
-      "Integrated restaurant & food billing (POS) with room charging",
+      "Multi-tenant room matrix and guest lifecycle management",
+      "Integrated restaurant and food billing (POS) with room charging",
       "Real-time inventory tracking, staff dashboards, and tax billing",
     ],
+    featuredProject: "Grove PMS Cloud",
+    technologyLabel: "Next.js + Supabase (Postgres & RLS)",
+    statusLabel: "75% COMPLETE",
+    progressPercent: 75,
   },
   {
+    id: "launch",
     step: "04",
+    stepNumber: 4,
     name: "Launch",
-    headline:
-      "Test, optimize, deploy, and deliver a product that is ready for real users.",
-    tagline: "Shipping Anugra Travels and delivering completed production systems.",
-    projectFeatured: "Production Release",
-    projectCategory: "Production & Handover",
-    projectTech: "Global Vercel CDN",
-    techStack: ["Hotel Greenery", "Grove PMS", "Anugra Travels"],
+    category: "PRODUCTION & HANDOVER",
+    browserUrl: "production.systems/live",
+    stageBadge: "04 · Production Release",
+    heading: "Launch",
+    lead: "Test, optimize, deploy, and deliver a product that is ready for real users.",
+    supporting: "Shipping Anugra Travels and delivering completed production systems.",
+    deliverablesHeading: "WHAT GETS BUILT:",
     deliverables: [
-      "Production deployment with 98+ Core Web Vitals & CDN caching",
-      "EmailOctopus & Sanity CMS automated lead workflows",
-      "Complete codebase ownership and post-launch warranty",
+      "Production deployment with performance optimization and CDN caching",
+      "EmailOctopus and Sanity CMS workflows where configured",
+      "Codebase handover, documentation, and agreed post-launch support",
     ],
+    featuredProject: "Production Release",
+    technologyLabel: "Vercel Deployment",
+    statusLabel: "SHIPPED & LIVE",
+    progressPercent: 100,
+    isLive: true,
   },
 ];
 
-// Requirement cards organized in natural reading order
-const stage01Requirements = [
+// Requirement card nodes for Stage 01
+const STAGE01_CARDS = [
   {
-    id: "business-goal",
     label: "Business Goal",
-    title: "Direct Bookings",
-    desc: "Eliminate 18-25% OTA commissions",
     badge: "High Priority",
-    color: "border-border-accent/40 bg-accent-subtle text-accent",
+    title: "Direct Bookings",
+    desc: "Eliminate 18–25% OTA commissions",
+    badgeClass: "bg-accent/15 dark:bg-[#E5A93C]/15 text-accent dark:text-[#E5A93C] border border-accent/30 dark:border-[#E5A93C]/30",
   },
   {
-    id: "user-experience",
     label: "User Experience",
+    badge: "UX Flow",
     title: "Fast Mobile Exploration",
     desc: "Instant room & amenity filters",
-    badge: "UX Flow",
-    color: "border-border bg-surface text-text-secondary",
+    badgeClass: "bg-black/[0.04] dark:bg-white/[0.06] text-text-secondary dark:text-[#A0A3AC] border border-border/80 dark:border-white/[0.08]",
   },
   {
-    id: "content-engine",
     label: "Content Engine",
+    badge: "Headless CMS",
     title: "Sanity CMS",
     desc: "Seasonal rate & room updates",
-    badge: "Headless CMS",
-    color: "border-border bg-surface text-text-secondary",
+    badgeClass: "bg-black/[0.04] dark:bg-white/[0.06] text-text-secondary dark:text-[#A0A3AC] border border-border/80 dark:border-white/[0.08]",
   },
   {
-    id: "discoverability",
     label: "Discoverability",
-    title: "SEO & AI-Search (AIO)",
-    desc: "Top ranking in Google & LLMs",
     badge: "AIO Schema",
-    color: "border-border bg-surface text-text-secondary",
+    title: "SEO & AI-Search (AIO)",
+    desc: "Structured discovery across search engines and AI tools",
+    badgeClass: "bg-success/15 dark:bg-[#10B981]/15 text-success dark:text-[#10B981] border border-success/30 dark:border-[#10B981]/30",
   },
 ];
-
-// Animated percentage counter with smooth ease-out-expo number interpolation
-function AnimatedProgressCounter({
-  targetPercentage,
-  isLive,
-  reducedMotion,
-}: {
-  targetPercentage: number;
-  isLive: boolean;
-  reducedMotion: boolean;
-}) {
-  const [displayValue, setDisplayValue] = useState(targetPercentage);
-  const currentValRef = useRef(targetPercentage);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      setDisplayValue(targetPercentage);
-      currentValRef.current = targetPercentage;
-      return;
-    }
-
-    const startVal = currentValRef.current;
-    const endVal = targetPercentage;
-    const startTime = performance.now();
-    const duration = 480; // 480ms within the 150ms-700ms calibrated range
-
-    let animId: number;
-
-    function tick(now: number) {
-      const elapsed = now - startTime;
-      const progress = Math.min(1, elapsed / duration);
-      // easeOutExpo deceleration formula
-      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      const current = Math.round(startVal + (endVal - startVal) * ease);
-      setDisplayValue(current);
-      currentValRef.current = current;
-
-      if (progress < 1) {
-        animId = requestAnimationFrame(tick);
-      }
-    }
-
-    animId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(animId);
-  }, [targetPercentage, reducedMotion]);
-
-  if (isLive) {
-    return (
-      <span className="text-accent font-semibold inline-flex items-center gap-1.5 font-sans text-xs">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-        SHIPPED &amp; LIVE
-      </span>
-    );
-  }
-
-  return (
-    <span className="text-accent font-semibold tabular-nums font-sans text-xs">
-      {displayValue}% COMPLETE
-    </span>
-  );
-}
-
-// Rolling digit component for smooth stage counter transitions
-function AnimatedStageDigit({
-  digit,
-  reducedMotion,
-}: {
-  digit: string;
-  reducedMotion: boolean;
-}) {
-  if (reducedMotion) {
-    return <span>{digit}</span>;
-  }
-
-  return (
-    <span className="inline-block relative overflow-hidden h-[1.15em] align-top">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={digit}
-          initial={{ y: "80%", opacity: 0 }}
-          animate={{ y: "0%", opacity: 1 }}
-          exit={{ y: "-80%", opacity: 0 }}
-          transition={{ duration: 0.32, ease: EASE_OUT_EXPO }}
-          className="inline-block"
-        >
-          {digit}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-}
 
 export function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeStage, setActiveStage] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+
+  const prevProgressRef = useRef(0);
+  const prevStageRef = useRef(0);
   const shouldReduceMotion = useReducedMotion();
 
-  // Multi-viewport scroll progress tracking
+  // Multi-viewport desktop scroll tracking (~400vh container)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Smooth scroll spring for continuous scrubbing of visual indicators
-  const smoothScrollProgress = useSpring(scrollYProgress, {
-    stiffness: 280,
-    damping: 32,
-    restDelta: 0.0005,
-  });
-
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // 1. Direction detection
+    const diff = latest - prevProgressRef.current;
+    if (Math.abs(diff) > 0.003) {
+      setDirection(diff > 0 ? 1 : -1);
+      prevProgressRef.current = latest;
+    }
+
+    // 2. Deterministic stage threshold mapping
+    let nextStage = 0;
     if (latest < 0.25) {
-      setActiveStage(0);
-    } else if (latest < 0.50) {
-      setActiveStage(1);
+      nextStage = 0;
+    } else if (latest < 0.5) {
+      nextStage = 1;
     } else if (latest < 0.75) {
-      setActiveStage(2);
+      nextStage = 2;
     } else {
-      setActiveStage(3);
+      nextStage = 3;
+    }
+
+    if (nextStage !== prevStageRef.current) {
+      setActiveStage(nextStage);
+      prevStageRef.current = nextStage;
     }
   });
 
-  // Narrative variants (Right Column)
-  const narrativeContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.07,
-        delayChildren: shouldReduceMotion ? 0 : 0.04,
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: shouldReduceMotion ? 0 : -8,
-      transition: {
-        duration: 0.22,
-        ease: EASE_OUT_EXPO,
-      },
-    },
+  // Smooth scroll navigation to stage center
+  const handleStageClick = (stageIndex: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const containerTop = rect.top + scrollTop;
+    const containerHeight = rect.height;
+    const viewportHeight = window.innerHeight;
+    const scrollSpan = containerHeight - viewportHeight;
+
+    const stageCenters = [0.125, 0.375, 0.625, 0.875];
+    const targetScroll = containerTop + stageCenters[stageIndex] * scrollSpan;
+
+    setDirection(stageIndex >= activeStage ? 1 : -1);
+    setActiveStage(stageIndex);
+    prevStageRef.current = stageIndex;
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: shouldReduceMotion ? "auto" : "smooth",
+    });
   };
 
-  const narrativeItemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 14 },
-    visible: {
-      opacity: 1,
+  const currentStage = STAGES[activeStage];
+
+  // Bidirectional directional variants
+  const stageTransitionVariants = {
+    enter: (dir: number) => ({
+      y: shouldReduceMotion ? 0 : dir > 0 ? 28 : -28,
+      opacity: 0,
+    }),
+    center: {
       y: 0,
-      transition: {
-        duration: 0.42,
-        ease: EASE_OUT_EXPO,
-      },
-    },
-  };
-
-  // Canvas Stage Card Variants (Left Column) — slightly weightier deceleration
-  const canvasStageVariants = {
-    hidden: {
-      opacity: 0,
-      scale: shouldReduceMotion ? 1 : 0.97,
-      y: shouldReduceMotion ? 0 : 12,
-    },
-    visible: {
       opacity: 1,
-      scale: 1,
-      y: 0,
       transition: {
-        duration: shouldReduceMotion ? 0.2 : 0.55,
-        ease: EASE_OUT_PANEL,
+        y: { type: "spring", stiffness: 260, damping: 28 },
+        opacity: { duration: 0.32, ease: EASE_OUT_EXPO },
       },
     },
-    exit: {
+    exit: (dir: number) => ({
+      y: shouldReduceMotion ? 0 : dir > 0 ? -28 : 28,
       opacity: 0,
-      scale: shouldReduceMotion ? 1 : 1.02,
-      y: shouldReduceMotion ? 0 : -10,
       transition: {
-        duration: shouldReduceMotion ? 0.15 : 0.3,
-        ease: EASE_OUT_EXPO,
+        y: { type: "spring", stiffness: 260, damping: 28 },
+        opacity: { duration: 0.22, ease: EASE_OUT_EXPO },
       },
-    },
+    }),
   };
-
-  const currentStage = stageData[activeStage];
-  const targetPercent = (activeStage + 1) * 25;
 
   return (
     <section
       id="process"
       ref={containerRef}
-      className="relative bg-bg border-t border-border/80 dark:border-white/[0.06]"
+      className="relative bg-bg dark:bg-[#070709] border-t border-border/80 dark:border-white/[0.08] text-text-primary dark:text-[#F4F4F6] transition-colors duration-200"
     >
-      {/* Top Section Header */}
-      <div className="pt-20 pb-12 sm:pt-28 sm:pb-16 border-b border-border/80 dark:border-white/[0.06] bg-bg-subtle/40">
+      {/* ═══════════════════════════════════════════════
+          SECTION HEADER (Shared Anchor)
+          ═══════════════════════════════════════════════ */}
+      <div className="pt-20 pb-10 sm:pt-28 sm:pb-14 border-b border-border/80 dark:border-white/[0.06] bg-bg dark:bg-[#070709] transition-colors duration-200">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
@@ -336,923 +272,741 @@ export function Process() {
             transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 text-[12px] font-mono font-medium tracking-[0.04em] uppercase text-accent dark:text-[#E5A93C] mb-3.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent dark:bg-[#E5A93C]" />
               <span>04 · Development Process</span>
             </div>
-            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
+
+            {/* Editorial Heading */}
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary dark:text-[#F4F4F6] tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
               From idea to a production-ready product.
             </h2>
-            <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary font-normal leading-[1.6] max-w-2xl">
+
+            {/* Description */}
+            <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary dark:text-[#A0A3AC] font-normal leading-[1.6] max-w-2xl">
               Watch real applications evolve through every phase of the engineering lifecycle—from initial discovery to live production deployment.
             </p>
           </motion.div>
         </div>
       </div>
 
-      {/* Desktop Sticky Scroll Showcase (Persistent Browser Frame) */}
-      <div className="hidden lg:block relative min-h-[380vh]">
-        <div className="sticky top-20 h-[calc(100vh-5rem)] flex items-center">
-          <div className="container-custom w-full grid grid-cols-12 gap-12 items-center">
+      {/* ═══════════════════════════════════════════════
+          DESKTOP PINNED 4-STAGE EXPERIENCE (~400vh)
+          ═══════════════════════════════════════════════ */}
+      <div className="hidden lg:block relative min-h-[400vh]">
+        <div className="sticky top-0 h-screen flex flex-col justify-center items-center py-6">
+          <div className="w-full max-w-7xl mx-auto px-6 xl:px-8 space-y-6">
             
-            {/* LEFT COLUMN: Persistent Browser / Product Frame */}
-            <div className="col-span-7 h-[560px]">
-              <div className="w-full h-full bg-card rounded-xl border border-border/80 dark:border-white/[0.07] shadow-xs flex flex-col justify-between overflow-hidden relative transition-all">
-                
-                {/* Persistent Browser Window Header */}
-                <div className="bg-bg-subtle/80 px-4 py-2.5 border-b border-border/70 dark:border-white/[0.06] flex items-center justify-between z-30">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
-                      <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
-                      <span className="w-2 h-2 rounded-full bg-border-hover dark:bg-white/[0.15]" />
-                    </div>
-
-                    {/* Dynamic Browser Address Bar */}
-                    <div className="px-3 py-0.5 rounded bg-surface/70 dark:bg-white/[0.04] border border-border/60 dark:border-white/[0.06] text-[11px] font-mono text-text-secondary flex items-center gap-1.5 shadow-2xs overflow-hidden">
-                      <span className="text-text-muted">https://</span>
-                      <AnimatePresence mode="popLayout" initial={false}>
-                        <motion.span
-                          key={activeStage}
-                          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
-                          transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
-                          className="font-medium text-text-primary inline-block"
-                        >
-                          {activeStage === 0 && "blueprint.internal/scope"}
-                          {activeStage === 1 && "hotelgreeneryview.com"}
-                          {activeStage === 2 && "grovepms.vercel.app"}
-                          {activeStage === 3 && "production.systems/live"}
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
-                  </div>
-
-                  {/* Stage Dynamic Pill Badge */}
-                  <div className="flex items-center">
-                    <motion.div
-                      layout
-                      layoutId="process-stage-pill"
-                      transition={shouldReduceMotion ? { duration: 0.15 } : SPRING_STAGE_PILL}
-                      className="text-[11.5px] font-sans font-medium px-2.5 py-0.5 rounded border border-border-accent/40 bg-accent-subtle text-accent flex items-center gap-1.5 transition-colors"
+            {/* Desktop Stage Selector Navigation */}
+            <div className="flex items-center justify-between pb-2 border-b border-border/80 dark:border-white/[0.06]">
+              <div className="flex items-center gap-2">
+                {STAGES.map((st, idx) => {
+                  const isActive = activeStage === idx;
+                  return (
+                    <button
+                      key={st.id}
+                      onClick={() => handleStageClick(idx)}
+                      className={`group relative px-4 py-1.5 rounded-full text-xs font-mono font-medium transition-all duration-200 flex items-center gap-2 ${
+                        isActive
+                          ? "bg-card dark:bg-white/[0.1] text-text-primary dark:text-[#F4F4F6] border border-border/80 dark:border-white/[0.15] shadow-xs"
+                          : "text-text-muted dark:text-[#737781] hover:text-text-primary dark:hover:text-[#A0A3AC] hover:bg-surface dark:hover:bg-white/[0.04]"
+                      }`}
+                      aria-label={`Jump to stage ${st.step}: ${st.name}`}
                     >
-                      {activeStage === 0 && <span>01 · Discovery &amp; Scope</span>}
-                      {activeStage === 1 && (
-                        <>
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                          <span>02 · Interface Design</span>
-                        </>
-                      )}
-                      {activeStage === 2 && (
-                        <>
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                          <span>03 · Full-Stack Build</span>
-                        </>
-                      )}
-                      {activeStage === 3 && (
-                        <>
-                          <span className="w-1.5 h-1.5 rounded-full bg-success" />
-                          <span>04 · Production Release</span>
-                        </>
-                      )}
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Persistent Browser Canvas Stage Area with Overlapping Crossfade */}
-                <div className="relative flex-1 p-6 flex flex-col justify-center items-center overflow-hidden bg-bg-subtle/40 dark:bg-navy-950/40 min-h-[440px]">
-                  <AnimatePresence mode="popLayout" initial={false}>
-                    
-                    {/* STAGE 01: UNDERSTAND */}
-                    {activeStage === 0 && (
-                      <motion.div
-                        key="stage-understand"
-                        variants={canvasStageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="w-full max-w-lg space-y-4"
-                      >
-                        <motion.div
-                          initial={{ opacity: 0, y: -6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-                          className="text-center"
-                        >
-                          <span className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.02em]">
-                            BUSINESS &amp; TECHNICAL REQUIREMENTS
-                          </span>
-                        </motion.div>
-
-                        {/* Assembling Requirement Nodes in Natural Reading Order */}
-                        <div className="grid grid-cols-2 gap-3">
-                          {stage01Requirements.map((req, i) => (
-                            <motion.div
-                              key={req.id}
-                              initial={
-                                shouldReduceMotion
-                                  ? { opacity: 0 }
-                                  : { opacity: 0, y: 14, scale: 0.96 }
-                              }
-                              animate={{ opacity: 1, y: 0, scale: 1 }}
-                              transition={{
-                                delay: shouldReduceMotion ? 0 : i * 0.085, // staggered reading order: 0ms, 85ms, 170ms, 255ms
-                                duration: 0.38,
-                                ease: EASE_OUT_EXPO,
-                              }}
-                              className="p-3.5 bg-white dark:bg-card rounded-xl border border-border shadow-2xs space-y-1.5"
-                            >
-                              <div className="flex items-center justify-between text-[11px] font-sans font-medium text-text-muted">
-                                <span>{req.label}</span>
-                                <motion.span
-                                  initial={
-                                    shouldReduceMotion
-                                      ? {}
-                                      : { scale: 0.7, opacity: 0 }
-                                  }
-                                  animate={{ scale: 1, opacity: 1 }}
-                                  transition={{
-                                    delay: shouldReduceMotion
-                                      ? 0
-                                      : i * 0.085 + 0.12,
-                                    ...SPRING_TACTILE,
-                                  }}
-                                  className={`px-1.5 py-0.5 rounded font-semibold ${req.color}`}
-                                >
-                                  {req.badge}
-                                </motion.span>
-                              </div>
-                              <div className="text-xs font-semibold text-text-primary">
-                                {req.title}
-                              </div>
-                              <div className="text-[11px] text-text-secondary leading-tight">
-                                {req.desc}
-                              </div>
-                            </motion.div>
-                          ))}
-                        </div>
-
-                        {/* Bottom Status Bar */}
-                        <motion.div
-                          initial={
-                            shouldReduceMotion
-                              ? { opacity: 0 }
-                              : { opacity: 0, y: 10 }
-                          }
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            delay: shouldReduceMotion ? 0 : 0.36,
-                            duration: 0.35,
-                            ease: EASE_OUT_EXPO,
-                          }}
-                          className="p-3 bg-white dark:bg-card rounded-xl border border-border flex items-center justify-between text-xs text-text-secondary shadow-2xs"
-                        >
-                          <span className="font-sans font-medium text-[11.5px]">Technical Scope:</span>
-                          <span className="font-semibold text-text-primary flex items-center gap-1.5">
-                            Next.js 14 + Sanity + Tailwind{" "}
-                            <motion.span
-                              initial={
-                                shouldReduceMotion
-                                  ? {}
-                                  : { scale: 0, rotate: -35 }
-                              }
-                              animate={{ scale: 1, rotate: 0 }}
-                              transition={{
-                                delay: shouldReduceMotion ? 0 : 0.44,
-                                ...SPRING_CHECK,
-                              }}
-                              className="inline-flex"
-                            >
-                              <CheckCircle2
-                                size={13}
-                                className="text-emerald-600 dark:text-emerald-400"
-                              />
-                            </motion.span>
-                          </span>
-                        </motion.div>
-                      </motion.div>
-                    )}
-
-                    {/* STAGE 02: DESIGN */}
-                    {activeStage === 1 && (
-                      <motion.div
-                        key="stage-design"
-                        variants={canvasStageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="w-full max-w-lg space-y-3"
-                      >
-                        {/* Real Project Card Mockup: Hotel Greenery View */}
-                        <div className="bg-white dark:bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5 space-y-4">
-                          {/* Hotel Brand Header */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: -8 }
-                            }
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-                            className="flex items-center justify-between pb-3 border-b border-border"
-                          >
-                            <div className="flex items-center gap-2">
-                              <span className="text-base">🌿</span>
-                              <span className="font-semibold text-sm text-text-primary">
-                                Hotel Greenery View
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <motion.span
-                                initial={
-                                  shouldReduceMotion
-                                    ? {}
-                                    : { scale: 0.7, opacity: 0 }
-                                }
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={SPRING_TACTILE}
-                                className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
-                              >
-                                Next.js UI + Sanity
-                              </motion.span>
-                            </div>
-                          </motion.div>
-
-                          {/* Hotel Hero + Direct Booking CTA */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: 10 }
-                            }
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: shouldReduceMotion ? 0 : 0.08,
-                              duration: 0.38,
-                              ease: EASE_OUT_EXPO,
-                            }}
-                            className="p-4 rounded-xl bg-bg-subtle border border-border/80 space-y-2.5"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="text-xs font-semibold text-text-primary">
-                                Luxury Stay in Nature's Lap
-                              </span>
-                              <motion.span
-                                initial={
-                                  shouldReduceMotion
-                                    ? {}
-                                    : { scale: 0.7, opacity: 0 }
-                                }
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ delay: 0.15, ...SPRING_TACTILE }}
-                                className="text-[10.5px] text-emerald-600 dark:text-emerald-400 font-sans font-semibold"
-                              >
-                                +65% Direct Inquiries
-                              </motion.span>
-                            </div>
-                            <div className="text-xs text-text-secondary leading-relaxed font-normal">
-                              Experience tranquil mountain vistas with direct room reservations, live amenity filters, and instant WhatsApp booking.
-                            </div>
-                            <div className="flex gap-2 pt-1">
-                              <span className="px-2.5 py-1 bg-accent text-[#0B0C0E] rounded text-xs font-semibold shadow-2xs cursor-default">
-                                Direct Booking CTA
-                              </span>
-                              <span className="px-2.5 py-1 bg-surface text-text-primary border border-border rounded text-xs font-medium cursor-default">
-                                WhatsApp Direct
-                              </span>
-                            </div>
-                          </motion.div>
-
-                          {/* Room Cards Showcase */}
-                          <div className="grid grid-cols-2 gap-2.5">
-                            <motion.div
-                              initial={
-                                shouldReduceMotion
-                                  ? { opacity: 0 }
-                                  : { opacity: 0, y: 10 }
-                              }
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{
-                                delay: shouldReduceMotion ? 0 : 0.16,
-                                duration: 0.35,
-                                ease: EASE_OUT_EXPO,
-                              }}
-                              className="p-3 bg-surface rounded-lg border border-border space-y-1"
-                            >
-                              <div className="text-[10.5px] text-text-muted font-sans font-medium">Deluxe Suite</div>
-                              <div className="text-xs font-bold text-text-primary">Mountain View</div>
-                              <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Live Availability Sync</div>
-                            </motion.div>
-                            <motion.div
-                              initial={
-                                shouldReduceMotion
-                                  ? { opacity: 0 }
-                                  : { opacity: 0, y: 10 }
-                              }
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{
-                                delay: shouldReduceMotion ? 0 : 0.24,
-                                duration: 0.35,
-                                ease: EASE_OUT_EXPO,
-                              }}
-                              className="p-3 bg-surface rounded-lg border border-border space-y-1"
-                            >
-                              <div className="text-[10.5px] text-text-muted font-sans font-medium">Executive Room</div>
-                              <div className="text-xs font-bold text-text-primary">Garden Terrace</div>
-                              <div className="text-[10px] text-accent font-medium">Instant Confirmation</div>
-                            </motion.div>
-                          </div>
-                        </div>
-
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.3, duration: 0.3 }}
-                          className="flex items-center justify-between text-xs text-text-muted font-sans px-1"
-                        >
-                          <span>SEO &amp; AI-Friendly Schema: Active</span>
-                          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">100% Mobile Ready</span>
-                        </motion.div>
-                      </motion.div>
-                    )}
-
-                    {/* STAGE 03: BUILD */}
-                    {activeStage === 2 && (
-                      <motion.div
-                        key="stage-build"
-                        variants={canvasStageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="w-full max-w-lg space-y-3"
-                      >
-                        {/* Real Project Card Mockup: Grove PMS */}
-                        <div className="bg-white dark:bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5 space-y-3.5">
-                          {/* PMS Header Bar */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: -8 }
-                            }
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-                            className="flex items-center justify-between pb-3 border-b border-border"
-                          >
-                            <div className="flex items-center gap-2">
-                              <span className="text-base">🏨</span>
-                              <span className="font-semibold text-sm text-text-primary">
-                                Grove PMS Cloud
-                              </span>
-                            </div>
-                            <motion.span
-                              initial={
-                                shouldReduceMotion
-                                  ? {}
-                                  : { scale: 0.7, opacity: 0 }
-                              }
-                              animate={{ scale: 1, opacity: 1 }}
-                              transition={SPRING_TACTILE}
-                              className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20"
-                            >
-                              Next.js + Supabase
-                            </motion.span>
-                          </motion.div>
-
-                          {/* PMS Metrics Row */}
-                          <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                            {[
-                              { label: "Room Matrix", val: "Live Sync", color: "text-text-primary" },
-                              { label: "Food Billing", val: "POS Engine", color: "text-emerald-600 dark:text-emerald-400" },
-                              { label: "Inventory", val: "Automated", color: "text-text-primary" },
-                            ].map((metric, idx) => (
-                              <motion.div
-                                key={metric.label}
-                                initial={
-                                  shouldReduceMotion
-                                    ? { opacity: 0 }
-                                    : { opacity: 0, y: 10 }
-                                }
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{
-                                  delay: shouldReduceMotion ? 0 : idx * 0.08,
-                                  duration: 0.35,
-                                  ease: EASE_OUT_EXPO,
-                                }}
-                                className="p-2 rounded-lg bg-bg-subtle border border-border"
-                              >
-                                <div className="text-[10px] text-text-muted font-sans font-medium">{metric.label}</div>
-                                <div className={`font-semibold mt-0.5 ${metric.color}`}>{metric.val}</div>
-                              </motion.div>
-                            ))}
-                          </div>
-
-                          {/* Live Operational Matrix Rows */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: 10 }
-                            }
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: shouldReduceMotion ? 0 : 0.2,
-                              duration: 0.38,
-                              ease: EASE_OUT_EXPO,
-                            }}
-                            className="p-3 rounded-lg bg-surface border border-border space-y-1.5"
-                          >
-                            <div className="flex items-center justify-between text-[11px] font-semibold text-text-primary">
-                              <span>Room &amp; Guest Lifecycle</span>
-                              <span className="text-[10.5px] text-emerald-600 dark:text-emerald-400 font-sans font-medium">Postgres RLS Secure</span>
-                            </div>
-                            <div className="space-y-1 text-xs">
-                              <div className="flex items-center justify-between p-1.5 rounded bg-white dark:bg-navy-950 border border-border/60">
-                                <span className="text-text-secondary text-[11px] font-sans">Room 102 (Deluxe)</span>
-                                <span className="text-emerald-700 dark:text-emerald-300 text-[10.5px] font-sans font-semibold">Checked-In • POS Active</span>
-                              </div>
-                              <div className="flex items-center justify-between p-1.5 rounded bg-white dark:bg-navy-950 border border-border/60">
-                                <span className="text-text-secondary text-[11px] font-sans">Room 204 (Suite)</span>
-                                <span className="text-accent text-[10.5px] font-sans font-semibold">Food Bill Added (₹1,450)</span>
-                              </div>
-                            </div>
-                          </motion.div>
-
-                          {/* Architecture Connector */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: 8 }
-                            }
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: shouldReduceMotion ? 0 : 0.3,
-                              duration: 0.35,
-                              ease: EASE_OUT_EXPO,
-                            }}
-                            className="p-2 rounded-lg bg-bg-subtle border border-border flex items-center justify-between text-[11px] font-sans font-medium text-text-secondary"
-                          >
-                            <span>UI (Next.js)</span>
-                            <span className="text-text-muted">→</span>
-                            <span>API Route Handler</span>
-                            <span className="text-text-muted">→</span>
-                            <span className="text-accent font-semibold">Supabase DB</span>
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* STAGE 04: LAUNCH */}
-                    {activeStage === 3 && (
-                      <motion.div
-                        key="stage-launch"
-                        variants={canvasStageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="w-full max-w-lg space-y-3"
-                      >
-                        <motion.div
-                          initial={
-                            shouldReduceMotion
-                              ? { opacity: 0 }
-                              : { opacity: 0, y: -6 }
-                          }
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-                          className="text-center mb-1"
-                        >
-                          <span className="text-[11.5px] font-sans font-medium tracking-[0.02em] text-[#35B77A]">
-                            3 PRODUCTION PRODUCTS DEPLOYED
-                          </span>
-                        </motion.div>
-
-                        {/* Trio of Live Completed Products with Staggered Reading Flow */}
-                        <div className="grid grid-cols-3 gap-2.5">
-                          {/* 1. Hotel Greenery View */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: 12, scale: 0.96 }
-                            }
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            transition={{
-                              delay: shouldReduceMotion ? 0 : 0.06,
-                              duration: 0.38,
-                              ease: EASE_OUT_EXPO,
-                            }}
-                            className="p-3 bg-white dark:bg-card rounded-xl border border-border shadow-xs flex flex-col justify-between space-y-2"
-                          >
-                            <div>
-                              <div className="flex items-center justify-between">
-                                <span className="text-xs">🌿</span>
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                              </div>
-                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight font-sans">
-                                Hotel Greenery
-                              </div>
-                              <div className="text-[10px] text-text-muted font-sans">Direct Booking</div>
-                            </div>
-                            <div className="pt-1.5 border-t border-border/80">
-                              <div className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 font-sans">+65% Inquiries</div>
-                              <div className="text-[9.5px] text-text-muted font-sans font-medium">&lt; 0.8s Load</div>
-                            </div>
-                          </motion.div>
-
-                          {/* 2. Grove PMS */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: 12, scale: 0.96 }
-                            }
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            transition={{
-                              delay: shouldReduceMotion ? 0 : 0.14,
-                              duration: 0.38,
-                              ease: EASE_OUT_EXPO,
-                            }}
-                            className="p-3 bg-white dark:bg-card rounded-xl border border-accent/40 shadow-xs flex flex-col justify-between space-y-2 ring-1 ring-accent/20"
-                          >
-                            <div>
-                              <div className="flex items-center justify-between">
-                                <span className="text-xs">🏨</span>
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                              </div>
-                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight font-sans">
-                                Grove PMS
-                              </div>
-                              <div className="text-[10px] text-text-muted font-sans">Hospitality ERP</div>
-                            </div>
-                            <div className="pt-1.5 border-t border-border/80">
-                              <div className="text-[10px] font-semibold text-accent font-sans">4.5 hrs/day</div>
-                              <div className="text-[9.5px] text-text-muted font-sans font-medium">100% In-House</div>
-                            </div>
-                          </motion.div>
-
-                          {/* 3. Anugra Travels */}
-                          <motion.div
-                            initial={
-                              shouldReduceMotion
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: 12, scale: 0.96 }
-                            }
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            transition={{
-                              delay: shouldReduceMotion ? 0 : 0.22,
-                              duration: 0.38,
-                              ease: EASE_OUT_EXPO,
-                            }}
-                            className="p-3 bg-white dark:bg-card rounded-xl border border-border shadow-xs flex flex-col justify-between space-y-2"
-                          >
-                            <div>
-                              <div className="flex items-center justify-between">
-                                <span className="text-xs">✈️</span>
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                              </div>
-                              <div className="text-xs font-semibold text-text-primary mt-1 leading-tight font-sans">
-                                Anugra Travels
-                              </div>
-                              <div className="text-[10px] text-text-muted font-sans">Travel Platform</div>
-                            </div>
-                            <div className="pt-1.5 border-t border-border/80">
-                              <div className="text-[10px] font-semibold text-accent font-sans">Sanity + Email</div>
-                              <div className="text-[9.5px] text-text-muted font-sans font-medium">SEO Ready</div>
-                            </div>
-                          </motion.div>
-                        </div>
-
-                        {/* Production Polish Footer Bar */}
-                        <motion.div
-                          initial={
-                            shouldReduceMotion
-                              ? { opacity: 0 }
-                              : { opacity: 0, y: 10 }
-                          }
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            delay: shouldReduceMotion ? 0 : 0.32,
-                            duration: 0.35,
-                            ease: EASE_OUT_EXPO,
-                          }}
-                          className="p-3 bg-surface rounded-xl border border-border flex items-center justify-between text-xs text-text-primary"
-                        >
-                          <span className="flex items-center gap-1.5 font-medium font-sans">
-                            <motion.span
-                              initial={
-                                shouldReduceMotion
-                                  ? {}
-                                  : { scale: 0, rotate: -35 }
-                              }
-                              animate={{ scale: 1, rotate: 0 }}
-                              transition={{
-                                delay: shouldReduceMotion ? 0 : 0.4,
-                                ...SPRING_CHECK,
-                              }}
-                              className="inline-flex"
-                            >
-                              <CheckCircle2
-                                size={15}
-                                className="text-emerald-600 dark:text-emerald-400"
-                              />
-                            </motion.span>
-                            Production Verified &amp; Deployed
-                          </span>
-                          <a
-                            href="#work"
-                            className="font-medium text-accent hover:text-accent-hover flex items-center gap-1 text-[11.5px] group font-sans"
-                          >
-                            <span>Explore Selected Work</span>
-                            <ArrowRight
-                              size={12}
-                              className="transition-transform duration-200 group-hover:translate-x-0.5"
-                            />
-                          </a>
-                        </motion.div>
-                      </motion.div>
-                    )}
-
-                  </AnimatePresence>
-                </div>
-
-                {/* Persistent Browser Window Footer with Scrubbed Scroll Progress Line */}
-                <div className="relative">
-                  {/* Subtle continuous scrubbed scroll progress line */}
-                  <motion.div
-                    style={{
-                      scaleX: smoothScrollProgress,
-                      transformOrigin: "left",
-                    }}
-                    className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent to-emerald-500 z-40"
-                  />
-
-                  <div className="bg-white dark:bg-card px-5 py-2.5 border-t border-border flex items-center justify-between text-xs text-text-secondary z-30">
-                    <div className="flex items-center gap-2">
-                      <span className="font-sans font-medium text-[11px] text-text-muted">STAGE:</span>
-                      <span className="font-semibold text-text-primary flex items-center gap-1 font-sans">
-                        <AnimatedStageDigit
-                          digit={currentStage.step}
-                          reducedMotion={shouldReduceMotion}
-                        />
-                        <span>/ 04 — {currentStage.name}</span>
+                      <span className={isActive ? "text-accent dark:text-[#E5A93C]" : "text-text-muted dark:text-[#737781]"}>
+                        {st.step}
                       </span>
-                    </div>
+                      <span className="font-sans font-semibold tracking-tight">{st.name}</span>
+                      {isActive && (
+                        <motion.span
+                          layoutId="desktop-active-dot"
+                          className="w-1.5 h-1.5 rounded-full bg-accent dark:bg-[#E5A93C]"
+                        />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
 
-                    <div className="flex items-center gap-2 font-sans font-medium text-[11px]">
-                      <span className="text-text-muted">STATUS:</span>
-                      <AnimatedProgressCounter
-                        targetPercentage={targetPercent}
-                        isLive={activeStage === 3}
-                        reducedMotion={shouldReduceMotion}
-                      />
-                    </div>
-                  </div>
-                </div>
-
+              {/* Status Indicator */}
+              <div className="flex items-center gap-2 text-xs font-mono text-text-muted dark:text-[#737781]">
+                <span>STAGE:</span>
+                <span className="text-accent dark:text-[#E5A93C] font-semibold">{currentStage.step} / 04</span>
               </div>
             </div>
 
-            {/* RIGHT COLUMN: Interactive Story Narrative with Staggered Cascades */}
-            <div className="col-span-5 pl-2 relative">
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.div
-                  key={activeStage}
-                  variants={narrativeContainerVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="space-y-7"
-                >
-                  {/* Step indicator */}
-                  <motion.div
-                    variants={narrativeItemVariants}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="text-sm font-sans font-semibold text-accent flex items-center gap-1 tabular-nums">
-                      <AnimatedStageDigit
-                        digit={currentStage.step}
-                        reducedMotion={shouldReduceMotion}
-                      />
-                      <span>/ 04</span>
-                    </span>
-                    <span className="h-px w-10 bg-accent/40" />
-                    <span className="text-[11px] uppercase tracking-[0.04em] font-medium text-text-muted">
-                      {currentStage.projectCategory}
-                    </span>
-                  </motion.div>
+            {/* 12-Column Synchronized Process Grid */}
+            <div className="grid grid-cols-12 gap-10 xl:gap-12 items-center">
+              
+              {/* ══════════════════════════════════════════
+                  LEFT COLUMN: Persistent Browser Frame (7 Cols)
+                  ══════════════════════════════════════════ */}
+              <div className="col-span-7 min-w-0">
+                <div className="w-full bg-[#F4F4F1] dark:bg-[#0E0F13] rounded-2xl border border-border/80 dark:border-white/[0.08] shadow-[0_20px_45px_-10px_rgba(0,0,0,0.06)] dark:shadow-[0_24px_50px_-10px_rgba(0,0,0,0.65)] overflow-hidden flex flex-col justify-between min-h-[530px] transition-colors duration-200">
+                  
+                  {/* Browser Chrome Bar */}
+                  <div className="bg-[#ECECE8] dark:bg-[#0A0B0E] px-4 py-3 border-b border-border/80 dark:border-white/[0.08] flex items-center justify-between z-20 transition-colors duration-200">
+                    <div className="flex items-center gap-3">
+                      {/* Window Dots */}
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-black/20 dark:bg-white/20" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-black/20 dark:bg-white/20" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-black/20 dark:bg-white/20" />
+                      </div>
 
-                  {/* Active Title & Headline */}
-                  <motion.div variants={narrativeItemVariants}>
-                    <h3 className="text-3xl sm:text-4xl font-semibold text-text-primary tracking-[-0.02em] leading-[1.18]">
-                      {currentStage.name}
-                    </h3>
-                    <p className="mt-3 text-base sm:text-lg font-normal text-text-primary leading-relaxed">
-                      {currentStage.headline}
-                    </p>
-                  </motion.div>
-
-                  {/* Tagline / Context */}
-                  <motion.p
-                    variants={narrativeItemVariants}
-                    className="text-sm text-text-secondary leading-relaxed"
-                  >
-                    {currentStage.tagline}
-                  </motion.p>
-
-                  {/* Deliverables Checklist with Spring Stagger */}
-                  <motion.div
-                    variants={narrativeItemVariants}
-                    className="space-y-2.5 pt-4 border-t border-border"
-                  >
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.04em] text-text-primary mb-1">
-                      What Gets Built:
+                      {/* URL Pill */}
+                      <div className="px-3 py-1 rounded-full bg-white/80 dark:bg-white/[0.04] border border-border/80 dark:border-white/[0.07] text-[11px] font-mono text-text-secondary dark:text-[#A0A3AC] flex items-center gap-1.5 max-w-[260px] truncate shadow-2xs">
+                        <Lock size={10} className="text-text-muted dark:text-[#737781] shrink-0" />
+                        <span className="text-text-muted dark:text-[#737781]">https://</span>
+                        <span className="text-text-primary dark:text-[#F4F4F6] font-medium truncate">{currentStage.browserUrl}</span>
+                      </div>
                     </div>
-                    {currentStage.deliverables.map((item, idx) => (
-                      <motion.div
-                        key={item}
-                        initial={
-                          shouldReduceMotion
-                            ? { opacity: 0 }
-                            : { opacity: 0, x: -8 }
-                        }
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          delay: shouldReduceMotion ? 0 : 0.16 + idx * 0.07,
-                          duration: 0.35,
-                          ease: EASE_OUT_EXPO,
-                        }}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm text-text-secondary"
-                      >
-                        <motion.span
-                          initial={
-                            shouldReduceMotion
-                              ? {}
-                              : { scale: 0, rotate: -35 }
-                          }
-                          animate={{ scale: 1, rotate: 0 }}
-                          transition={{
-                            delay: shouldReduceMotion ? 0 : 0.2 + idx * 0.07,
-                            ...SPRING_CHECK,
-                          }}
-                          className="shrink-0 mt-0.5 inline-flex"
+
+                    {/* Stage Badge */}
+                    <div className="px-2.5 py-0.5 rounded-full bg-accent/10 dark:bg-[#E5A93C]/10 border border-accent/30 dark:border-[#E5A93C]/30 text-[11px] font-sans font-medium text-accent dark:text-[#E5A93C] flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent dark:bg-[#E5A93C]" />
+                      <span>{currentStage.stageBadge}</span>
+                    </div>
+                  </div>
+
+                  {/* Browser Body Area with Bidirectional Direction-Aware Crossfade */}
+                  <div className="relative flex-1 p-6 flex flex-col justify-center items-center overflow-hidden min-h-[410px] bg-[#FAFAF8] dark:bg-[#070709] transition-colors duration-200">
+                    <AnimatePresence mode="wait" custom={direction} initial={false}>
+                      
+                      {/* ──────── STAGE 01: UNDERSTAND ──────── */}
+                      {activeStage === 0 && (
+                        <motion.div
+                          key="stage-01-understand"
+                          custom={direction}
+                          variants={stageTransitionVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          className="w-full max-w-lg space-y-4"
                         >
-                          <CheckCircle2 size={15} className="text-accent" />
-                        </motion.span>
-                        <span className="leading-snug">{item}</span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                          <div className="text-center">
+                            <span className="text-[11.5px] font-mono font-medium text-text-muted dark:text-[#737781] tracking-[0.04em] uppercase">
+                              BUSINESS &amp; TECHNICAL REQUIREMENTS
+                            </span>
+                          </div>
 
-                  {/* Project Chip / Tech Stack */}
-                  <motion.div
-                    variants={narrativeItemVariants}
-                    className="p-3.5 rounded-xl bg-surface border border-border flex items-center justify-between shadow-2xs"
-                  >
-                    <div>
-                      <div className="text-[10px] text-text-muted uppercase tracking-[0.04em] font-medium">
-                        Featured Project
+                          {/* 2x2 Requirements Grid */}
+                          <div className="grid grid-cols-2 gap-3">
+                            {STAGE01_CARDS.map((card) => (
+                              <div
+                                key={card.title}
+                                className="p-3.5 bg-card dark:bg-[#14161D] rounded-xl border border-border/80 dark:border-white/[0.07] space-y-1.5 hover:border-black/20 dark:hover:border-white/[0.14] transition-colors shadow-2xs"
+                              >
+                                <div className="flex items-center justify-between text-[11px] font-sans text-text-muted dark:text-[#737781]">
+                                  <span>{card.label}</span>
+                                  <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${card.badgeClass}`}>
+                                    {card.badge}
+                                  </span>
+                                </div>
+                                <div className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6]">
+                                  {card.title}
+                                </div>
+                                <div className="text-[11px] text-text-secondary dark:text-[#A0A3AC] leading-tight font-normal">
+                                  {card.desc}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Bottom Scope Bar */}
+                          <div className="p-3 bg-surface dark:bg-[#191B22] rounded-xl border border-border/80 dark:border-white/[0.08] flex items-center justify-between text-xs text-text-secondary dark:text-[#A0A3AC]">
+                            <span className="font-mono text-[11px] text-text-muted dark:text-[#737781]">Technical Scope:</span>
+                            <span className="font-semibold text-text-primary dark:text-[#F4F4F6] flex items-center gap-1.5">
+                              Next.js 14 + Sanity + Tailwind
+                              <CheckCircle2 size={13} className="text-success dark:text-[#10B981]" />
+                            </span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* ──────── STAGE 02: DESIGN ──────── */}
+                      {activeStage === 1 && (
+                        <motion.div
+                          key="stage-02-design"
+                          custom={direction}
+                          variants={stageTransitionVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          className="w-full max-w-lg space-y-3"
+                        >
+                          <div className="bg-card dark:bg-[#14161D] rounded-xl border border-border/80 dark:border-white/[0.08] p-4 sm:p-5 space-y-3.5 shadow-2xs">
+                            {/* Inner Header */}
+                            <div className="flex items-center justify-between pb-3 border-b border-border/80 dark:border-white/[0.06]">
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm">🌿</span>
+                                <span className="font-semibold text-xs sm:text-sm text-text-primary dark:text-[#F4F4F6]">
+                                  Hotel Greenery View
+                                </span>
+                              </div>
+                              <span className="text-[10.5px] font-mono font-medium px-2 py-0.5 rounded-full bg-success/15 dark:bg-[#10B981]/15 text-success dark:text-[#10B981] border border-success/30 dark:border-[#10B981]/30">
+                                Next.js UI + Sanity
+                              </span>
+                            </div>
+
+                            {/* Hero Card */}
+                            <div className="p-3.5 rounded-xl bg-surface dark:bg-[#191B22] border border-border/80 dark:border-white/[0.07] space-y-2">
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6]">
+                                  Luxury Stay in Nature's Lap
+                                </span>
+                                <span className="text-[10.5px] text-success dark:text-[#10B981] font-sans font-semibold">
+                                  +65% Direct Inquiries
+                                </span>
+                              </div>
+                              <p className="text-[11.5px] text-text-secondary dark:text-[#A0A3AC] leading-relaxed font-normal">
+                                Experience tranquil mountain vistas with direct room reservations, live amenity filters, and instant WhatsApp booking.
+                              </p>
+                              <div className="flex gap-2 pt-1">
+                                <span className="px-2.5 py-1 bg-accent dark:bg-[#E5A93C] text-white dark:text-[#070709] rounded text-[11px] font-semibold cursor-default">
+                                  Direct Booking CTA
+                                </span>
+                                <span className="px-2.5 py-1 bg-card dark:bg-white/[0.06] text-text-primary dark:text-[#F4F4F6] border border-border/80 dark:border-white/[0.08] rounded text-[11px] font-medium cursor-default">
+                                  WhatsApp Direct
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Sub-Cards */}
+                            <div className="grid grid-cols-2 gap-2.5">
+                              <div className="p-3 bg-surface dark:bg-[#191B22] rounded-lg border border-border/80 dark:border-white/[0.06] space-y-1">
+                                <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Deluxe Suite</div>
+                                <div className="text-xs font-bold text-text-primary dark:text-[#F4F4F6]">Mountain View</div>
+                                <div className="text-[10px] text-success dark:text-[#10B981] font-medium">Live Availability Sync</div>
+                              </div>
+                              <div className="p-3 bg-surface dark:bg-[#191B22] rounded-lg border border-border/80 dark:border-white/[0.06] space-y-1">
+                                <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Executive Room</div>
+                                <div className="text-xs font-bold text-text-primary dark:text-[#F4F4F6]">Garden Terrace</div>
+                                <div className="text-[10px] text-accent dark:text-[#E5A93C] font-medium">Instant Confirmation</div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Footer */}
+                          <div className="flex items-center justify-between text-[11px] font-mono text-text-muted dark:text-[#737781] px-1">
+                            <span>SEO &amp; AI-Friendly Schema: Active</span>
+                            <span className="text-success dark:text-[#10B981] font-semibold">100% Mobile Ready</span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* ──────── STAGE 03: BUILD ──────── */}
+                      {activeStage === 2 && (
+                        <motion.div
+                          key="stage-03-build"
+                          custom={direction}
+                          variants={stageTransitionVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          className="w-full max-w-lg space-y-3"
+                        >
+                          <div className="bg-card dark:bg-[#14161D] rounded-xl border border-border/80 dark:border-white/[0.08] p-4 sm:p-5 space-y-3.5 shadow-2xs">
+                            {/* Inner Header */}
+                            <div className="flex items-center justify-between pb-3 border-b border-border/80 dark:border-white/[0.06]">
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm">🏨</span>
+                                <span className="font-semibold text-xs sm:text-sm text-text-primary dark:text-[#F4F4F6]">
+                                  Grove PMS Cloud
+                                </span>
+                              </div>
+                              <span className="text-[10.5px] font-mono font-medium px-2 py-0.5 rounded-full bg-accent/15 dark:bg-[#E5A93C]/15 text-accent dark:text-[#E5A93C] border border-accent/30 dark:border-[#E5A93C]/30">
+                                Next.js + Supabase
+                              </span>
+                            </div>
+
+                            {/* Metric Row */}
+                            <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                              <div className="p-2 rounded-lg bg-surface dark:bg-[#191B22] border border-border/80 dark:border-white/[0.06]">
+                                <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Room Matrix</div>
+                                <div className="font-semibold text-text-primary dark:text-[#F4F4F6] mt-0.5">Live Sync</div>
+                              </div>
+                              <div className="p-2 rounded-lg bg-surface dark:bg-[#191B22] border border-success/30 dark:border-[#10B981]/30">
+                                <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Food Billing</div>
+                                <div className="font-semibold text-success dark:text-[#10B981] mt-0.5">POS Engine</div>
+                              </div>
+                              <div className="p-2 rounded-lg bg-surface dark:bg-[#191B22] border border-border/80 dark:border-white/[0.06]">
+                                <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Inventory</div>
+                                <div className="font-semibold text-text-primary dark:text-[#F4F4F6] mt-0.5">Automated</div>
+                              </div>
+                            </div>
+
+                            {/* Lifecycle Card */}
+                            <div className="p-3 rounded-lg bg-surface dark:bg-[#191B22] border border-border/80 dark:border-white/[0.06] space-y-1.5">
+                              <div className="flex items-center justify-between text-[11px] font-semibold text-text-primary dark:text-[#F4F4F6]">
+                                <span>Room &amp; Guest Lifecycle</span>
+                                <span className="text-[10.5px] text-success dark:text-[#10B981] font-mono font-medium">Postgres RLS Secure</span>
+                              </div>
+                              <div className="space-y-1 text-xs">
+                                <div className="flex items-center justify-between p-1.5 rounded bg-card dark:bg-[#14161D] border border-border/80 dark:border-white/[0.05]">
+                                  <span className="text-text-secondary dark:text-[#A0A3AC] text-[11px] font-mono">Room 102 (Deluxe)</span>
+                                  <span className="text-success dark:text-[#10B981] text-[10.5px] font-mono font-semibold">Checked-In · POS Active</span>
+                                </div>
+                                <div className="flex items-center justify-between p-1.5 rounded bg-card dark:bg-[#14161D] border border-border/80 dark:border-white/[0.05]">
+                                  <span className="text-text-secondary dark:text-[#A0A3AC] text-[11px] font-mono">Room 204 (Suite)</span>
+                                  <span className="text-accent dark:text-[#E5A93C] text-[10.5px] font-mono font-semibold">Food Bill Added (₹1,450)</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Pipeline Bar */}
+                            <div className="p-2 rounded-lg bg-surface-hover dark:bg-[#0A0B0E] border border-border/80 dark:border-white/[0.07] flex items-center justify-between text-[11px] font-mono text-text-secondary dark:text-[#A0A3AC]">
+                              <span>UI (Next.js)</span>
+                              <span className="text-text-muted dark:text-[#737781]">→</span>
+                              <span>API Route Handler</span>
+                              <span className="text-text-muted dark:text-[#737781]">→</span>
+                              <span className="text-accent dark:text-[#E5A93C] font-semibold">Supabase DB</span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* ──────── STAGE 04: LAUNCH ──────── */}
+                      {activeStage === 3 && (
+                        <motion.div
+                          key="stage-04-launch"
+                          custom={direction}
+                          variants={stageTransitionVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          className="w-full max-w-lg space-y-3"
+                        >
+                          <div className="text-center mb-1">
+                            <span className="text-[11.5px] font-mono font-semibold tracking-[0.04em] text-success dark:text-[#10B981] uppercase">
+                              3 PRODUCTION PRODUCTS DEPLOYED
+                            </span>
+                          </div>
+
+                          {/* 3 Deployment Cards */}
+                          <div className="grid grid-cols-3 gap-2.5">
+                            {/* Card 1 */}
+                            <div className="p-3 bg-card dark:bg-[#14161D] rounded-xl border border-border/80 dark:border-white/[0.07] flex flex-col justify-between space-y-2 shadow-2xs">
+                              <div>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-xs">🌿</span>
+                                  <span className="w-1.5 h-1.5 rounded-full bg-success dark:bg-[#10B981] animate-pulse" />
+                                </div>
+                                <div className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6] mt-1 leading-tight">
+                                  Hotel Greenery
+                                </div>
+                                <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Direct Booking</div>
+                              </div>
+                              <div className="pt-1.5 border-t border-border/80 dark:border-white/[0.06]">
+                                <div className="text-[10px] font-semibold text-success dark:text-[#10B981] font-mono">+65% Inquiries</div>
+                                <div className="text-[9.5px] text-text-muted dark:text-[#737781] font-mono">Production Website</div>
+                              </div>
+                            </div>
+
+                            {/* Card 2 (Highlighted) */}
+                            <div className="p-3 bg-surface dark:bg-[#191B22] rounded-xl border border-accent/40 dark:border-[#E5A93C]/40 flex flex-col justify-between space-y-2 ring-1 ring-accent/20 dark:ring-[#E5A93C]/20 shadow-[0_0_20px_rgba(185,130,63,0.12)] dark:shadow-[0_0_20px_rgba(229,169,60,0.1)]">
+                              <div>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-xs">🏨</span>
+                                  <span className="w-1.5 h-1.5 rounded-full bg-success dark:bg-[#10B981] animate-pulse" />
+                                </div>
+                                <div className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6] mt-1 leading-tight">
+                                  Grove PMS
+                                </div>
+                                <div className="text-[10px] text-accent dark:text-[#E5A93C] font-mono">Hospitality ERP</div>
+                              </div>
+                              <div className="pt-1.5 border-t border-border/80 dark:border-white/[0.06]">
+                                <div className="text-[10px] font-semibold text-accent dark:text-[#E5A93C] font-mono">Custom PMS</div>
+                                <div className="text-[9.5px] text-text-muted dark:text-[#737781] font-mono">App Deployment</div>
+                              </div>
+                            </div>
+
+                            {/* Card 3 */}
+                            <div className="p-3 bg-card dark:bg-[#14161D] rounded-xl border border-border/80 dark:border-white/[0.07] flex flex-col justify-between space-y-2 shadow-2xs">
+                              <div>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-xs">✈️</span>
+                                  <span className="w-1.5 h-1.5 rounded-full bg-success dark:bg-[#10B981] animate-pulse" />
+                                </div>
+                                <div className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6] mt-1 leading-tight">
+                                  Anugra Travels
+                                </div>
+                                <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Travel Platform</div>
+                              </div>
+                              <div className="pt-1.5 border-t border-border/80 dark:border-white/[0.06]">
+                                <div className="text-[10px] font-semibold text-accent dark:text-[#E5A93C] font-mono">Sanity + Email</div>
+                                <div className="text-[9.5px] text-text-muted dark:text-[#737781] font-mono">Content Management</div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Bottom Deployment Bar */}
+                          <div className="p-3 bg-card dark:bg-[#14161D] rounded-xl border border-border/80 dark:border-white/[0.08] flex items-center justify-between text-xs text-text-primary dark:text-[#F4F4F6] shadow-2xs">
+                            <span className="flex items-center gap-1.5 font-medium font-sans">
+                              <CheckCircle2 size={14} className="text-success dark:text-[#10B981]" />
+                              Production Verified &amp; Deployed
+                            </span>
+                            <a
+                              href="#work"
+                              className="font-medium text-accent hover:text-accent-hover dark:text-[#E5A93C] dark:hover:text-[#E5A93C]/80 flex items-center gap-1 text-[11.5px] group transition-colors"
+                            >
+                              <span>Explore Selected Work</span>
+                              <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                            </a>
+                          </div>
+                        </motion.div>
+                      )}
+
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Persistent Progress Footer */}
+                  <div className="relative border-t border-border/80 dark:border-white/[0.08]">
+                    {/* Synchronized Gradient Progress Line */}
+                    <div className="h-[2px] bg-black/[0.06] dark:bg-white/[0.06] w-full overflow-hidden relative">
+                      <motion.div
+                        className="h-full bg-gradient-to-r from-accent dark:from-[#E5A93C] to-success dark:to-[#10B981]"
+                        initial={false}
+                        animate={{ width: `${currentStage.progressPercent}%` }}
+                        transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
+                      />
+                    </div>
+
+                    <div className="bg-[#ECECE8] dark:bg-[#0A0B0E] px-5 py-2.5 flex items-center justify-between text-xs text-text-secondary dark:text-[#A0A3AC] font-mono transition-colors duration-200">
+                      <div className="flex items-center gap-2">
+                        <span className="text-text-muted dark:text-[#737781]">STAGE:</span>
+                        <span className="text-text-primary dark:text-[#F4F4F6] font-semibold">
+                          {currentStage.step} / 04 — {currentStage.name}
+                        </span>
                       </div>
-                      <div className="text-xs font-semibold text-text-primary mt-0.5">
-                        {currentStage.projectFeatured}
+
+                      <div className="flex items-center gap-2">
+                        <span className="text-text-muted dark:text-[#737781]">STATUS:</span>
+                        {currentStage.isLive ? (
+                          <span className="text-success dark:text-[#10B981] font-semibold flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-success dark:bg-[#10B981] animate-pulse" />
+                            SHIPPED &amp; LIVE
+                          </span>
+                        ) : (
+                          <span className="text-accent dark:text-[#E5A93C] font-semibold tabular-nums">
+                            {currentStage.statusLabel}
+                          </span>
+                        )}
                       </div>
                     </div>
-                    <div className="text-xs font-sans text-accent font-medium">
-                      {currentStage.projectTech}
+                  </div>
+
+                </div>
+              </div>
+
+              {/* ══════════════════════════════════════════
+                  RIGHT COLUMN: Synchronized Narrative Panel (5 Cols)
+                  ══════════════════════════════════════════ */}
+              <div className="col-span-5 min-w-0 pl-2">
+                <AnimatePresence mode="wait" custom={direction} initial={false}>
+                  <motion.div
+                    key={currentStage.id}
+                    custom={direction}
+                    variants={stageTransitionVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    className="space-y-6"
+                  >
+                    {/* Stage Number & Category */}
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-mono font-semibold text-accent dark:text-[#E5A93C] tabular-nums">
+                        {currentStage.step} / 04
+                      </span>
+                      <span className="h-px w-10 bg-accent/40 dark:bg-[#E5A93C]/40" />
+                      <span className="text-[11px] uppercase tracking-[0.05em] font-mono font-medium text-text-muted dark:text-[#737781]">
+                        {currentStage.category}
+                      </span>
+                    </div>
+
+                    {/* Main Heading & Lead */}
+                    <div>
+                      <h3 className="text-3xl sm:text-4xl font-semibold text-text-primary dark:text-[#F4F4F6] tracking-[-0.03em] leading-[1.12]">
+                        {currentStage.heading}
+                      </h3>
+                      <p className="mt-3.5 text-base sm:text-[17px] font-normal text-text-primary dark:text-[#F4F4F6] leading-relaxed">
+                        {currentStage.lead}
+                      </p>
+                    </div>
+
+                    {/* Supporting Description */}
+                    <p className="text-sm text-text-secondary dark:text-[#A0A3AC] leading-relaxed font-normal">
+                      {currentStage.supporting}
+                    </p>
+
+                    {/* Deliverables Checklist */}
+                    <div className="space-y-2.5 pt-4 border-t border-border/80 dark:border-white/[0.08]">
+                      <div className="text-[11px] font-mono font-semibold uppercase tracking-[0.05em] text-text-primary dark:text-[#F4F4F6] mb-1">
+                        {currentStage.deliverablesHeading}
+                      </div>
+                      {currentStage.deliverables.map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-start gap-2.5 text-xs sm:text-sm text-text-secondary dark:text-[#A0A3AC]"
+                        >
+                          <CheckCircle2 size={15} className="text-accent dark:text-[#E5A93C] shrink-0 mt-0.5" />
+                          <span className="leading-snug">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Featured Project Callout */}
+                    <div className="p-3.5 rounded-xl bg-card dark:bg-[#14161D] border border-border/80 dark:border-white/[0.08] flex items-center justify-between shadow-xs">
+                      <div>
+                        <div className="text-[10px] text-text-muted dark:text-[#737781] uppercase tracking-[0.04em] font-mono font-medium">
+                          FEATURED PROJECT
+                        </div>
+                        <div className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6] mt-0.5">
+                          {currentStage.featuredProject}
+                        </div>
+                      </div>
+                      <div className="text-xs font-mono text-accent dark:text-[#E5A93C] font-medium">
+                        {currentStage.technologyLabel}
+                      </div>
                     </div>
                   </motion.div>
-                </motion.div>
-              </AnimatePresence>
+                </AnimatePresence>
+              </div>
+
             </div>
 
           </div>
         </div>
       </div>
 
-      {/* Mobile & Tablet Stepper Experience */}
+      {/* ═══════════════════════════════════════════════
+          TABLET & MOBILE STEPPER (Normal Document Flow)
+          ═══════════════════════════════════════════════ */}
       <div className="block lg:hidden py-8 sm:py-12">
-        <div className="container-custom space-y-5 sm:space-y-6">
-          {/* Mobile stage selector tabs */}
-          <div className="grid grid-cols-4 gap-1 p-1 bg-surface rounded-xl border border-border">
-            {stageData.map((st, i) => (
-              <button
-                key={st.step}
-                onClick={() => setActiveStage(i)}
-                aria-label={`Stage ${st.step}: ${st.name}`}
-                className={`min-h-[44px] py-2 px-1 text-center rounded-lg text-xs font-semibold transition-all relative flex flex-col items-center justify-center gap-0.5 ${
-                  activeStage === i
-                    ? "text-text-primary"
-                    : "text-text-muted hover:text-text-secondary"
-                }`}
-              >
-                {activeStage === i && (
-                  <motion.div
-                    layoutId="mobile-process-tab"
-                    transition={SPRING_STAGE_PILL}
-                    className="absolute inset-0 bg-white dark:bg-card rounded-lg shadow-xs border border-border/80"
-                  />
-                )}
-                <span className="relative z-10">{st.step}</span>
-                <span className="relative z-10 text-[10px] hidden sm:inline font-normal truncate max-w-full px-1">{st.name}</span>
-              </button>
-            ))}
+        <div className="container-custom space-y-6">
+          
+          {/* Sticky Stage Navigation Selector Pill */}
+          <div className="sticky top-20 z-20 bg-card/90 dark:bg-[#0E0F13]/90 backdrop-blur-lg border border-border/80 dark:border-white/10 rounded-full p-1.5 flex items-center justify-between gap-1 shadow-lg">
+            {STAGES.map((st, i) => {
+              const isActive = activeStage === i;
+              return (
+                <button
+                  key={st.id}
+                  onClick={() => {
+                    setDirection(i >= activeStage ? 1 : -1);
+                    setActiveStage(i);
+                  }}
+                  className={`flex-1 py-2 px-1 text-center rounded-full text-xs font-mono font-medium transition-all relative flex items-center justify-center gap-1 ${
+                    isActive
+                      ? "text-text-primary dark:text-[#F4F4F6] font-semibold"
+                      : "text-text-muted dark:text-[#737781] hover:text-text-secondary dark:hover:text-[#A0A3AC]"
+                  }`}
+                  aria-label={`Stage ${st.step}: ${st.name}`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="mobile-process-pill"
+                      className="absolute inset-0 bg-surface dark:bg-white/[0.12] border border-border dark:border-white/[0.15] rounded-full shadow-2xs"
+                      transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                    />
+                  )}
+                  <span className={`relative z-10 ${isActive ? "text-accent dark:text-[#E5A93C]" : "text-text-muted dark:text-[#737781]"}`}>
+                    {st.step}
+                  </span>
+                  <span className="relative z-10 font-sans truncate hidden sm:inline">{st.name}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Active mobile card */}
-          <AnimatePresence mode="popLayout" initial={false}>
+          {/* Active Mobile Stage Presentation */}
+          <AnimatePresence mode="wait" custom={direction} initial={false}>
             <motion.div
-              key={activeStage}
-              initial={
-                shouldReduceMotion
-                  ? { opacity: 0 }
-                  : { opacity: 0, y: 12 }
-              }
-              animate={{ opacity: 1, y: 0 }}
-              exit={
-                shouldReduceMotion
-                  ? { opacity: 0 }
-                  : { opacity: 0, y: -8 }
-              }
-              transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-              className="p-5 sm:p-6 bg-white dark:bg-card rounded-xl border border-border shadow-xs space-y-4 sm:space-y-5"
+              key={currentStage.id}
+              custom={direction}
+              variants={stageTransitionVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="space-y-6"
             >
-              <div className="flex items-center justify-between border-b border-border pb-3">
-                <div>
-                  <span className="text-xs font-sans font-semibold text-accent tabular-nums">
-                    {stageData[activeStage].step} of 04
+              {/* 1. Mobile Browser Preview */}
+              <div className="w-full bg-card dark:bg-[#0E0F13] rounded-xl border border-border/80 dark:border-white/[0.08] overflow-hidden shadow-2xs transition-colors duration-200">
+                {/* Header */}
+                <div className="bg-surface dark:bg-[#0A0B0E] px-3.5 py-2.5 border-b border-border/80 dark:border-white/[0.08] flex items-center justify-between text-xs transition-colors duration-200">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-black/20 dark:bg-white/20" />
+                      <span className="w-2 h-2 rounded-full bg-black/20 dark:bg-white/20" />
+                      <span className="w-2 h-2 rounded-full bg-black/20 dark:bg-white/20" />
+                    </div>
+                    <span className="text-[11px] font-mono text-text-secondary dark:text-[#A0A3AC] truncate max-w-[150px]">
+                      {currentStage.browserUrl}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono text-accent dark:text-[#E5A93C] px-2 py-0.5 rounded-full bg-accent/10 dark:bg-[#E5A93C]/10 border border-accent/30 dark:border-[#E5A93C]/30">
+                    {currentStage.step} of 04
                   </span>
-                  <h3 className="text-lg sm:text-xl font-semibold text-text-primary mt-0.5 tracking-[-0.015em]">
-                    {stageData[activeStage].name}
-                  </h3>
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.04em] font-medium px-2 py-0.5 rounded-md bg-surface text-text-secondary border border-border">
-                  {stageData[activeStage].projectFeatured}
-                </span>
+
+                {/* Mobile Preview Content */}
+                <div className="p-4 sm:p-5 bg-bg/50 dark:bg-transparent">
+                  {activeStage === 0 && (
+                    <div className="space-y-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {STAGE01_CARDS.map((card) => (
+                          <div key={card.title} className="p-3 bg-card dark:bg-[#14161D] rounded-lg border border-border/80 dark:border-white/[0.06] space-y-1 shadow-2xs">
+                            <div className="flex items-center justify-between text-[10px] text-text-muted dark:text-[#737781]">
+                              <span>{card.label}</span>
+                              <span className={`px-1.5 py-0.5 rounded text-[9.5px] ${card.badgeClass}`}>{card.badge}</span>
+                            </div>
+                            <div className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6]">{card.title}</div>
+                            <div className="text-[11px] text-text-secondary dark:text-[#A0A3AC]">{card.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="p-2.5 bg-surface dark:bg-[#191B22] rounded-lg border border-border/80 dark:border-white/[0.06] flex items-center justify-between text-xs text-text-secondary dark:text-[#A0A3AC]">
+                        <span className="text-[11px] font-mono text-text-muted dark:text-[#737781]">Scope:</span>
+                        <span className="text-xs text-text-primary dark:text-[#F4F4F6] font-semibold flex items-center gap-1">
+                          Next.js 14 + Sanity + Tailwind <CheckCircle2 size={12} className="text-success dark:text-[#10B981]" />
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeStage === 1 && (
+                    <div className="space-y-2.5">
+                      <div className="p-3.5 bg-surface dark:bg-[#191B22] rounded-lg border border-border/80 dark:border-white/[0.06] space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-semibold text-text-primary dark:text-[#F4F4F6]">Luxury Stay in Nature's Lap</span>
+                          <span className="text-[10.5px] text-success dark:text-[#10B981] font-semibold">+65% Inquiries</span>
+                        </div>
+                        <p className="text-[11px] text-text-secondary dark:text-[#A0A3AC] leading-relaxed">
+                          Mountain vistas with direct reservations, live filters, and WhatsApp booking.
+                        </p>
+                        <div className="flex gap-2 pt-1">
+                          <span className="px-2 py-0.5 bg-accent dark:bg-[#E5A93C] text-white dark:text-[#070709] rounded text-[10.5px] font-semibold">Direct Booking</span>
+                          <span className="px-2 py-0.5 bg-card dark:bg-white/[0.06] text-text-primary dark:text-[#F4F4F6] border border-border/80 dark:border-white/[0.08] rounded text-[10.5px]">WhatsApp</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeStage === 2 && (
+                    <div className="space-y-2.5">
+                      <div className="grid grid-cols-3 gap-1.5 text-center text-xs">
+                        <div className="p-2 bg-surface dark:bg-[#191B22] rounded-lg border border-border/80 dark:border-white/[0.06]">
+                          <div className="text-[9.5px] text-text-muted dark:text-[#737781]">Rooms</div>
+                          <div className="font-semibold text-text-primary dark:text-[#F4F4F6] text-[11px]">Live Sync</div>
+                        </div>
+                        <div className="p-2 bg-surface dark:bg-[#191B22] border border-success/30 dark:border-[#10B981]/30 rounded-lg">
+                          <div className="text-[9.5px] text-text-muted dark:text-[#737781]">POS</div>
+                          <div className="font-semibold text-success dark:text-[#10B981] text-[11px]">POS Engine</div>
+                        </div>
+                        <div className="p-2 bg-surface dark:bg-[#191B22] rounded-lg border border-border/80 dark:border-white/[0.06]">
+                          <div className="text-[9.5px] text-text-muted dark:text-[#737781]">Stock</div>
+                          <div className="font-semibold text-text-primary dark:text-[#F4F4F6] text-[11px]">Automated</div>
+                        </div>
+                      </div>
+                      <div className="p-2.5 bg-surface-hover dark:bg-[#0A0B0E] rounded-lg border border-border/80 dark:border-white/[0.06] text-[10.5px] font-mono text-text-secondary dark:text-[#A0A3AC] flex justify-between">
+                        <span>UI (Next.js)</span>
+                        <span>→</span>
+                        <span>Route Handler</span>
+                        <span>→</span>
+                        <span className="text-accent dark:text-[#E5A93C] font-semibold">Supabase DB</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeStage === 3 && (
+                    <div className="space-y-2">
+                      <div className="grid grid-cols-3 gap-1.5">
+                        <div className="p-2.5 bg-card dark:bg-[#14161D] rounded-lg border border-border/80 dark:border-white/[0.06] space-y-1 shadow-2xs">
+                          <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Hotel Greenery</div>
+                          <div className="text-[10px] font-semibold text-success dark:text-[#10B981]">+65% Inquiries</div>
+                        </div>
+                        <div className="p-2.5 bg-surface dark:bg-[#191B22] rounded-lg border border-accent/40 dark:border-[#E5A93C]/40 space-y-1">
+                          <div className="text-[10px] text-accent dark:text-[#E5A93C] font-mono">Grove PMS</div>
+                          <div className="text-[10px] font-semibold text-accent dark:text-[#E5A93C]">Custom ERP</div>
+                        </div>
+                        <div className="p-2.5 bg-card dark:bg-[#14161D] rounded-lg border border-border/80 dark:border-white/[0.06] space-y-1 shadow-2xs">
+                          <div className="text-[10px] text-text-muted dark:text-[#737781] font-mono">Anugra Travels</div>
+                          <div className="text-[10px] font-semibold text-accent dark:text-[#E5A93C]">Platform</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              <p className="text-sm font-normal text-text-primary leading-relaxed">
-                {stageData[activeStage].headline}
-              </p>
-
-              <div className="space-y-2 pt-2 border-t border-border">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.04em] text-text-primary mb-1">
-                  Deliverables
+              {/* 2. Mobile Narrative Details */}
+              <div className="p-5 sm:p-6 bg-card dark:bg-[#0E0F13] rounded-xl border border-border/80 dark:border-white/[0.08] space-y-4 shadow-2xs transition-colors duration-200">
+                <div className="flex items-center justify-between border-b border-border/80 dark:border-white/[0.06] pb-3">
+                  <div>
+                    <span className="text-xs font-mono font-semibold text-accent dark:text-[#E5A93C]">
+                      {currentStage.step} of 04
+                    </span>
+                    <h3 className="text-xl font-semibold text-text-primary dark:text-[#F4F4F6] mt-0.5 tracking-tight">
+                      {currentStage.name}
+                    </h3>
+                  </div>
+                  <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-surface dark:bg-white/[0.06] text-text-secondary dark:text-[#A0A3AC] border border-border/80 dark:border-white/[0.08]">
+                    {currentStage.featuredProject}
+                  </span>
                 </div>
-                {stageData[activeStage].deliverables.map((item, idx) => (
-                  <motion.div
-                    key={item}
-                    initial={
-                      shouldReduceMotion
-                        ? { opacity: 0 }
-                        : { opacity: 0, x: -6 }
-                    }
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: shouldReduceMotion ? 0 : idx * 0.06,
-                      duration: 0.3,
-                      ease: EASE_OUT_EXPO,
+
+                <p className="text-sm font-normal text-text-primary dark:text-[#F4F4F6] leading-relaxed">
+                  {currentStage.lead}
+                </p>
+
+                <div className="space-y-2 pt-2 border-t border-border/80 dark:border-white/[0.06]">
+                  <div className="text-[10.5px] font-mono font-semibold uppercase tracking-[0.05em] text-text-primary dark:text-[#F4F4F6] mb-1">
+                    Deliverables
+                  </div>
+                  {currentStage.deliverables.map((item) => (
+                    <div key={item} className="flex items-start gap-2 text-xs text-text-secondary dark:text-[#A0A3AC]">
+                      <CheckCircle2 size={14} className="text-accent dark:text-[#E5A93C] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-2 flex items-center justify-between text-xs text-text-muted dark:text-[#737781] font-mono border-t border-border/80 dark:border-white/[0.06]">
+                  <span>Tech: <span className="text-text-secondary dark:text-[#A0A3AC]">{currentStage.technologyLabel}</span></span>
+                  <span className="text-accent dark:text-[#E5A93C] font-semibold">{currentStage.step} of 04</span>
+                </div>
+
+                {/* Prev / Next Mobile Controls */}
+                <div className="pt-3 flex items-center justify-between gap-3 border-t border-border/80 dark:border-white/[0.06]">
+                  <button
+                    type="button"
+                    disabled={activeStage === 0}
+                    onClick={() => {
+                      setDirection(-1);
+                      setActiveStage(Math.max(0, activeStage - 1));
                     }}
-                    className="flex items-start gap-2 text-xs text-text-secondary"
+                    className="px-4 py-2 min-h-[42px] rounded-lg text-xs font-mono font-medium text-text-secondary dark:text-[#A0A3AC] bg-surface dark:bg-white/[0.04] hover:bg-surface-hover dark:hover:bg-white/[0.08] border border-border/80 dark:border-white/[0.08] disabled:opacity-30 disabled:pointer-events-none transition-colors"
                   >
-                    <CheckCircle2
-                      size={14}
-                      className="text-accent shrink-0 mt-0.5"
-                    />
-                    <span>{item}</span>
-                  </motion.div>
-                ))}
+                    ← Prev Stage
+                  </button>
+                  <button
+                    type="button"
+                    disabled={activeStage === STAGES.length - 1}
+                    onClick={() => {
+                      setDirection(1);
+                      setActiveStage(Math.min(STAGES.length - 1, activeStage + 1));
+                    }}
+                    className="px-4 py-2 min-h-[42px] rounded-lg text-xs font-mono font-semibold text-white dark:text-[#070709] bg-accent dark:bg-[#E5A93C] hover:bg-accent-hover dark:hover:bg-[#E5A93C]/90 disabled:opacity-30 disabled:pointer-events-none transition-colors shadow-xs"
+                  >
+                    Next Stage →
+                  </button>
+                </div>
               </div>
 
-              <div className="pt-2 flex items-center justify-between text-xs text-text-muted font-sans border-t border-border">
-                <span>Stack: <span className="font-medium text-text-secondary">{stageData[activeStage].projectTech}</span></span>
-                <span className="text-accent font-semibold tabular-nums">
-                  {stageData[activeStage].step} of 04
-                </span>
-              </div>
-
-              {/* Prev / Next Stage Thumb Controls */}
-              <div className="pt-3 flex items-center justify-between gap-3 border-t border-border">
-                <button
-                  type="button"
-                  disabled={activeStage === 0}
-                  onClick={() => setActiveStage(Math.max(0, activeStage - 1))}
-                  className="px-3.5 py-2 min-h-[42px] rounded-lg text-xs font-medium text-text-secondary bg-surface hover:bg-surface-hover border border-border disabled:opacity-40 disabled:pointer-events-none transition-colors"
-                >
-                  ← Prev Stage
-                </button>
-                <button
-                  type="button"
-                  disabled={activeStage === stageData.length - 1}
-                  onClick={() => setActiveStage(Math.min(stageData.length - 1, activeStage + 1))}
-                  className="px-3.5 py-2 min-h-[42px] rounded-lg text-xs font-semibold text-text-primary bg-accent/15 hover:bg-accent/25 border border-accent/30 disabled:opacity-40 disabled:pointer-events-none transition-colors"
-                >
-                  Next Stage →
-                </button>
-              </div>
             </motion.div>
           </AnimatePresence>
+
         </div>
       </div>
     </section>

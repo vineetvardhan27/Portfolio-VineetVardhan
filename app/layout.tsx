@@ -107,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} font-sans`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${inter.className} font-sans`} suppressHydrationWarning>
       <head>
         <RootJsonLd />
         <script
@@ -126,7 +126,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-bg text-text-primary min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent antialiased">
+      <body className={`${inter.className} bg-bg text-text-primary min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent antialiased font-sans`}>
         <ThemeProvider>
           <LenisProvider>
             <Nav />

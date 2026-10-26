@@ -22,7 +22,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="section-padding bg-bg border-t border-border/80 dark:border-white/[0.06] relative"
+      className="section-padding bg-bg dark:bg-[#09090B] border-t border-border dark:border-white/[0.06] relative"
     >
       <div className="container-custom">
         {/* Section Header */}
@@ -33,16 +33,16 @@ export function Testimonials() {
           transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
           className="max-w-3xl mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent mb-3.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+          <div className="inline-flex items-center gap-2 text-[12px] font-sans font-medium tracking-[0.04em] uppercase text-accent dark:text-[#E5A93C] mb-3.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent dark:bg-[#E5A93C]" />
             <span>06 · Client Feedback</span>
           </div>
 
-          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold text-text-primary dark:text-[#F4F4F6] tracking-[-0.04em] leading-[1.08] sm:leading-[1.05]">
             Trusted by businesses to deliver results.
           </h2>
 
-          <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary leading-[1.6] max-w-2xl font-normal">
+          <p className="mt-4 text-[16px] sm:text-[17.5px] text-text-secondary dark:text-[#A0A3AC] leading-[1.6] max-w-2xl font-normal">
             Real feedback from direct client partnerships across custom websites, booking engines, and business software.
           </p>
         </motion.div>
@@ -53,7 +53,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
-          className="group relative overflow-hidden rounded-xl bg-card border border-border/80 dark:border-white/[0.07] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md p-5 sm:p-8 lg:p-10 transition-all duration-300"
+          className="group relative overflow-hidden rounded-xl bg-card dark:bg-[#121318] border border-border dark:border-white/[0.06] hover:border-black/20 dark:hover:border-white/[0.12] hover:shadow-md p-5 sm:p-8 lg:p-10 transition-all duration-300"
         >
           {/* Horizontal Split Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -61,39 +61,39 @@ export function Testimonials() {
             {/* Left Column: Client Voice & Attribution */}
             <div className="lg:col-span-7 space-y-6 relative">
               {/* Partnership Label */}
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-surface/70 dark:bg-white/[0.03] border border-border/70 dark:border-white/[0.05] text-[11.5px] font-sans text-text-muted font-medium">
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-surface border border-border dark:border-transparent dark:bg-white/[0.03] text-[11.5px] font-sans text-text-muted dark:text-[#A0A3AC] font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-success" />
                 <span>Hospitality Direct Booking Partnership</span>
               </div>
 
               {/* Editorial Quote */}
-              <blockquote className="text-lg sm:text-2xl lg:text-[23px] font-sans font-normal text-text-primary leading-[1.55] tracking-[-0.02em]">
+              <blockquote className="text-lg sm:text-2xl lg:text-[23px] font-sans font-normal text-text-primary dark:text-[#F4F4F6] leading-[1.55] tracking-[-0.02em]">
                 &ldquo;Vineet transformed our hotel&apos;s digital presence.{" "}
-                <span className="text-accent font-semibold">
+                <span className="text-accent dark:text-[#E5A93C] font-semibold">
                   Direct inquiries through the website increased immediately
                 </span>
                 , and the room showcase looks stunning on mobile.&rdquo;
               </blockquote>
 
               {/* Attribution Block */}
-              <div className="pt-5 border-t border-border/70 dark:border-white/[0.05] flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-surface dark:bg-white/[0.04] border border-border flex items-center justify-center text-xs font-semibold text-text-primary shrink-0">
+              <div className="pt-5 border-t border-border dark:border-white/[0.06] flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-surface dark:bg-white/[0.04] border border-border dark:border-white/[0.06] flex items-center justify-center text-xs font-semibold text-text-primary dark:text-[#F4F4F6] shrink-0">
                   OA
                 </div>
 
                 <div className="space-y-0.5">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-semibold text-sm sm:text-base text-text-primary">
+                    <span className="font-semibold text-sm sm:text-base text-text-primary dark:text-[#F4F4F6]">
                       {item.author}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-sans font-medium text-success bg-success/15 border border-success/30 px-2 py-0.5 rounded">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-sans font-medium text-success dark:text-emerald-400 bg-success/10 dark:bg-emerald-500/10 border border-transparent px-2 py-0.5 rounded">
                       <CheckCircle2 size={11} />
                       Verified Client
                     </span>
                   </div>
-                  <div className="text-xs text-text-muted">
+                  <div className="text-xs text-text-muted dark:text-[#A0A3AC]">
                     {item.role},{" "}
-                    <span className="text-text-secondary font-medium">
+                    <span className="text-text-secondary dark:text-[#F4F4F6] font-medium">
                       {item.company}
                     </span>
                   </div>
@@ -103,12 +103,12 @@ export function Testimonials() {
 
             {/* Right Column: Case Study Data Card */}
             <div className="lg:col-span-5">
-              <div className="rounded-lg bg-surface/40 dark:bg-white/[0.02] border border-border/70 dark:border-white/[0.05] p-5 sm:p-6 space-y-4 shadow-2xs">
+              <div className="rounded-xl bg-surface/50 dark:bg-[#17191F] border border-border dark:border-white/[0.05] p-5 sm:p-6 space-y-4 shadow-2xs">
                 {/* Project Header Bar */}
-                <div className="flex items-center justify-between pb-3 border-b border-border/70 dark:border-white/[0.05]">
+                <div className="flex items-center justify-between pb-3 border-b border-border dark:border-white/[0.05]">
                   <div className="flex items-center gap-2">
                     <span className="text-sm">🌿</span>
-                    <span className="text-sm font-semibold text-text-primary">
+                    <span className="text-sm font-semibold text-text-primary dark:text-[#F4F4F6]">
                       Hotel Greenery View
                     </span>
                   </div>
@@ -116,7 +116,7 @@ export function Testimonials() {
                     href="https://www.hotelgreeneryview.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[12px] font-sans text-text-muted hover:text-accent transition-colors font-medium"
+                    className="inline-flex items-center gap-1 text-[12px] font-sans text-text-muted dark:text-[#A0A3AC] hover:text-accent dark:hover:text-[#E5A93C] transition-colors font-medium"
                   >
                     <span>Live Site</span>
                     <ExternalLink size={11} />
@@ -125,29 +125,29 @@ export function Testimonials() {
 
                 {/* Hero Metric Callout */}
                 <div className="space-y-1">
-                  <div className="text-[11.5px] font-sans font-medium text-text-muted tracking-[0.01em]">
+                  <div className="text-[11.5px] font-sans font-medium text-text-muted dark:text-[#A0A3AC] tracking-[0.01em]">
                     Measured Business Impact
                   </div>
                   <div className="text-3xl sm:text-4xl font-semibold font-sans tracking-tight text-success tabular-nums">
                     +65%
                   </div>
-                  <div className="text-xs sm:text-[13px] text-text-secondary font-medium leading-relaxed pt-0.5">
+                  <div className="text-xs sm:text-[13px] text-text-secondary dark:text-[#F4F4F6] font-medium leading-relaxed pt-0.5">
                     Direct Inquiries &amp; Instant WhatsApp Bookings
                   </div>
-                  <p className="text-xs text-text-muted leading-normal pt-0.5 font-normal">
+                  <p className="text-xs text-text-muted dark:text-[#A0A3AC] leading-normal pt-0.5 font-normal">
                     Eliminated 18–25% third-party OTA commissions within 60 days of production launch.
                   </p>
                 </div>
 
                 {/* Secondary Technical Vitals */}
-                <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
-                  <div className="p-2.5 rounded bg-card border border-border/60 space-y-0.5">
-                    <div className="text-[11px] text-text-muted font-sans font-medium">Performance</div>
-                    <div className="font-semibold font-sans text-xs text-text-primary tabular-nums">&lt; 0.8s Load</div>
+                <div className="grid grid-cols-2 rounded-lg bg-card dark:bg-[#121318] border border-border dark:border-white/[0.06] divide-x divide-border dark:divide-white/[0.06] text-xs">
+                  <div className="p-2.5 sm:p-3 space-y-0.5">
+                    <div className="text-[11px] text-text-muted dark:text-[#A0A3AC] font-sans font-medium">Performance</div>
+                    <div className="font-semibold font-sans text-xs text-text-primary dark:text-[#F4F4F6] tabular-nums">&lt; 0.8s Load</div>
                   </div>
-                  <div className="p-2.5 rounded bg-card border border-border/60 space-y-0.5">
-                    <div className="text-[11px] text-text-muted font-sans font-medium">SEO &amp; AI Search</div>
-                    <div className="font-semibold font-sans text-xs text-accent">Top LLM Rank</div>
+                  <div className="p-2.5 sm:p-3 space-y-0.5 pl-3">
+                    <div className="text-[11px] text-text-muted dark:text-[#A0A3AC] font-sans font-medium">SEO &amp; AI Search</div>
+                    <div className="font-semibold font-sans text-xs text-accent dark:text-[#E5A93C]">Top LLM Rank</div>
                   </div>
                 </div>
 
@@ -155,12 +155,12 @@ export function Testimonials() {
                 <div className="pt-2">
                   <Link
                     href="/work/hotel-greenery-view"
-                    className="inline-flex items-center justify-between w-full px-3.5 py-2.5 min-h-[44px] rounded-md bg-card hover:bg-surface border border-border/80 text-text-primary text-xs font-medium transition-colors group"
+                    className="inline-flex items-center justify-between w-full px-3.5 py-2.5 min-h-[44px] rounded-lg bg-card hover:bg-surface dark:bg-white/[0.03] dark:hover:bg-white/[0.06] border border-border dark:border-white/[0.06] hover:border-black/20 dark:hover:border-white/[0.12] text-accent dark:text-[#E5A93C] text-xs font-medium transition-all group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/50"
                   >
-                    <span className="group-hover:text-accent transition-colors">Explore Full Case Study</span>
+                    <span className="font-medium">Explore Full Case Study</span>
                     <ArrowRight
                       size={13}
-                      className="text-text-muted group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200 ease-out"
+                      className="text-accent dark:text-[#E5A93C] group-hover:translate-x-0.5 transition-transform duration-200 ease-out"
                     />
                   </Link>
                 </div>
