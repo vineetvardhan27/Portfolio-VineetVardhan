@@ -96,6 +96,10 @@
     transition: background-color 200ms ease, color 200ms ease;
   }
 
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
   h1 {
     color: var(--text-primary);
     letter-spacing: var(--tracking-hero);

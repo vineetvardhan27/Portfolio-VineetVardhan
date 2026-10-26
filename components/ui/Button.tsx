@@ -25,7 +25,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:opacity-50 disabled:pointer-events-none rounded-lg select-none leading-normal tracking-normal";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0B0C0E] disabled:opacity-50 disabled:pointer-events-none rounded-lg select-none leading-normal tracking-normal";
 
   const sizeStyles = {
     sm: "px-3.5 py-1.5 min-h-[38px] text-[13.5px] font-medium gap-1.5",
@@ -35,9 +35,9 @@ export function Button({
 
   const variantStyles = {
     primary:
-      "bg-accent hover:bg-accent-hover text-[#0B0C0E] font-semibold border border-accent/40 shadow-xs hover:shadow-sm active:translate-y-0.5",
+      "bg-accent hover:bg-accent-hover text-[#0B0C0E] font-semibold border border-accent/40 shadow-[0_2px_8px_rgba(185,130,63,0.22),0_1px_2px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.24)] dark:shadow-[0_2px_12px_rgba(201,149,82,0.26),0_1px_3px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.18)] hover:shadow-[0_4px_14px_rgba(185,130,63,0.32),0_2px_4px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.28)] dark:hover:shadow-[0_4px_18px_rgba(201,149,82,0.38),0_2px_6px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.22)] motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 hover:brightness-[1.03] active:brightness-95",
     secondary:
-      "bg-surface/70 dark:bg-white/[0.04] hover:bg-surface dark:hover:bg-white/[0.08] text-text-primary font-medium border border-border dark:border-white/[0.1] hover:border-border-accent/40 shadow-2xs active:translate-y-0.5",
+      "bg-surface/70 dark:bg-white/[0.04] hover:bg-surface dark:hover:bg-white/[0.08] text-text-primary font-medium border border-border dark:border-white/[0.1] hover:border-border-accent/40 shadow-2xs motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0",
     ghost:
       "bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface/60 dark:hover:bg-white/[0.04] font-medium",
   };
