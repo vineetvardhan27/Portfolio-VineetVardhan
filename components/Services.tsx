@@ -114,7 +114,7 @@ export function Services() {
                     </div>
 
                     {service.badge && (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11.5px] font-sans font-medium bg-accent-subtle text-accent border border-border-accent/30">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11.5px] font-sans font-medium bg-accent-subtle text-accent border border-accent/25 dark:border-transparent dark:bg-[#E5A93C]/10 dark:text-[#E5A93C]">
                         <span>{service.badge}</span>
                       </span>
                     )}

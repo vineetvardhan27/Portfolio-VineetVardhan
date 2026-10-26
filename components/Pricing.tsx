@@ -100,7 +100,7 @@ export function Pricing() {
                 <div>
                   {/* Top Badge for Featured */}
                   {isFeatured && (
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-sans font-medium bg-accent-subtle text-accent border border-border-accent/30 mb-3">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-sans font-medium bg-accent-subtle text-accent border border-accent/25 dark:border-transparent dark:bg-[#E5A93C]/10 dark:text-[#E5A93C] mb-3">
                       <span>Most Popular</span>
                     </div>
                   )}
