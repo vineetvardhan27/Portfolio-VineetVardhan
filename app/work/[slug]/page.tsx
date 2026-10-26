@@ -35,12 +35,12 @@ export function generateMetadata({ params }: CaseStudyProps): Metadata {
     title: `${project.name} — Case Study`,
     description: project.summary,
     alternates: {
-      canonical: `/work/${project.slug}`,
+      canonical: `https://www.vineetvardhan.dev/work/${project.slug}`,
     },
     openGraph: {
       title: `${project.name} Case Study — Vineet Vardhan`,
       description: project.summary,
-      url: `https://vineetvardhan.dev/work/${project.slug}`,
+      url: `https://www.vineetvardhan.dev/work/${project.slug}`,
       type: "article",
       images: [
         {

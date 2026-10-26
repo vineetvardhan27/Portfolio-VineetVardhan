@@ -23,18 +23,19 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vineetvardhan.dev"),
+  // www is the canonical hostname — matches the 301 redirect target served by Vercel
+  metadataBase: new URL("https://www.vineetvardhan.dev"),
   title: {
-    default: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+    default: "Vineet Vardhan | Freelance Developer & AI Solutions",
     template: "%s | Vineet Vardhan",
   },
   description:
-    "Freelance full-stack developer and software engineer specializing in high-performance Next.js websites, custom hospitality booking systems, PMS software, and tailored business web applications.",
+    "Need a website, SaaS product, or AI solution? I'm Vineet Vardhan, a freelance developer building modern websites, custom booking systems, and business software for companies worldwide.",
   keywords: [
     "Vineet Vardhan",
     "Freelance Web Developer",
+    "Freelance Developer India",
     "Full Stack Developer",
-    "Software Engineer India",
     "Custom Software Developer",
     "Next.js Developer",
     "React Developer",
@@ -43,14 +44,17 @@ export const metadata: Metadata = {
     "Hotel Website Development",
     "SaaS Developer",
     "Business Software Developer",
-    "AI Developer",
+    "AI Solutions Developer",
     "Hospitality Tech",
+    "Website Development",
+    "Web Application Development",
   ],
-  authors: [{ name: "Vineet Vardhan", url: "https://vineetvardhan.dev" }],
+  authors: [{ name: "Vineet Vardhan", url: "https://www.vineetvardhan.dev" }],
   creator: "Vineet Vardhan",
   publisher: "Vineet Vardhan",
   alternates: {
-    canonical: "/",
+    // Explicit canonical always uses the www domain
+    canonical: "https://www.vineetvardhan.dev",
   },
   robots: {
     index: true,
@@ -66,25 +70,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://vineetvardhan.dev",
-    siteName: "Vineet Vardhan Portfolio",
-    title: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+    url: "https://www.vineetvardhan.dev",
+    siteName: "Vineet Vardhan",
+    title: "Vineet Vardhan | Freelance Developer & AI Solutions",
     description:
-      "Bespoke websites, high-converting booking systems, and custom SaaS software engineered with Next.js 14 and enterprise performance standards.",
+      "Need a website, SaaS product, or AI solution? I'm Vineet Vardhan, a freelance developer building modern websites, custom booking systems, and business software for companies worldwide.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+        alt: "Vineet Vardhan | Freelance Developer & AI Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+    title: "Vineet Vardhan | Freelance Developer & AI Solutions",
     description:
-      "Bespoke websites, hospitality booking engines, and custom business software engineered with Next.js 14.",
+      "Need a website, SaaS product, or AI solution? I'm Vineet Vardhan, a freelance developer building modern websites, custom booking systems, and business software for companies worldwide.",
     images: ["/og-image.png"],
     creator: "@vineetvardhan",
   },

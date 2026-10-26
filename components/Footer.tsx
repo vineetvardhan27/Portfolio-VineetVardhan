@@ -15,7 +15,7 @@ export function Footer() {
               <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
                 <img
                   src="/avatar.png"
-                  alt="Vineet Vardhan — Full-Stack Developer & Software Engineer"
+                  alt="Vineet Vardhan | Freelance Developer & AI Solutions"
                   width={32}
                   height={32}
                   loading="lazy"

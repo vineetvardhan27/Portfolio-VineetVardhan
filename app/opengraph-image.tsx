@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Vineet Vardhan — Full-Stack Developer & Software Engineer";
+export const alt = "Vineet Vardhan | Freelance Developer & AI Solutions";
 export const size = {
   width: 1200,
   height: 630,
@@ -97,7 +97,7 @@ export default async function Image() {
               letterSpacing: "-0.01em",
             }}
           >
-            Full-Stack Developer & Software Engineer
+            Freelance Developer & AI Solutions
           </div>
           <p
             style={{
@@ -108,7 +108,7 @@ export default async function Image() {
               maxWidth: "850px",
             }}
           >
-            Bespoke Websites • Custom PMS • Hospitality Booking Systems • SaaS Platforms
+            Websites • Booking Systems • SaaS Products • AI Solutions
           </p>
         </div>
 
@@ -122,7 +122,7 @@ export default async function Image() {
             borderTop: "1px solid rgba(255, 255, 255, 0.08)",
           }}
         >
-          {["Next.js 14", "TypeScript", "Custom PMS", "Sanity CMS", "Supabase Postgres", "SEO & AIO"].map(
+          {["Next.js 14", "TypeScript", "Custom PMS", "AI Integrations", "Supabase", "SEO & AIO"].map(
             (tag) => (
               <div
                 key={tag}

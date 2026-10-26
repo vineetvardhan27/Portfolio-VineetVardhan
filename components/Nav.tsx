@@ -52,7 +52,7 @@ export function Nav() {
           <div className="w-8 h-8 rounded-full overflow-hidden border border-border shadow-2xs group-hover:scale-102 transition-transform shrink-0">
             <img
               src="/avatar.png"
-              alt="Vineet Vardhan — Full-Stack Developer & Software Engineer"
+              alt="Vineet Vardhan | Freelance Developer & AI Solutions"
               width={32}
               height={32}
               decoding="async"

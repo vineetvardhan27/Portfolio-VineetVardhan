@@ -6,13 +6,14 @@ export function RootJsonLd() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://vineetvardhan.dev/#person",
+        // www is the canonical domain — must match metadataBase in layout.tsx
+        "@id": "https://www.vineetvardhan.dev/#person",
         name: "Vineet Vardhan",
-        url: "https://vineetvardhan.dev",
-        image: "https://vineetvardhan.dev/avatar.png",
-        jobTitle: "Full-Stack Developer & Software Engineer",
+        url: "https://www.vineetvardhan.dev",
+        image: "https://www.vineetvardhan.dev/avatar.png",
+        jobTitle: "Freelance Developer & AI Solutions",
         description:
-          "Full-stack developer and software engineer specializing in high-performance Next.js websites, custom hospitality booking systems, PMS software, and business web applications.",
+          "Freelance developer building modern websites, custom booking systems, SaaS products, and AI-powered solutions for businesses worldwide.",
         worksFor: {
           "@type": "Organization",
           name: "Freelance / Self-Employed",
@@ -34,7 +35,9 @@ export function RootJsonLd() {
           "REST APIs",
           "Tailwind CSS",
           "Search Engine Optimization (SEO)",
-          "AI Search (AIO)",
+          "AI Search Optimization (AIO)",
+          "AI Integrations",
+          "SaaS Development",
         ],
         contactPoint: {
           "@type": "ContactPoint",
@@ -45,22 +48,22 @@ export function RootJsonLd() {
       },
       {
         "@type": "WebSite",
-        "@id": "https://vineetvardhan.dev/#website",
-        url: "https://vineetvardhan.dev",
-        name: "Vineet Vardhan — Full-Stack Developer & Software Engineer",
+        "@id": "https://www.vineetvardhan.dev/#website",
+        url: "https://www.vineetvardhan.dev",
+        name: "Vineet Vardhan | Freelance Developer & AI Solutions",
         description:
-          "Bespoke websites, high-converting booking systems, and custom SaaS software engineered with Next.js 14 and enterprise performance standards.",
+          "Need a website, SaaS product, or AI solution? Vineet Vardhan builds modern websites, custom booking systems, and business software for companies worldwide.",
         inLanguage: "en-US",
         publisher: {
-          "@id": "https://vineetvardhan.dev/#person",
+          "@id": "https://www.vineetvardhan.dev/#person",
         },
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://vineetvardhan.dev/#service",
+        "@id": "https://www.vineetvardhan.dev/#service",
         name: "Vineet Vardhan — Freelance Software & Web Development",
-        url: "https://vineetvardhan.dev",
-        image: "https://vineetvardhan.dev/avatar.png",
+        url: "https://www.vineetvardhan.dev",
+        image: "https://www.vineetvardhan.dev/avatar.png",
         telephone: "+919798504212",
         email: "vineetvardhanwork@gmail.com",
         priceRange: "₹₹₹",
@@ -68,21 +71,26 @@ export function RootJsonLd() {
           "@type": "PostalAddress",
           addressCountry: "IN",
         },
-        geo: {
-          "@type": "GeoCoordinates",
-          addressCountry: "IN",
-        },
         areaServed: {
           "@type": "AdministrativeArea",
           name: "Worldwide",
         },
         founder: {
-          "@id": "https://vineetvardhan.dev/#person",
+          "@id": "https://www.vineetvardhan.dev/#person",
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Software & Web Development Services",
           itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Business Websites & Landing Pages",
+                description:
+                  "Fast, modern business websites and landing pages built to convert visitors into clients.",
+              },
+            },
             {
               "@type": "Offer",
               itemOffered: {
@@ -96,7 +104,7 @@ export function RootJsonLd() {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: "Custom PMS & Business SaaS",
+                name: "Custom PMS & SaaS Products",
                 description:
                   "Cloud property management systems, room availability matrices, POS food billing, and automated invoicing.",
               },
@@ -105,16 +113,16 @@ export function RootJsonLd() {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: "High-Converting Next.js Websites",
+                name: "AI Integrations & Automation",
                 description:
-                  "Production-grade Next.js 14 websites with sub-second speeds, top Lighthouse scores, and search optimization.",
+                  "Practical AI-powered features and automation workflows integrated into existing business websites and web applications.",
               },
             },
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: "Custom Web Applications & Portals",
+                name: "Custom Web Applications & Dashboards",
                 description:
                   "Full-stack web applications with secure authentication, relational database modeling, and third-party integrations.",
               },
@@ -153,23 +161,24 @@ export function ProjectJsonLd({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "@id": `https://vineetvardhan.dev/work/${slug}#case-study`,
-    name: `${name} Case Study`,
+    // www canonical domain used throughout
+    "@id": `https://www.vineetvardhan.dev/work/${slug}#case-study`,
+    name: `${name} — Project by Vineet Vardhan`,
     headline: tagline,
     description: summary,
-    url: `https://vineetvardhan.dev/work/${slug}`,
-    image: `https://vineetvardhan.dev${image}`,
+    url: `https://www.vineetvardhan.dev/work/${slug}`,
+    image: `https://www.vineetvardhan.dev${image}`,
     dateCreated: year,
     inLanguage: "en-US",
     author: {
       "@type": "Person",
       name: "Vineet Vardhan",
-      url: "https://vineetvardhan.dev",
+      url: "https://www.vineetvardhan.dev",
     },
     publisher: {
       "@type": "Person",
       name: "Vineet Vardhan",
-      url: "https://vineetvardhan.dev",
+      url: "https://www.vineetvardhan.dev",
     },
     keywords: technologies.join(", "),
   };
