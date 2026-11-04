@@ -24,8 +24,11 @@ export default function LenisProvider({
     });
 
     lenisRef.current = lenis;
+    if (typeof window !== "undefined") {
+      (window as unknown as { lenis?: Lenis }).lenis = lenis;
+    }
 
-    // Synchronize Lenis with Framer Motion's internal ticker loop
+    // Synchronize Lenis with Framer Motion internal ticker loop
     function update({ timestamp }: { timestamp: number }) {
       lenis.raf(timestamp);
     }
@@ -36,6 +39,9 @@ export default function LenisProvider({
       cancelFrame(update);
       lenis.destroy();
       lenisRef.current = null;
+      if (typeof window !== "undefined") {
+        (window as unknown as { lenis?: Lenis }).lenis = undefined;
+      }
     };
   }, []);
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import LenisProvider from "@/lib/lenis-provider";
 import { ThemeProvider } from "@/lib/theme-provider";
@@ -7,10 +7,11 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { RootJsonLd } from "@/components/JsonLd";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const googleSansFlex = localFont({
+  src: "./fonts/google-sans-flex.woff2",
+  variable: "--font-sans",
   display: "swap",
+  fallback: ["ui-sans-serif", "system-ui", "sans-serif"],
 });
 
 export const viewport: Viewport = {
@@ -23,7 +24,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  // www is the canonical hostname — matches the 301 redirect target served by Vercel
+  // www is the canonical hostname: matches the 301 redirect target served by Vercel
   metadataBase: new URL("https://www.vineetvardhan.dev"),
   title: {
     default: "Vineet Vardhan | Freelance Developer & AI Solutions",
@@ -107,7 +108,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${inter.className} font-sans`} suppressHydrationWarning>
+    <html lang="en" className={`${googleSansFlex.variable} ${googleSansFlex.className} font-sans`} suppressHydrationWarning>
       <head>
         <RootJsonLd />
         <script
@@ -126,7 +127,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-bg text-text-primary min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent antialiased font-sans`}>
+      <body className={`${googleSansFlex.className} bg-bg text-text-primary min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent antialiased font-sans`}>
         <ThemeProvider>
           <LenisProvider>
             <Nav />

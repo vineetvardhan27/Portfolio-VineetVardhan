@@ -28,13 +28,9 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          "var(--font-inter, Inter)",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          '"Segoe UI"',
-          "Roboto",
-          '"Helvetica Neue"',
-          "Arial",
+          "var(--font-sans)",
+          "ui-sans-serif",
+          "system-ui",
           "sans-serif",
         ],
         serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],

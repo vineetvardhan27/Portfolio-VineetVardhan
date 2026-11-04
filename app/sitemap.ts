@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // www is the canonical domain — must match metadataBase in layout.tsx and robots.ts
+  // www is the canonical domain: must match metadataBase in layout.tsx and robots.ts
   const baseUrl = "https://www.vineetvardhan.dev";
 
   // Use a static ISO date representing the last significant content update.
