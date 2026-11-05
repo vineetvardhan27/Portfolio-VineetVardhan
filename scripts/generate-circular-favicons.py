@@ -5,10 +5,10 @@ def generate_circular_icons():
     fav = Image.open('Favicon.jpeg').convert('RGB')
     w, h = fav.size
 
-    # Square crop 840x840 centered at x=494, y=440
-    # Head fills ~80% of diameter with proportional hair margin and shoulder anchor
+    # Square crop 840x840 centered at x=494, y=480
+    # Head fills ~80% of diameter with proportional 35px hair margin and 125px neck/collar anchor
     crop_x = 74
-    crop_y = 20
+    crop_y = 60
     crop_size = 840
     crop = fav.crop((crop_x, crop_y, crop_x + crop_size, crop_y + crop_size))
 
