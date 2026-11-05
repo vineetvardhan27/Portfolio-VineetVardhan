@@ -63,26 +63,26 @@
 }
 
 .dark {
-  --bg: #090E1A; /* Deep midnight navy base */
-  --bg-subtle: #0E1424; /* Tier 1.5 section separator */
-  --card: #12192B; /* Tier 2 elevated card surface */
-  --surface: #172036; /* Tier 3 inset, chips, inputs */
-  --surface-hover: #1E2B47;
-  --border: rgba(255, 255, 255, 0.08); /* 1px crisp, quiet separator */
-  --border-subtle: rgba(255, 255, 255, 0.04);
+  --bg: #040711; /* Cyberpunk abyss black infused with deep electric blue */
+  --bg-subtle: #080D1E; /* Tier 1.5 cyber section separator */
+  --card: #0C1226; /* Tier 2 elevated cyber card surface */
+  --surface: #111832; /* Tier 3 cyber terminal inset, chips, inputs */
+  --surface-hover: #172142;
+  --border: rgba(56, 189, 248, 0.12); /* Subtle electric cyber border */
+  --border-subtle: rgba(56, 189, 248, 0.05);
   --border-accent: rgba(201, 149, 82, 0.35);
-  --text-primary: #F1F0EC; /* Warm off-white */
-  --text-secondary: #9A9A96; /* Muted neutral for optimal readability */
-  --text-muted: #666662; /* Low-emphasis metadata */
-  --accent: #C99552; /* Sophisticated muted copper / amber accent */
+  --text-primary: #F1F5F9; /* Crisp high-contrast off-white */
+  --text-secondary: #94A3B8; /* Muted slate for optimal cyberpunk readability */
+  --text-muted: #64748B; /* Low-emphasis metadata */
+  --accent: #C99552; /* Sophisticated amber / warm copper accent */
   --accent-hover: #D6A15C; /* Warm hover state */
-  --accent-subtle: rgba(201, 149, 82, 0.10);
+  --accent-subtle: rgba(201, 149, 82, 0.12);
   --success: #35B77A; /* Muted functional green */
 
-  /* Engineering Graph Paper Grid Tokens (Dark Mode) */
-  /* Pale blue-gray lines on deep midnight blue background */
-  --drafting-grid-minor: rgba(135, 175, 225, 0.05);
-  --drafting-grid-major: rgba(135, 175, 225, 0.12);
+  /* Cyberpunk Grid Tokens (Dark Mode) */
+  /* Electric cyan-blue grid on pitch abyss black */
+  --drafting-grid-minor: rgba(38, 140, 255, 0.08);
+  --drafting-grid-major: rgba(38, 160, 255, 0.18);
 }
 
 @layer base {
