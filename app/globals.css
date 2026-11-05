@@ -63,11 +63,11 @@
 }
 
 .dark {
-  --bg: #0B0C0E; /* Deep charcoal-black base */
-  --bg-subtle: #101114; /* Tier 1.5 section separator */
-  --card: #141519; /* Tier 2 elevated card surface */
-  --surface: #191A20; /* Tier 3 inset, chips, inputs */
-  --surface-hover: #22242B;
+  --bg: #090E1A; /* Deep midnight navy base */
+  --bg-subtle: #0E1424; /* Tier 1.5 section separator */
+  --card: #12192B; /* Tier 2 elevated card surface */
+  --surface: #172036; /* Tier 3 inset, chips, inputs */
+  --surface-hover: #1E2B47;
   --border: rgba(255, 255, 255, 0.08); /* 1px crisp, quiet separator */
   --border-subtle: rgba(255, 255, 255, 0.04);
   --border-accent: rgba(201, 149, 82, 0.35);
@@ -80,9 +80,9 @@
   --success: #35B77A; /* Muted functional green */
 
   /* Engineering Graph Paper Grid Tokens (Dark Mode) */
-  /* Pale blue-gray lines on deep slate background */
-  --drafting-grid-minor: rgba(140, 172, 212, 0.045);
-  --drafting-grid-major: rgba(140, 172, 212, 0.11);
+  /* Pale blue-gray lines on deep midnight blue background */
+  --drafting-grid-minor: rgba(135, 175, 225, 0.05);
+  --drafting-grid-major: rgba(135, 175, 225, 0.12);
 }
 
 @layer base {

@@ -4,8 +4,8 @@
   "description": "Freelance Developer & AI Solutions",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B0C0E",
-  "theme_color": "#0B0C0E",
+  "background_color": "#090E1A",
+  "theme_color": "#090E1A",
   "icons": [
     {
       "src": "/icon-192.png",

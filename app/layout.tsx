@@ -18,7 +18,7 @@ const googleSansFlex = localFont({
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#FBFBFA" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B0C0E" },
+    { media: "(prefers-color-scheme: dark)", color: "#090E1A" },
   ],
   width: "device-width",
   initialScale: 1,
