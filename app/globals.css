@@ -56,13 +56,9 @@
   --tracking-label: 0.01em;
   --tracking-eyebrow: 0.01em;
 
-  /* Engineering Drafting Sheet Tokens (Light Mode) */
-  /* Graphite lines on warm off-white paper */
-  --drafting-grid-minor: rgba(30, 34, 42, 0.075);
-  --drafting-grid-major: rgba(30, 34, 42, 0.16);
-  --drafting-frame: rgba(30, 34, 42, 0.40);
-  --drafting-line: rgba(30, 34, 42, 0.55);
-  --drafting-text: rgba(30, 34, 42, 0.80);
+  /* Subtle Background Dot Grid & Spotlight Tokens (Light Mode) */
+  --grid-dot-color: rgba(0, 0, 0, 0.08);
+  --spotlight-color: rgba(185, 130, 63, 0.12);
 }
 
 .dark {
@@ -82,13 +78,9 @@
   --accent-subtle: rgba(201, 149, 82, 0.10);
   --success: #35B77A; /* Muted functional green */
 
-  /* Engineering Drafting Sheet Tokens (Dark Mode) */
-  /* Pale blue-gray lines on deep slate background */
-  --drafting-grid-minor: rgba(140, 172, 212, 0.065);
-  --drafting-grid-major: rgba(140, 172, 212, 0.15);
-  --drafting-frame: rgba(140, 172, 212, 0.35);
-  --drafting-line: rgba(140, 172, 212, 0.48);
-  --drafting-text: rgba(160, 192, 230, 0.75);
+  /* Subtle Background Dot Grid & Spotlight Tokens (Dark Mode) */
+  --grid-dot-color: rgba(255, 255, 255, 0.08);
+  --spotlight-color: rgba(201, 149, 82, 0.18);
 }
 
 @layer base {
@@ -310,58 +302,32 @@
 }
 
 /* ═════════════════════════════════════════════════════
-   Engineering Drafting Sheet Background Layer
+   Subtle Dot Grid & Spotlight Background Layer
    ═════════════════════════════════════════════════════ */
 
-/* Layer 1: Graph paper minor grid 16px, major grid 128px */
-.bg-drafting-grid {
-  background-image:
-    linear-gradient(to right, var(--drafting-grid-major) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--drafting-grid-major) 1px, transparent 1px),
-    linear-gradient(to right, var(--drafting-grid-minor) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--drafting-grid-minor) 1px, transparent 1px);
-  background-size:
-    128px 128px,
-    128px 128px,
-    16px 16px,
-    16px 16px;
-  background-position: -1px -1px;
+/* 24px dot grid with soft radial edge fade */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--grid-dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
 }
 
-/* Layer 2: Corner crop marks & title-block frame */
-.drafting-static-frame {
-  stroke: var(--drafting-frame);
-  color: var(--drafting-text);
-  transition: stroke 300ms ease, color 300ms ease;
+/* Cursor-following spotlight glow */
+.bg-spotlight {
+  background: radial-gradient(600px circle at var(--mx, -1000px) var(--my, -1000px), var(--spotlight-color), transparent 65%);
 }
 
-/* Layer 3: Annotations stroke-dashoffset drawing animation */
-.drafting-stroke {
-  stroke: var(--drafting-line);
-  stroke-width: 1.25;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1), stroke 300ms ease;
-}
-
-.drafting-label {
-  fill: var(--drafting-text);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  user-select: none;
-  transition: opacity 0.4s ease-out 0.8s, fill 300ms ease;
-}
-
-/* Respect prefers-reduced-motion: immediate fully-drawn state, no animation */
-@media (prefers-reduced-motion: reduce) {
-  .drafting-stroke {
-    stroke-dashoffset: 0 !important;
-    transition: none !important;
+/* Disable spotlight on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .bg-spotlight {
+    display: none !important;
   }
-  .drafting-label {
-    opacity: 1 !important;
-    transition: none !important;
+}
+
+/* Disable spotlight when prefers-reduced-motion is set; static grid stays */
+@media (prefers-reduced-motion: reduce) {
+  .bg-spotlight {
+    display: none !important;
   }
 }
