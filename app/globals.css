@@ -56,10 +56,10 @@
   --tracking-label: 0.01em;
   --tracking-eyebrow: 0.01em;
 
-  /* Subtle Background Line Grid & Spotlight Tokens (Light Mode) */
-  --grid-line-color: rgba(0, 0, 0, 0.06);
-  --grid-dot-color: rgba(0, 0, 0, 0.08);
-  --spotlight-color: rgba(185, 130, 63, 0.12);
+  /* Engineering Graph Paper Grid Tokens (Light Mode) */
+  /* Graphite lines on warm off-white paper */
+  --drafting-grid-minor: rgba(30, 34, 42, 0.055);
+  --drafting-grid-major: rgba(30, 34, 42, 0.13);
 }
 
 .dark {
@@ -79,10 +79,10 @@
   --accent-subtle: rgba(201, 149, 82, 0.10);
   --success: #35B77A; /* Muted functional green */
 
-  /* Subtle Background Line Grid & Spotlight Tokens (Dark Mode) */
-  --grid-line-color: rgba(255, 255, 255, 0.06);
-  --grid-dot-color: rgba(255, 255, 255, 0.08);
-  --spotlight-color: rgba(201, 149, 82, 0.18);
+  /* Engineering Graph Paper Grid Tokens (Dark Mode) */
+  /* Pale blue-gray lines on deep slate background */
+  --drafting-grid-minor: rgba(140, 172, 212, 0.045);
+  --drafting-grid-major: rgba(140, 172, 212, 0.11);
 }
 
 @layer base {
@@ -304,42 +304,20 @@
 }
 
 /* ═════════════════════════════════════════════════════
-   Subtle Line Grid & Spotlight Background Layer
+   Engineering Graph Paper Grid Background
    ═════════════════════════════════════════════════════ */
 
-/* 32px 1px lining grid pattern with soft radial edge fade */
-.bg-line-grid {
+/* Dual-level graph paper: minor grid every 16px, major grid every 128px */
+.bg-drafting-grid {
   background-image:
-    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
-  background-size: 32px 32px;
-  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 100%);
-  mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 100%);
-}
-
-/* 24px dot grid with soft radial edge fade */
-.bg-dot-grid {
-  background-image: radial-gradient(var(--grid-dot-color) 1px, transparent 1px);
-  background-size: 24px 24px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
-}
-
-/* Cursor-following spotlight glow */
-.bg-spotlight {
-  background: radial-gradient(600px circle at var(--mx, -1000px) var(--my, -1000px), var(--spotlight-color), transparent 65%);
-}
-
-/* Disable spotlight on touch devices */
-@media (hover: none), (pointer: coarse) {
-  .bg-spotlight {
-    display: none !important;
-  }
-}
-
-/* Disable spotlight when prefers-reduced-motion is set; static grid stays */
-@media (prefers-reduced-motion: reduce) {
-  .bg-spotlight {
-    display: none !important;
-  }
+    linear-gradient(to right, var(--drafting-grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--drafting-grid-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--drafting-grid-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--drafting-grid-minor) 1px, transparent 1px);
+  background-size:
+    128px 128px,
+    128px 128px,
+    16px 16px,
+    16px 16px;
+  background-position: -1px -1px;
 }
