@@ -27,7 +27,7 @@ export const projects: Project[] = [
     tagline: "Custom Property Management System Tailored for Hotel Operations",
     summary:
       "Built a custom Property Management System (PMS) in Next.js & Supabase tailored around actual hotel staff workflows—handling room booking, inventory, billing, food orders, and operational dashboards from one unified platform.",
-    liveUrl: "https://grovepms.vercel.app/",
+    liveUrl: "https://grovepms.me/",
     image: "/images/grove-pms.png",
     metrics: [
       { label: "Time Saved", value: "4.5 hrs daily" },

@@ -110,7 +110,7 @@ Populate only with real categories you actually deliver: Hotel Websites, Booking
 
 Order:
 1. Hotel Greenery View (live website + booking-oriented enquiry flow) — live: https://www.hotelgreeneryview.com/
-2. Grove PMS (multi-tenant hospitality SaaS — booking, billing, inventory, analytics) — live: https://grovepms.vercel.app/
+2. Grove PMS (multi-tenant hospitality SaaS — booking, billing, inventory, analytics) — live: https://grovepms.me/
 3. Anugra Travels (interactive 3D globe, real-time data) — live: https://www.anugratravels.com/ — this is your strongest visually distinct third project; it also lets you show range beyond "hotel sites"
 
 Each card: name, one-line problem→solution copy, large screenshot, and **two** CTAs side by side:

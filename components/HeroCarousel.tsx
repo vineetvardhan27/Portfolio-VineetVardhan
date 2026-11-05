@@ -36,7 +36,7 @@ const REAL_PROJECTS: ProjectSlide[] = [
   {
     name: "Grove PMS",
     label: "Property management system",
-    live: "https://grovepms.vercel.app/",
+    live: "https://grovepms.me/",
     caseStudy: "/work/grove-pms",
     image: "/hero/grove.webp",
     alt: "Grove PMS homepage",

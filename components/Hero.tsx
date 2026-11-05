@@ -108,7 +108,7 @@ export function Hero() {
                 </a>
                 ,{" "}
                 <a
-                  href="https://grovepms.vercel.app"
+                  href="https://grovepms.me"
                   target="_blank"
                   rel="noopener"
                   className="text-text-primary underline underline-offset-2 hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-xs"

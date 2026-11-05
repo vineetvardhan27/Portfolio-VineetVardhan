@@ -72,7 +72,7 @@ export const projects = [
   {
     slug: "grove-pms",
     name: "Grove PMS",
-    liveUrl: "https://grovepms.vercel.app/",
+    liveUrl: "https://grovepms.me/",
     summary: "Multi-tenant hospitality PMS handling room booking, billing, inventory and analytics.",
   },
   {
