@@ -62,8 +62,8 @@ export function BackgroundEffect() {
       {/* Layer 2: Corner Crop Marks (Static, Faint) */}
       <CornerCropMarks />
 
-      {/* Layer 2: Title-Block Frame (Bottom-Right, Static, Faint) */}
-      <div className="hidden sm:block absolute bottom-6 right-6 md:bottom-8 md:right-8 opacity-45">
+      {/* Layer 2: Title-Block Frame (Bottom-Right, Static) */}
+      <div className="hidden sm:block absolute bottom-6 right-6 md:bottom-8 md:right-8 opacity-75">
         <TitleBlockFrame />
       </div>
 
@@ -108,7 +108,7 @@ export function BackgroundEffect() {
  */
 function CornerCropMarks() {
   return (
-    <svg className="absolute inset-0 w-full h-full drafting-static-frame opacity-40">
+    <svg className="absolute inset-0 w-full h-full drafting-static-frame opacity-75">
       {/* Top Left */}
       <line x1="12" y1="24" x2="36" y2="24" strokeWidth="1" />
       <line x1="24" y1="12" x2="24" y2="36" strokeWidth="1" />
