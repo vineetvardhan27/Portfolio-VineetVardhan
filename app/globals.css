@@ -80,9 +80,9 @@
   --success: #35B77A; /* Muted functional green */
 
   /* Neutral Graph Paper Grid Tokens (Dark Mode) */
-  /* Crisp subtle white/graphite grid on pure black */
-  --drafting-grid-minor: rgba(255, 255, 255, 0.045);
-  --drafting-grid-major: rgba(255, 255, 255, 0.10);
+  /* Crisp popped graphite/white drafting grid on pure black */
+  --drafting-grid-minor: rgba(255, 255, 255, 0.11);
+  --drafting-grid-major: rgba(255, 255, 255, 0.26);
 }
 
 @layer base {
