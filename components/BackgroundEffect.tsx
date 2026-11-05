@@ -60,8 +60,8 @@ export function BackgroundEffect() {
       {/* Base background layer with 300ms transition */}
       <div className="absolute inset-0 bg-bg transition-colors duration-300" />
 
-      {/* 24px dot grid with soft radial edge fade */}
-      <div className="absolute inset-0 bg-dot-grid transition-opacity duration-300" />
+      {/* Clean 32px line grid pattern with soft radial edge fade (no drawings) */}
+      <div className="absolute inset-0 bg-line-grid transition-opacity duration-300" />
 
       {/* Cursor-following spotlight glow */}
       <div

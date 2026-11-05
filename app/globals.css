@@ -56,7 +56,8 @@
   --tracking-label: 0.01em;
   --tracking-eyebrow: 0.01em;
 
-  /* Subtle Background Dot Grid & Spotlight Tokens (Light Mode) */
+  /* Subtle Background Line Grid & Spotlight Tokens (Light Mode) */
+  --grid-line-color: rgba(0, 0, 0, 0.06);
   --grid-dot-color: rgba(0, 0, 0, 0.08);
   --spotlight-color: rgba(185, 130, 63, 0.12);
 }
@@ -78,7 +79,8 @@
   --accent-subtle: rgba(201, 149, 82, 0.10);
   --success: #35B77A; /* Muted functional green */
 
-  /* Subtle Background Dot Grid & Spotlight Tokens (Dark Mode) */
+  /* Subtle Background Line Grid & Spotlight Tokens (Dark Mode) */
+  --grid-line-color: rgba(255, 255, 255, 0.06);
   --grid-dot-color: rgba(255, 255, 255, 0.08);
   --spotlight-color: rgba(201, 149, 82, 0.18);
 }
@@ -302,8 +304,18 @@
 }
 
 /* ═════════════════════════════════════════════════════
-   Subtle Dot Grid & Spotlight Background Layer
+   Subtle Line Grid & Spotlight Background Layer
    ═════════════════════════════════════════════════════ */
+
+/* 32px 1px lining grid pattern with soft radial edge fade */
+.bg-line-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 100%);
+}
 
 /* 24px dot grid with soft radial edge fade */
 .bg-dot-grid {
