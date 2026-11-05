@@ -74,7 +74,7 @@ export function Process() {
   return (
     <section
       id="process"
-      className="relative bg-bg text-text-primary transition-colors duration-200"
+      className="relative text-text-primary transition-colors duration-200"
     >
       {/* ═══════════════════════════════════════════════
           SECTION HEADER (Preserved position and H2)

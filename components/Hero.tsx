@@ -39,7 +39,7 @@ export function Hero() {
   const copy = COPY_VARIANTS[ACTIVE_VARIANT];
 
   return (
-    <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-24 lg:pt-40 lg:pb-28 xl:pt-44 xl:pb-32 bg-bg text-text-primary transition-colors duration-200 overflow-hidden">
+    <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-24 lg:pt-40 lg:pb-28 xl:pt-44 xl:pb-32 text-text-primary transition-colors duration-200 overflow-hidden">
       <div className="container-custom">
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column Content Wrapper: behaves as contents on mobile/tablet for order flexibility */}

@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/lib/theme-provider";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { RootJsonLd } from "@/components/JsonLd";
+import { BackgroundEffect } from "@/components/BackgroundEffect";
 
 const googleSansFlex = localFont({
   src: "./fonts/google-sans-flex.woff2",
@@ -127,11 +128,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${googleSansFlex.className} bg-bg text-text-primary min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent antialiased font-sans`}>
+      <body className={`${googleSansFlex.className} bg-transparent text-text-primary min-h-screen flex flex-col selection:bg-accent/20 selection:text-accent antialiased font-sans relative`}>
+        <BackgroundEffect />
         <ThemeProvider>
           <LenisProvider>
             <Nav />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 relative z-0">{children}</main>
             <Footer />
           </LenisProvider>
         </ThemeProvider>

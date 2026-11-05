@@ -29,7 +29,7 @@ export function Pricing() {
   };
 
   return (
-    <section id="pricing" className="section-padding bg-bg border-t border-border/80 dark:border-white/[0.06] relative">
+    <section id="pricing" className="section-padding border-t border-border/80 dark:border-white/[0.06] relative">
       <div className="container-custom">
         {/* Section Header & Currency Toggle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">

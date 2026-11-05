@@ -10,7 +10,7 @@ export function ProjectsGrid() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="work" className="section-padding bg-bg">
+    <section id="work" className="section-padding">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div

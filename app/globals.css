@@ -55,6 +55,10 @@
   --tracking-normal: 0em;
   --tracking-label: 0.01em;
   --tracking-eyebrow: 0.01em;
+
+  /* Subtle Background Dot Grid & Spotlight Tokens (Light Mode) */
+  --grid-dot-color: rgba(0, 0, 0, 0.08);
+  --spotlight-color: rgba(185, 130, 63, 0.12);
 }
 
 .dark {
@@ -73,6 +77,10 @@
   --accent-hover: #D6A15C; /* Warm hover state */
   --accent-subtle: rgba(201, 149, 82, 0.10);
   --success: #35B77A; /* Muted functional green */
+
+  /* Subtle Background Dot Grid & Spotlight Tokens (Dark Mode) */
+  --grid-dot-color: rgba(255, 255, 255, 0.08);
+  --spotlight-color: rgba(201, 149, 82, 0.18);
 }
 
 @layer base {
@@ -86,18 +94,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color 300ms ease, color 300ms ease;
   }
 
   body {
-    background-color: var(--bg);
+    background-color: transparent;
     color: var(--text-primary);
     font-family: var(--font-sans);
     font-optical-sizing: auto;
     font-synthesis: none;
     letter-spacing: var(--tracking-normal);
     overflow-x: hidden;
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color 300ms ease, color 300ms ease;
   }
 
   section[id] {
@@ -291,4 +299,35 @@
 
 .animate-hero-line-2 {
   animation: heroRise 450ms cubic-bezier(0.16, 1, 0.3, 1) 60ms forwards;
+}
+
+/* ═════════════════════════════════════════════════════
+   Subtle Dot Grid & Spotlight Background Layer
+   ═════════════════════════════════════════════════════ */
+
+/* 24px dot grid with soft radial edge fade */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--grid-dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
+}
+
+/* Cursor-following spotlight glow */
+.bg-spotlight {
+  background: radial-gradient(600px circle at var(--mx, -1000px) var(--my, -1000px), var(--spotlight-color), transparent 65%);
+}
+
+/* Disable spotlight on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .bg-spotlight {
+    display: none !important;
+  }
+}
+
+/* Disable spotlight when prefers-reduced-motion is set; static grid stays */
+@media (prefers-reduced-motion: reduce) {
+  .bg-spotlight {
+    display: none !important;
+  }
 }

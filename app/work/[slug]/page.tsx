@@ -86,7 +86,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         technologies={project.technologies}
         year={project.year}
       />
-      <div className="pt-28 pb-20 sm:pt-36 sm:pb-32 bg-bg min-h-screen relative overflow-hidden">
+      <div className="pt-28 pb-20 sm:pt-36 sm:pb-32 min-h-screen relative overflow-hidden">
         {/* Subtle Ambient Top Glow */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-72 bg-gradient-to-b from-[#B9823F]/10 via-[#289E65]/5 to-transparent blur-3xl pointer-events-none opacity-80 dark:opacity-30 -z-10"

@@ -72,7 +72,7 @@ export function WhyWorkWithMe() {
   return (
     <section
       id="why-me"
-      className="section-padding bg-bg dark:bg-[#09090B] border-t border-border dark:border-white/[0.06] relative"
+      className="section-padding border-t border-border dark:border-white/[0.06] relative"
     >
       <div className="container-custom">
         {/* Section Header */}
