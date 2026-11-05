@@ -6,11 +6,12 @@ export function RootJsonLd() {
     "@graph": [
       {
         "@type": "Person",
-        // www is the canonical domain — must match metadataBase in layout.tsx
+        // www is the canonical domain: matches metadataBase in layout.tsx
         "@id": "https://www.vineetvardhan.dev/#person",
         name: "Vineet Vardhan",
         url: "https://www.vineetvardhan.dev",
         image: "https://www.vineetvardhan.dev/avatar.png",
+        logo: "https://www.vineetvardhan.dev/icon.png",
         jobTitle: "Freelance Developer & AI Solutions",
         description:
           "Freelance developer building modern websites, custom booking systems, SaaS products, and AI-powered solutions for businesses worldwide.",
@@ -61,9 +62,10 @@ export function RootJsonLd() {
       {
         "@type": "ProfessionalService",
         "@id": "https://www.vineetvardhan.dev/#service",
-        name: "Vineet Vardhan — Freelance Software & Web Development",
+        name: "Vineet Vardhan | Freelance Software & Web Development",
         url: "https://www.vineetvardhan.dev",
         image: "https://www.vineetvardhan.dev/avatar.png",
+        logo: "https://www.vineetvardhan.dev/icon.png",
         telephone: "+919798504212",
         email: "vineetvardhanwork@gmail.com",
         priceRange: "₹₹₹",
@@ -163,7 +165,7 @@ export function ProjectJsonLd({
     "@type": "CreativeWork",
     // www canonical domain used throughout
     "@id": `https://www.vineetvardhan.dev/work/${slug}#case-study`,
-    name: `${name} — Project by Vineet Vardhan`,
+    name: `${name} | Project by Vineet Vardhan`,
     headline: tagline,
     description: summary,
     url: `https://www.vineetvardhan.dev/work/${slug}`,
