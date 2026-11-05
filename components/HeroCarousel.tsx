@@ -263,7 +263,7 @@ export function HeroCarousel() {
       {/* Viewport with perspective for 3D coverflow */}
       <div
         ref={emblaRef}
-        className="overflow-hidden w-full select-none min-h-[360px] sm:min-h-[400px] lg:min-h-[430px] touch-pan-y"
+        className="overflow-hidden w-full select-none min-h-[320px] sm:min-h-[350px] lg:min-h-[370px] touch-pan-y"
         style={{ perspective: "1200px", touchAction: "pan-y" }}
       >
         <div
@@ -294,16 +294,16 @@ export function HeroCarousel() {
                     tabIndex={isDuplicate ? -1 : 0}
                     className="group block rounded-[12px] border border-border dark:border-white/[0.08] bg-card dark:bg-[#141519] shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-none overflow-hidden transition-[border-color] duration-200 hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface dark:bg-[#101114]">
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface dark:bg-[#101114]">
                       <Image
                         src={project.image}
                         alt={project.alt}
                         width={960}
-                        height={720}
+                        height={540}
                         priority={index === 0}
                         unoptimized
                         sizes="(min-width: 1024px) 380px, (min-width: 768px) 60vw, 78vw"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                       />
                     </div>
                     <div className="p-4 sm:p-5 flex flex-col justify-between">
